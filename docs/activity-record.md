@@ -1,0 +1,5 @@
+
+| **S.No.** | **Date**     | **Discussion**                                                                                                                  | **Task**                                                                                                          |
+| :-------: | :----------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+|     1     | Sep 27, 2025 | Assigned roles for all the members of the team. Divided the team of six into 2 equal sub-teams of frontend and backend.         | Learn GitHub and understand it's core concepts, making team coordination better for all.                          |
+|     2     | Sep 28, 2025 | Introduced the core concept of real code we're about to do, the plan we'll be working on to actually start our first code file. | Understand the logic behind the functioning of main concept of the project, to actually initialize working on it. |
