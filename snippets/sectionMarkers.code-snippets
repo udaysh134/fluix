@@ -1,0 +1,37 @@
+/*
+This file contains VS Code snippets for section markers we'll be using in our code (like headers, functions, main execution, embeds, etc.).
+Purpose of this file is to guide other team members to use these code snippets to maintain consistency across our team’s code and documentation, making it easy to organize, visually separate sections, and quickly insert standard separators.
+
+How to use: 
+====================
+1. Copy the content of this "sectionMarkers.code-snippets" file from the repo.
+2. Open VS Code on your local device.
+3. Go to "File" > "Preferences" > "Configure Snippets" (or use Ctrl+Shift+P, type "snippets" and select "Snippets: Configure Snippets").
+4. Select "New Global Snippets file...".
+5. Give a name you'd prefer for your snippets file. This will be saved in your local VSC directory.
+6. Now select everything you see and remove that file's content. Paste the code you copied earlier and save the file.
+7. You can now safely close the file and to test the snippet, just use the prefix ("sec1" and "sec2") anywhere in your code to separate important sections in our code files.
+8. If you want you can also remove this commented section, it's here just for the explanation purpose.
+9. You're done!
+
+This ensures that everyone on the team uses the same section markers and keeps our code neat and organized.
+*/
+{
+	"H1_SectionMarker": {
+		"prefix": "sec1",
+		"body": [
+			"/*",
+			"----------------------------------------------------------------------------------------------------",
+			"${1}",
+			"----------------------------------------------------------------------------------------------------",
+			"*/"
+		]
+	},
+
+	"H2_SectionMarker": {
+		"prefix": "sec2",
+		"body": [
+			"// ${1} ================================================== >>>>>"
+		]
+	}
+}
