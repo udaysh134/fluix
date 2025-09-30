@@ -36,9 +36,9 @@ int main(){
             getchar(); // Clear newline character from input buffer
            
             printf("\nEnter your question: ");
-            fgets(Q,84,stdin); // Read string with spaces
+            fgets(Q,84,stdin); 
             printf("Enter your answer: ");
-            fgets(A,1000,stdin); // Read string with spaces
+            fgets(A,1000,stdin); 
             printf("\nYour question is:Q%d\t %s\nYour answer is:A%d\t%s\n",Qcount, Q,Qcount, A);
             recdata(Q ,A);
             goto label;
@@ -46,14 +46,14 @@ int main(){
         }
         else if(choice=='2'){
             printf("\n\t\t\t***Updating coming soon!!!***\n");
-            // Add code to delete registered intel
+           
             goto label;
         }
         else if(choice=='3'){
             
             printf("\n\t\t\t***Updating coming soon!!!***\n");
 
-            // Add code to update registered intel
+            
             goto label;
         }
         else if(choice=='4'){
@@ -62,8 +62,9 @@ int main(){
         }
         else{
             printf("\nInvalid choice! Please try again.\n");
-            goto label; // Loop back for valid input
+            goto label; 
 
         }
+
 
         return 0;   }
