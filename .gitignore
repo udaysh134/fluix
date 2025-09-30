@@ -1,6 +1,6 @@
 # USER DEFINED --------------------------------------------------
 
-.vscode
+.vscode/
 
 # Dependency directories
 node_modules/
