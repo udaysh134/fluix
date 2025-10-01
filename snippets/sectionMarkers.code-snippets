@@ -22,7 +22,7 @@ This ensures that everyone on the team uses the same section markers and keeps o
 		"body": [
 			"/*",
 			"----------------------------------------------------------------------------------------------------",
-			"${1}",
+			"$1",
 			"----------------------------------------------------------------------------------------------------",
 			"*/"
 		]
@@ -31,7 +31,7 @@ This ensures that everyone on the team uses the same section markers and keeps o
 	"H2_SectionMarker": {
 		"prefix": "sec2",
 		"body": [
-			"// ${1} ================================================== >>>>>"
+			"// $1 = = = = = = = = = = >>>>>"
 		]
 	}
 }

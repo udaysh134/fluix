@@ -32,13 +32,13 @@ int main () {
 FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
-// To initialize the program ================================================== >>>>>
+// To initialize the program = = = = = = = = = = >>>>>
 void launch() {
     char personId;
 
     system("cls");
 
-    rpt1:
+    rptr1:
     printf("Who are you, trying to run this program?\n(A) Admin\n(U) User\n%s\n", lineBreakThin);
     scanf("\n%s", &personId);
     
@@ -51,16 +51,16 @@ void launch() {
             break;
         default:
             printf("Error!! | You gave an invalid input! Please choose (A) for Admin, (U) for User.\n");
-            goto rpt1;
+            goto rptr1;
     }
 }
 
 
-// To check if Admin is trying to run configurations ================================================== >>>>>
+// To check if Admin is trying to run configurations = = = = = = = = = = >>>>>
 void isAdmin() {
     char pass[20];
 
-    rpt2:
+    rptr2:
     printf("What's the PASSCODE? : ");    
     fgets(pass, sizeof(pass), stdin);
 
@@ -70,12 +70,12 @@ void isAdmin() {
         getchar();
     } else {
         printf("That was a wrong try!\n");
-        goto rpt2;
+        goto rptr2;
     }
 }
 
 
-// To check if User is trying to enter and use the program ================================================== >>>>>
+// To check if User is trying to enter and use the program = = = = = = = = = = >>>>>
 void isUser() {
     int selecNum;
 
