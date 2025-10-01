@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <Windows.h>
+#include "utils.h"
 
 // Definitions
 const char lineBreakThick[] = "========================================";
 const char lineBreakThin[] = "----------------------------------------";
+const char configPass[] = "fluixo";
 
 // Function Declarations
 void launch();
@@ -36,7 +38,7 @@ void launch() {
 
     system("cls");
 
-    repeat:
+    rpt1:
     printf("Who are you, trying to run this program?\n(A) Admin\n(U) User\n%s\n", lineBreakThin);
     scanf("\n%s", &personId);
     
@@ -48,15 +50,28 @@ void launch() {
             isUser();
             break;
         default:
-            printf("You gave an invalid input! Please choose (A) for Admin, (U) for User.\n");
-            goto repeat;
+            printf("Error!! | You gave an invalid input! Please choose (A) for Admin, (U) for User.\n");
+            goto rpt1;
     }
 }
 
 
 // To check if Admin is trying to run configurations ================================================== >>>>>
 void isAdmin() {
-    printf("You're now in ADMIN portal. There's nothing to show here.");
+    char pass[20];
+
+    rpt2:
+    printf("What's the PASSCODE? : ");    
+    fgets(pass, sizeof(pass), stdin);
+
+    if (pass == configPass) {
+        printf("You're now in ADMIN portal. There's nothing to show here for now.");
+        printf("Press any key to exit...");
+        getchar();
+    } else {
+        printf("That was a wrong try!\n");
+        goto rpt2;
+    }
 }
 
 
