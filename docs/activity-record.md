@@ -1,3 +1,15 @@
+## 🗓️ <font color="#76923c">Oct 01, 2025 - - - - - - - - - - - - - - - - - - - - ></font>
+### <font color="#fac08f">Discussions :</font>
+- Finalized which main C file will continue and how other important functions will be created and used later, using header files.
+- Introduced ".env" files with their necessity and talked about ".json" files and their structure & functioning and how they're going to store data provided by users + a little on how scoring algorithm will be put in place to find the closest matching question, to display correct answer - all using tags.
+- Discussed and allotted work on how backend team (including [Yazdaan](https://github.com/SenorDan031), [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533)) must start working on the backend structure, the whole project is relying on. Which includes - creating important functions globally for the project and working on file creation > updation > deletion, all using C.
+- Visually discussed what our User DB's structure is going to look like - how the ".json" files inside folders, which are further inside other folders are going to be stored and work all together.
+### <font color="#fac08f">Tasks :</font>
+- I ([Uday](https://github.com/udaysh134)) will be focusing on the management and documentation part of the project + building a working UI prototype for presentation using Figma later.
+- [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533) will be coordinating together in making important re-usable functions for the project using header files (with ".h" extension).
+- [Yazdaan](https://github.com/SenorDan031) will majorly be working on creating prototypes which are important for the project's core idea of - Feeding the information > Amending it accordingly > Using that information to provide answers.
+- (For all members) Learn what JSON files are and how to manipulate data stored in them, using C.
+######
 ## 🗓️ <font color="#76923c">Sep 30, 2025 - - - - - - - - - - - - - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - N/A
