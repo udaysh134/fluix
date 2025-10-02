@@ -9,6 +9,7 @@
 - [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533) will be coordinating together in making important re-usable functions for the project using header files (with ".h" extension).
 - [Yazdaan](https://github.com/SenorDan031) will majorly be working on creating prototypes which are important for the project's core idea of - Feeding the information > Amending it accordingly > Using that information to provide answers.
 - (For all members) Learn what JSON files are and how to manipulate data stored in them, using C.
+- Add your names on your GitHub profiles for recognition and consistency (changing usernames is totally up to you).
 ######
 ## 🗓️ <font color="#76923c">Sep 30, 2025 - - - - - - - - - - - - - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
