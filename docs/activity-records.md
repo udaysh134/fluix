@@ -1,3 +1,13 @@
+## 🗓️ <font color="#76923c">Oct 05, 2025 - - - - - - - - - - - - - - - - - - - - ></font>
+### <font color="#fac08f">Discussions :</font>
+- N/A
+### <font color="#fac08f">Tasks :</font>
+- Learn how to Create, Manage and Use local header files, now necessary to understand the functioning and execution of main program.
+- Learn how to compile multiple files (including header files) and get comfortable with basic "gcc" commands.
+- Understand "Makefiles" and how they work, now necessary to match the pace of the project's progress.
+- Create a function to extract and parse data from ".env" files. Function creation is expected to be done inside "utils.c" file with proper section division.
+- Extend the functionality of "admin.c" and "user.c" to further make progress towards the goal of the project.
+######
 ## 🗓️ <font color="#76923c">Oct 01, 2025 - - - - - - - - - - - - - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - Finalized which main C file will continue and how other important functions will be created and used later, using header files.

@@ -10,7 +10,7 @@
 LINE SEPARATOR FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-char* lineSep(char symbol, int length) {
+char *lineSep(char symbol, int length) {
     char *res = malloc(length + 1);  
     if (res == NULL) return NULL;
 
