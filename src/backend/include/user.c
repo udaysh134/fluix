@@ -14,8 +14,8 @@ MAIN FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
 void isUser() {
-    char *lsThick = lineSep('=', 40);
-    char *lsThin = lineSep('-', 40);
+    char *lsThick = lineSep('=', 50);
+    char *lsThin = lineSep('-', 50);
     int selecNum;
 
     system("cls");

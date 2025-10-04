@@ -31,3 +31,14 @@ GLOBAL PREFIX FUNCTION
 char *inputPrefix() {
     return CMD_COL_YELLOW ">> " CMD_COL_RESET;
 }
+
+
+/*
+----------------------------------------------------------------------------------------------------
+BUFFER CONSUMING FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+void eatBuffer() {
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF) {}
+}
