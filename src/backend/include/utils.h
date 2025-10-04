@@ -2,5 +2,6 @@
 #define UTILS_H
 
 char *lineSep(char symbol, int length);
+char *inputPrefix();
 
 #endif

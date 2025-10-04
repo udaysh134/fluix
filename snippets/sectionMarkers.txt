@@ -4,7 +4,7 @@ Purpose of this file is to guide other team members to use these code snippets t
 
 How to use: 
 ====================
-1. Copy the content of this "sectionMarkers.code-snippets" file from the repo.
+1. Copy the content of this file "sectionMarkers.txt", from the repo.
 2. Open VS Code on your local device.
 3. Go to "File" > "Preferences" > "Configure Snippets" (or use Ctrl+Shift+P, type "snippets" and select "Snippets: Configure Snippets").
 4. Select "New Global Snippets file...".
@@ -16,6 +16,8 @@ How to use:
 
 This ensures that everyone on the team uses the same section markers and keeps our code neat and organized.
 */
+
+
 {
 	"H1_SectionMarker": {
 		"prefix": "sec1",
@@ -31,7 +33,7 @@ This ensures that everyone on the team uses the same section markers and keeps o
 	"H2_SectionMarker": {
 		"prefix": "sec2",
 		"body": [
-			"// $1 = = = = = = = = = = >>>>>"
+			"// ------=>> | $1 | <<=------"
 		]
 	}
 }

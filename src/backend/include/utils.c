@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "colors.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,4 +20,14 @@ char* lineSep(char symbol, int length) {
 
     res[length] = '\0';
     return res;
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+GLOBAL PREFIX FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+char *inputPrefix() {
+    return CMD_COL_YELLOW ">> " CMD_COL_RESET;
 }
