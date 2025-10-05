@@ -34,6 +34,7 @@ void launch() {
                 isUser();
                 break;
             case '0':
+                system("cls");
                 printf("%sThank you!\nHave a good day!%s", CMD_COL_GREEN, CMD_COL_RESET);
                 return;
             default:
