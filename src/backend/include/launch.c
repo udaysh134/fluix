@@ -21,7 +21,7 @@ void launch() {
     system("cls");
 
     while (1) {
-        printf("%s%sWho are you, trying to run this program?%s\n(A) Admin\n(U) User\n(0) To exit\n%s\n", prefix, CMD_COL_CYAN, CMD_COL_RESET, lsThin);
+        printf("%s%sWhat would you like to access?%s\n(A) - Admin Panel\n(U) - User Panel\n(0) - Exit\n%s\n", prefix, CMD_COL_CYAN, CMD_COL_RESET, lsThin);
 
         char personId = getchar();
         eatBuffer();
@@ -34,11 +34,10 @@ void launch() {
                 isUser();
                 break;
             case '0':
-                system("cls");
-                printf("%sThank you!\nHave a good day!%s", CMD_COL_GREEN, CMD_COL_RESET);
+                exitThanks('y');
                 return;
             default:
-                printf("%sYou gave an invalid input! Please choose (A) for Admin, (U) for User or (0) to exit.%s\n", CMD_COL_RED, CMD_COL_RESET);
+                printf("%sYou gave an invalid input! Please choose among these only - A/U/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
         }
     }
 
