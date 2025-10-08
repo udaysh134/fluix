@@ -1,5 +1,12 @@
-# <font color="#76923c">Activity Records</font>
+## 🗓️ <font color="#e36c09">Oct 07, 2025 - - - - - - - - ></font>
+### <font color="#fac08f">Discussions :</font>
+- Not everybody was present but the session proved to be productive as first, [Japnoor](https://github.com/kaurjapnoor60-max) and then [Yazdaan](https://github.com/SenorDan031) joined in with Me ([Uday](https://github.com/udaysh134)). Had a good discussion about the current progress and future direction of the project.
+- Clarified topics like the new repo directory structure, header files, GCC commands, and the Makefile setup through Q&A.
+### <font color="#fac08f">Tasks :</font>
+- N/A
 
+
+######
 ## 🗓️ <font color="#e36c09">Oct 05, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - N/A

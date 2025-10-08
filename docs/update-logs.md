@@ -1,5 +1,3 @@
-# <font color="#76923c">Update Logs</font>
-
 ## 🧩 <font color="#e36c09">Fluix v0.1.0 - Project Foundation (Oct 06, 2025)</font>
 #### <font color="#fac08f">Summary</font>
 The first structured version of Fluix marks the establishment of the project’s foundation, both in logic and in organization. This release focuses on building a clean, maintainable, development workflow, basic program functionality and setting up an organized system that encourages team coordination, accountability, and long-term scalability.
