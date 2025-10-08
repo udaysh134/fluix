@@ -1,4 +1,13 @@
-## 🗓️ <font color="#76923c">Oct 05, 2025 - - - - - - - - ></font>
+## 🗓️ <font color="#e36c09">Oct 07, 2025 - - - - - - - - ></font>
+### <font color="#fac08f">Discussions :</font>
+- Not everybody was present but the session proved to be productive as first, [Japnoor](https://github.com/kaurjapnoor60-max) and then [Yazdaan](https://github.com/SenorDan031) joined in with Me ([Uday](https://github.com/udaysh134)). Had a good discussion about the current progress and future direction of the project.
+- Clarified topics like the new repo directory structure, header files, GCC commands, and the Makefile setup through Q&A.
+### <font color="#fac08f">Tasks :</font>
+- N/A
+
+
+######
+## 🗓️ <font color="#e36c09">Oct 05, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - N/A
 ### <font color="#fac08f">Tasks :</font>
@@ -7,8 +16,10 @@
 - Understand "Makefiles" and how they work, now necessary to match the pace of the project's progress.
 - Create a function to extract and parse data from ".env" files. Function creation is expected to be done inside "utils.c" file with proper section division.
 - Extend the functionality of "admin.c" and "user.c" to further make progress towards the goal of the project.
+
+
 ######
-## 🗓️ <font color="#76923c">Oct 01, 2025 - - - - - - - - ></font>
+## 🗓️ <font color="#e36c09">Oct 01, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - Finalized which main C file will continue and how other important functions will be created and used later, using header files.
 - Introduced ".env" files with their necessity and talked about ".json" files and their structure & functioning and how they're going to store data provided by users + a little on how scoring algorithm will be put in place to find the closest matching question, to display correct answer - all using tags.
@@ -20,14 +31,18 @@
 - [Yazdaan](https://github.com/SenorDan031) will majorly be working on creating prototypes which are important for the project's core idea of - Feeding the information > Amending it accordingly > Using that information to provide answers.
 - (For all members) Learn what JSON files are and how to manipulate data stored in them, using C.
 - Add your names on your GitHub profiles for recognition and consistency (changing usernames is totally up to you).
+
+
 ######
-## 🗓️ <font color="#76923c">Sep 30, 2025 - - - - - - - - ></font>
+## 🗓️ <font color="#e36c09">Sep 30, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - N/A
 ### <font color="#fac08f">Tasks :</font>
 - Create code-snippet file locally in VSC by following instructions provided in the new added snippet file from the project repo.
+
+
 ######
-## 🗓️ <font color="#76923c">Sep 29, 2025 - - - - - - - - ></font>
+## 🗓️ <font color="#e36c09">Sep 29, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - Brought up more clarity on what we really have to do and how to exactly start, including working with header files and multiple functions.
 - Had a session on integration of script functionality we're planning for future with our product.
@@ -36,14 +51,18 @@
 - Start working and coding on whatever functionality whoever can, with their limited time.
 - Don't wait for instructions on UI or design prototype for Frontend, start working.
 - Backend development should now begin asap, we at least need a functioning prototype.
+
+
 ######
-## 🗓️ <font color="#76923c">Sep 28, 2025 - - - - - - - - ></font>
+## 🗓️ <font color="#e36c09">Sep 28, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - Introduced the core concept of real code we're about to do, the plan we'll be working on to actually start.
 ### <font color="#fac08f">Tasks :</font>
 - Understand the logic behind the functioning of main concept of the project, to actually initialize working on it.
+
+
 ######
-## 🗓️ <font color="#76923c">Sep 27, 2025 - - - - - - - - ></font>
+## 🗓️ <font color="#e36c09">Sep 27, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussions :</font>
 - Assigned roles for all the members of the team. Divided the team of six into 2 equal sub-teams of frontend.
 ### <font color="#fac08f">Tasks :</font>

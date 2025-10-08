@@ -4,5 +4,6 @@
 char *lineSep(char symbol, int length);
 char *inputPrefix();
 void eatBuffer();
+void exitThanks(char clearScreen);
 
 #endif
