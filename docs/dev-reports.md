@@ -55,11 +55,23 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 09, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Logged all missing updates from yesterday ([Japnoor](https://github.com/kaurjapnoor60-max)'s and [Manikant](https://github.com/manikant12aggi)'s additions to the repository).
+- Updated `activity-records.md` with **Oct 08, 2025** team discussion logs.
+- Reformatted `activity-records.md` to match formatting style of other `.md` files from the repo, for consistency.
+- Reformatted `password.c` and `proto_m1.c` with clean spaces and sections, no functional changes.
+
+
 ## 🗞️ <font color="#e36c09">Oct 08, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Logged a missed update from yesterday (`password.c` - test for terminal password masking).
 - Removed redundant headers from `activity-reports.md` and `update-logs.md`.
 - Updated `activity-records.md` with **Oct 07, 2025** team discussion logs.
+#### [Japnoor](https://github.com/kaurjapnoor60-max)
+- Added content in `index.html` and file `style.css` under `src/frontend`to start building a landing page for Fluix.
+#### [Manikant](https://github.com/manikant12aggi)
+- Added file `proto_m1.c` in `backend/tests` for testing removal of content from `.txt` files.
 
 
 ## 🗞️ <font color="#e36c09">Oct 07, 2025 - Tuesday</font>
