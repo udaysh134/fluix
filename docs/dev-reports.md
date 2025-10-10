@@ -55,6 +55,11 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 10, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added a sample file `dbStruct.json` in `src/backend/tests` to provide a structure for Q&As to the backend team.
+
+
 ## 🗞️ <font color="#e36c09">Oct 09, 2025 - Thursday</font>
 #### [Uday](https://github.com/udaysh134)
 - Logged all missing updates from yesterday ([Japnoor](https://github.com/kaurjapnoor60-max)'s and [Manikant](https://github.com/manikant12aggi)'s additions to the repository).
