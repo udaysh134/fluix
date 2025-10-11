@@ -55,6 +55,11 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 11, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added "**time**" key in `dbStruct.json` with value as an object, containing timestamps for creation and modification of that Q&A block.
+
+
 ## 🗞️ <font color="#e36c09">Oct 10, 2025 - Friday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added a sample file `dbStruct.json` in `src/backend/tests` to provide a structure for Q&As to the backend team.
