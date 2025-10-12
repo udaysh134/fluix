@@ -55,6 +55,14 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 12, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with another day of discussion and tasks assigned.
+- Logged missing update from [Chirag](https://github.com/chirag88533) - added `proto_C1.c`.
+#### [Chirag](https://github.com/chirag88533)
+- Added `proto_C1.c` to extend functionality of [Manikant](https://github.com/manikant12aggi)'s `proto_m1.c` for removing entries from `.json` files.
+
+
 ## 🗞️ <font color="#e36c09">Oct 11, 2025 - Saturday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added "**time**" key in `dbStruct.json` with value as an object, containing timestamps for creation and modification of that Q&A block.
