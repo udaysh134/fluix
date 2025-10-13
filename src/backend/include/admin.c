@@ -1,12 +1,12 @@
 // Headers
-#include "admin.h"
-#include "colors.h"
-#include "utils.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <Windows.h>
+
+#include "admin.h"
+#include "colors.h"
+#include "utils.h"
 
 // Definitions
 const char configPass[] = "fluixo";

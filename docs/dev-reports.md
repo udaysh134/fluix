@@ -55,11 +55,51 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 13, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Formatted header declarations in `utils.c`, `user.c`, `launch.c`, and `admin.c` for consistency across all files.
+- Added option containers in `launch.c` and `user.c` to simplify future option additions.
+- Extended functionality of `user.c` to match the display style used across the project.
+- Opened groundwork in `user.c` to enable addition of new functions and upcoming features.
+#### [Chirag](https://github.com/chirag88533)
+- Added `search_C1.c` in `src/backend/tests`, to search through entries in a `.json` file.
+
+
+## 🗞️ <font color="#e36c09">Oct 12, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with another day of discussion and tasks assigned.
+- Logged missing update from [Chirag](https://github.com/chirag88533) - added `proto_C1.c`.
+#### [Chirag](https://github.com/chirag88533)
+- Added `proto_C1.c` to extend functionality of [Manikant](https://github.com/manikant12aggi)'s `proto_m1.c` for removing entries from `.json` files.
+
+
+## 🗞️ <font color="#e36c09">Oct 11, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added "**time**" key in `dbStruct.json` with value as an object, containing timestamps for creation and modification of that Q&A block.
+
+
+## 🗞️ <font color="#e36c09">Oct 10, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added a sample file `dbStruct.json` in `src/backend/tests` to provide a structure for Q&As to the backend team.
+
+
+## 🗞️ <font color="#e36c09">Oct 09, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Logged all missing updates from yesterday ([Japnoor](https://github.com/kaurjapnoor60-max)'s and [Manikant](https://github.com/manikant12aggi)'s additions to the repository).
+- Updated `activity-records.md` with **Oct 08, 2025** team discussion logs.
+- Reformatted `activity-records.md` to match formatting style of other `.md` files from the repo, for consistency.
+- Reformatted `password.c` and `proto_m1.c` with clean spaces and sections, no functional changes.
+
+
 ## 🗞️ <font color="#e36c09">Oct 08, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Logged a missed update from yesterday (`password.c` - test for terminal password masking).
 - Removed redundant headers from `activity-reports.md` and `update-logs.md`.
 - Updated `activity-records.md` with **Oct 07, 2025** team discussion logs.
+#### [Japnoor](https://github.com/kaurjapnoor60-max)
+- Added content in `index.html` and file `style.css` under `src/frontend`to start building a landing page for Fluix.
+#### [Manikant](https://github.com/manikant12aggi)
+- Added file `proto_m1.c` in `backend/tests` for testing removal of content from `.txt` files.
 
 
 ## 🗞️ <font color="#e36c09">Oct 07, 2025 - Tuesday</font>
