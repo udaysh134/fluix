@@ -55,6 +55,9 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 12, 2025 - Sunday</font>
+#### [Chirag](https://github.com/chirag88533)
+- Added `search_C1.c` to search all the data or entries from `.json` files.
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Formatted header declarations in `utils.c`, `user.c`, `launch.c`, and `admin.c` for consistency across all files.
