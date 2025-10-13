@@ -55,14 +55,20 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
-## 🗞️ <font color="#e36c09">Oct 13, 2025 - Sunday</font>
+## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Formatted header declarations in `utils.c`, `user.c`, `launch.c`, and `admin.c` for consistency across all files.
 - Added option containers in `launch.c` and `user.c` to simplify future option additions.
 - Extended functionality of `user.c` to match the display style used across the project.
 - Opened groundwork in `user.c` to enable addition of new functions and upcoming features.
+- Updated `user.c` to follow a new structure to initiate user verification (incomplete though).
+- Added "*checkUsername*", "*optSignIn*", "*optSignUp*" functions in `user.c` with instructions.
+- Declared "*searchDir*" function in `utils.c/h`.
+- Logged missing entry from [Kashish](https://github.com/kash-12) - extended `index.html` & `style.css`.
 #### [Chirag](https://github.com/chirag88533)
 - Added `search_C1.c` in `src/backend/tests`, to search through entries in a `.json` file.
+#### [Kashish](https://github.com/kash-12)
+- Enhanced frontend by adding a "Sign In" box - updated `index.html` and `style.css` accordingly.
 
 
 ## 🗞️ <font color="#e36c09">Oct 12, 2025 - Sunday</font>
