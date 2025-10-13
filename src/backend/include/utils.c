@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <windows.h>
 
 #include "utils.h"
 #include "colors.h"
@@ -63,4 +64,14 @@ void exitThanks(char clearScreen) {
         printf("%sExiting with a internal error!\nFix parameter declaration(s) of function 4.%s", CMD_COL_RED, CMD_COL_RESET);
         exit(0);
     }
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+5. DIRECTORY SEARCH FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+void searchDir(char path[], char type[], char nameToSearch[]) {
+    
 }

@@ -31,7 +31,7 @@ void isAdmin() {
         printf("%s%sWhat's the PASSCODE? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
 
         if (fgets(pass, sizeof(pass), stdin) == NULL) {
-            printf("%sThere was an error! Please provide a valid input.%s", CMD_COL_CYAN, CMD_COL_RESET);
+            printf("%sThere was an error! Please provide a valid input.%s", CMD_COL_RED, CMD_COL_RESET);
             break;
         }
 
