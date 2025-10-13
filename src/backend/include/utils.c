@@ -1,9 +1,10 @@
-#include "utils.h"
-#include "colors.h"
-
+// Headers
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+#include "utils.h"
+#include "colors.h"
 
 
 /*

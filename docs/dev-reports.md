@@ -55,6 +55,14 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Formatted header declarations in `utils.c`, `user.c`, `launch.c`, and `admin.c` for consistency across all files.
+- Added option containers in `launch.c` and `user.c` to simplify future option additions.
+- Extended functionality of `user.c` to match the display style used across the project.
+- Opened groundwork in `user.c` to enable addition of new functions and upcoming features.
+
+
 ## 🗞️ <font color="#e36c09">Oct 12, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)
 - Updated `activity-records.md` with another day of discussion and tasks assigned.
