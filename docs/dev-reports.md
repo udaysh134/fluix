@@ -56,14 +56,13 @@ SUMMARY
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Sunday</font>
-#### [Chirag](https://github.com/chirag88533)
-- Added `search_C1.c` to search all the data or entries from `.json` files.
-## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Formatted header declarations in `utils.c`, `user.c`, `launch.c`, and `admin.c` for consistency across all files.
 - Added option containers in `launch.c` and `user.c` to simplify future option additions.
 - Extended functionality of `user.c` to match the display style used across the project.
 - Opened groundwork in `user.c` to enable addition of new functions and upcoming features.
+#### [Chirag](https://github.com/chirag88533)
+- Added `search_C1.c` in `src/backend/tests`, to search through entries in a `.json` file.
 
 
 ## 🗞️ <font color="#e36c09">Oct 12, 2025 - Sunday</font>
