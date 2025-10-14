@@ -60,6 +60,7 @@ SUMMARY
 - Added a hover effect over **Sign In** button with "transform" and "shadow" properties.
 #### [Uday](https://github.com/udaysh134)
 - Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - hover effect over **Sign In** button.
+- Added detailed instructions in `user.c` for building the main core of the User Panel and its functionalities.
 
 
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>

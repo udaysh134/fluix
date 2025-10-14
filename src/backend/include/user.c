@@ -87,11 +87,10 @@ void checkUsername() {
 
         /**
          * 1. Once we have the username, we can use that string literal to check if a folder exists exactly with this name.
-         * 2. We only need to search inside this directory "<root>/src/db/", if we find it, we internally treat it as "Sign In".
-         * 3. If we can't find a folder with this name, we treat it as "Sign Up" and ask user if they'd like to continue with that name...
-         * 4. If "YES", we create a folder using the name user agreed,
-         * 5. If "NO", we ask if they'd like to provide a new name and then either continue Sign Up process or Exit.
-         * 6. If "EXIT", we break from the loop and go back to the main launch panel.
+         * 2. We only need to search inside this directory "<root>/src/db/", we'll use "searchDir()" function from "utils.c" for that.
+         * 3. If we find it, we internally treat it as "Sign In" and redirect the code to "optSignIn()" function.
+         * 4. If we can't find a folder with this name, we treat it as "Sign Up" and ask user if they'd like to continue with that name.
+         * 5. If the user choses to go with the name, redirect the code to "optSignUp()" function.
          */
         break;
     }
@@ -99,10 +98,22 @@ void checkUsername() {
 
 
 void optSignIn() {
-    // printf("You entered Sign In Panel.");
+    /**
+     * 1. First we change the directory to get inside the user's folder.
+     * 2. Then we re-search inside this directory if we can find a JSON file.
+     * 3. If we find even a single JSON file (which is a bot, for user), we ask user which one would they like to access?
+     * 4. Whatever bot they choose to work on, we'll redirect the code to another function, which will carry on with the procedure.
+     */
 }
 
 
 void optSignUp() {
-    // printf("You entered Sign Up Panel.");
+    /**
+     * 1. We now ask user what username will they like to continue signing up with.
+     * 2. We then re-validate that input if it matches with our standards or not.
+     * 3. If it can't pass the validation, we keep running the same in loop.
+     * 4. If it passes our validation, we create a folder with that name inside "db" folder, and this will be our "User Creation".
+     * 5. Now the user is inside "User Panel" and can add new bots.
+     * 6. We take leave from this function from here, as our work is done.
+     */
 }
