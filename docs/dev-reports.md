@@ -56,6 +56,8 @@ SUMMARY
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
 ## 🗞️ <font color="#e36c09">Oct 14, 2025 - Tuesday</font>
+#### [Chirag](https://github.com/chirag88533)
+- Edited  `search_C1.c` in `src/backend/tests`, now its a user  based search function and he can search through entries form  a `.json` file.
 #### [Japnoor](https://github.com/kaurjapnoor60-max)
 - Added a hover effect over **Sign In** button with "transform" and "shadow" properties.
 #### [Uday](https://github.com/udaysh134)
