@@ -56,15 +56,22 @@ SUMMARY
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
 ## 🗞️ <font color="#e36c09">Oct 14, 2025 - Tuesday</font>
-#### [Chirag](https://github.com/chirag88533)
-- Edited  `search_C1.c` in `src/backend/tests`, now its a user  based search function and he can search through entries form  a `.json` file.
 #### [Japnoor](https://github.com/kaurjapnoor60-max)
 - Added a hover effect over **Sign In** button with "transform" and "shadow" properties.
+- Added "**Fluix**" logo as header on the webpage - modified `index.html` and `style.css` accordingly.
 #### [Uday](https://github.com/udaysh134)
 - Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - hover effect over **Sign In** button.
 - Added detailed instructions in `user.c` for building the main core of the User Panel and its functionalities.
 - Added `/css`, `/js`, and `/pages` folders inside `src/frontend/src/` to organize the frontend structure and relocated files accordingly.
 - Formatted and organized `index.html` and `style.css`, fixing indentations and spacing for a cleaner code structure.
+- Re-wrote [Chirag](https://github.com/chirag88533)'s log more precisely to maintain consistency.
+- Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - addition of "Fluix" logo.
+- Renamed `FLUIX logo 3RG.png` to `Fluix Logo.png` and moved it into `../assets/images/` to maintain an organization.
+- Fixed relative path of `Fluix Logo.png` in `index.html` to ensure proper file tracking.
+- Re-formatted `index.html` and `style.css` to fix indentations and unnecessary spaces.
+- Fixed oversized Fluix logo issue causing it to dominate the screen layout.
+#### [Chirag](https://github.com/chirag88533)
+- Made few changes in `search_C1.c`, which enabled explicit user input for searching a term from a file.
 
 
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
