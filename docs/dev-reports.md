@@ -61,6 +61,8 @@ SUMMARY
 #### [Uday](https://github.com/udaysh134)
 - Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - hover effect over **Sign In** button.
 - Added detailed instructions in `user.c` for building the main core of the User Panel and its functionalities.
+- Added `/css`, `/js`, and `/pages` folders inside `src/frontend/src/` to organize the frontend structure and relocated files accordingly.
+- Formatted and organized `index.html` and `style.css`, fixing indentations and spacing for a cleaner code structure.
 
 
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
