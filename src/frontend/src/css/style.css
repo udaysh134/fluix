@@ -6,7 +6,7 @@ h1 {
     text-align: center;
     color: whitesmoke;
     line-height: 100px;
-    font-size: 50px;
+    font-size: 100px;
     
 }
 
@@ -68,4 +68,14 @@ p {
 .signin-form button:hover {
 	transform: scale(1.05);
 	box-shadow: 0 0 20px #00ffa3;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px; 
+  margin-right: 20px; 
 }
