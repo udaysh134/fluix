@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 14, 2025 - Tuesday</font>
+#### [Japnoor](https://github.com/kaurjapnoor60-max)
+- Added a hover effect over **Sign In** button with "transform" and "shadow" properties.
+#### [Uday](https://github.com/udaysh134)
+- Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - hover effect over **Sign In** button.
+
+
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Formatted header declarations in `utils.c`, `user.c`, `launch.c`, and `admin.c` for consistency across all files.
