@@ -55,6 +55,12 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 15, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Resized `Fluix Logo.png` to maintain a 1:1 ratio for consistent display across the site.
+- Added `Fluix Logo.png` as the favicon in the head section of `index.html` and extended title of the page.
+
+
 ## 🗞️ <font color="#e36c09">Oct 14, 2025 - Tuesday</font>
 #### [Japnoor](https://github.com/kaurjapnoor60-max)
 - Added a hover effect over **Sign In** button with "transform" and "shadow" properties.
