@@ -61,6 +61,7 @@ SUMMARY
 - Replaced placeholder description with complete structured documentation.
 - Added sections for overview, current progress, vision, demo preview, and team info.
 - Documented implemented backend systems, upcoming goals, and concept UI layout.
+- Added badges below "**Fluix**" title in `README.md` for readability and ease of access of information.
 
 
 ## 🗞️ <font color="#e36c09">Oct 15, 2025 - Wednesday</font>
