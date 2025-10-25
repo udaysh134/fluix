@@ -63,7 +63,7 @@ SUMMARY
 - Documented implemented backend systems, upcoming goals, and concept UI layout.
 - Added badges below "**Fluix**" title in `README.md` for readability and ease of access of information.
 - Yazdan completed the search function code for,  the bot to fetch answers to users questions
-- Added tags,answers and question variant in the dbstruct002.json file (template used from dbstruct.json file)[location src > backend > tests ]
+- Added tags,answers and question variant in the dbstruct002.json file (template used from dbstruct.json file)[location of DBstruct file: src > backend > tests ]
 
 
 ## 🗞️ <font color="#e36c09">Oct 15, 2025 - Wednesday</font>
