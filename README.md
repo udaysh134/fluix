@@ -1,3 +1,13 @@
+<p align="center">
+  <h1>Fluix</h1>
+  <em>AI made simple, fast, and accessible for everyone.</em>  
+  <br><br>
+  <img src="https://img.shields.io/badge/Maintained-Yes-green"/>
+  <img src="https://img.shields.io/badge/Documentation-Active-blue"/>
+  <img src="https://img.shields.io/badge/Version-0.1.0-orange"/>
+</p>
+
+<!--
 # **Fluix**
 
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-green)
@@ -5,6 +15,7 @@
 ![Version](https://img.shields.io/badge/Version-0.1.0-orange)
 
 ### _AI made simple, fast, and accessible for everyone._
+-->
 
 **Fluix** is a no-code AI chatbot builder that enables anyone - students, teachers, or businesses to create and deploy intelligent, customized chatbots effortlessly. With an intuitive and minimal interface, users can simply add questions and answers, organize them into categories, and let Fluix handle everything behind the scenes - no coding, no manual JSON editing, or backend configuration required.
 
