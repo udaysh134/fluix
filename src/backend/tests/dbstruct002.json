@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "tags": ["full", "form", "PSIT"],
+        "ques": "What is the full form of PSIT?",
+        "ans": ["Full form of PSIT is, Pranveer Singh Institue of Technology. PSIT was established in 2004."]
+    },
+    {
+        "id": 2,
+        "tags": ["Courses", "Offered", "in", "PSIT", "CHE"],
+        "ques": "What courses are offered in PSIT CHE?",
+        "ans": ["Courses offered in PSIT-CHE are BCA and BBA. Trained and experienced faculty members are available for these courses."]
+    },
+    {
+        "id": 3,
+        "tags": ["Coordinator", "of", "BCA", "ID"],
+        "ques": "Who's the coordinator of BCA I-D?",
+        "ans": ["The assigned coordinator for BCA-ID is Ms. Madhumita. She trains in HACKATHON classes as well."]
+    },
+    {
+        "id": 4,
+        "tags": ["Sitting", "of", "BCA", "ID", "Coordinator"],
+        "ques": "Where's the sitting of BCA I-D Coordinator?",
+        "ans": ["G-210 (2nd Floor) BBA building is where the BCA-ID coordinator is assigned."]
+    },
+    {
+        "id": 5,
+        "tags": ["C", "class", "teacher", "BCA", "ID"],
+        "ques": "Who's the teacher of C language for BCA I-D?",
+        "ans": ["C language classes are divided in two modes. 1.) C-language (class) is conducted by Mr. Somit Shukla. 2.) C-language (Lab) is conducted by Mr. Sunil Sharma. Both trainers have excellent skills and experience in C/C++ language."]
+    },
+    {
+        "id": 6,
+        "tags": ["Number", "of", "days", "C", "class", "conducted", "in", "a", "week"],
+        "ques": "How many days is the C language class conducted in a week?",
+        "ans": ["C language class is conducted almost each day of the week. It's held in the Lab as well as during HACKATHON classes, which are conducted to ensure students hone their coding skills."]
+    },
+    {
+        "id": 7,
+        "tags": ["hackathon", "class", "BCA", "ID"],
+        "ques": "What's the HACKATHON class in BCA I-D?",
+        "ans": ["HACKATHON classes are special sessions conducted to ensure students hone their coding skills. It's conducted by Ms. Madhumita, the assigned coordinator for BCA-ID."]
+    }
+]
