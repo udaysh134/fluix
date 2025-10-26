@@ -55,15 +55,23 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 26, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Edited [Yazdaan](https://github.com/SenorDan031)’s **Oct 25th** "dev-report" for improved readability and consistency.
+- Replaced <p> tags with <div> tags in the main `README.md` to properly center headings and enhance layout alignment.
+
+
 ## 🗞️ <font color="#e36c09">Oct 25, 2025 - Saturday</font>
 #### [Uday](https://github.com/udaysh134)
 - Completed full rewrite and expansion of the main project `README.md`.
 - Replaced placeholder description with complete structured documentation.
 - Added sections for overview, current progress, vision, demo preview, and team info.
 - Documented implemented backend systems, upcoming goals, and concept UI layout.
-- Added badges below "**Fluix**" title in `README.md` for readability and ease of access of information.
-- Yazdan completed the search function code for,  the bot to fetch answers to users questions
-- Added tags,answers and question variant in the dbstruct002.json file (template used from dbstruct.json file)[location of DBstruct file: src > backend > tests ]
+- Added badges below the “**Fluix**” title for better readability and quick access to key info.
+#### [Yazdaan](https://github.com/SenorDan031)
+- Added `SEARCH Y (COPY).c` in `src/backend/tests` and `searcher.c` in `src/backend/include`.
+- Completed search function to retrieve answers from user input queries.
+- Added `dbstruct002.json` in `src/backend/tests` to include usable data to run tests for searching.
 
 
 ## 🗞️ <font color="#e36c09">Oct 15, 2025 - Wednesday</font>

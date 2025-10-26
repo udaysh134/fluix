@@ -1,28 +1,24 @@
-<p align="center">
-  <h1>Fluix</h1>
-  <em>AI made simple, fast, and accessible for everyone.</em>  
-  <br><br>
-  <img src="https://img.shields.io/badge/Maintained-Yes-green"/>
-  <img src="https://img.shields.io/badge/Documentation-Active-blue"/>
-  <img src="https://img.shields.io/badge/Version-0.1.0-orange"/>
-</p>
+<div align="center">
 
-<!--
 # **Fluix**
+### AI made simple, fast, and accessible for everyone.
 
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-green)
 ![Documentation Status](https://img.shields.io/badge/Documentation-Active-blue)
 ![Version](https://img.shields.io/badge/Version-0.1.0-orange)
 
-### _AI made simple, fast, and accessible for everyone._
--->
+</div>
+
 
 **Fluix** is a no-code AI chatbot builder that enables anyone - students, teachers, or businesses to create and deploy intelligent, customized chatbots effortlessly. With an intuitive and minimal interface, users can simply add questions and answers, organize them into categories, and let Fluix handle everything behind the scenes - no coding, no manual JSON editing, or backend configuration required.
 
 Once your bot is ready, deploy it instantly using an embed snippet - just like adding a YouTube video, and get a fully responsive, intelligent chatbot tailored for your school, organization, or business.
 
 
+<div align="center">
+
 ## 🚀 **Current Progress**
+</div>
 The current stage of Fluix focuses on **laying the project’s foundation** and building strong internal systems before scaling to full functionality.  
 
 **Implemented so far :**
@@ -34,7 +30,10 @@ The current stage of Fluix focuses on **laying the project’s foundation** and 
 - 📑 Documentation, versioning, and developer coordination setup for consistent workflow.
 
 
+<div align="center">
+
 ## 🌱 **Vision & Next Steps**
+</div>
 Fluix aims to become an **intuitive no-code platform** for building and deploying custom AI chatbots - a bridge between technical complexity and everyday usability.
 
 **Upcoming goals :**
@@ -45,7 +44,10 @@ Fluix aims to become an **intuitive no-code platform** for building and deployin
 - 🔐 Authentication - Personalized accounts for users to manage multiple bots securely.
 
 
+<div align="center">
+
 ## 🧠 **Demo Preview (Concept UI)**
+</div>
 Below is an early conceptual mockup representing how Fluix’s user dashboard will eventually look and function.
 
 ### 💬 Manage Your Chatbots Effortlessly
@@ -81,17 +83,26 @@ With a single click, Fluix generates a lightweight snippet:
 Paste it into any website and your chatbot instantly appears as a responsive bubble at the corner of the page.
 
 
+<div align="center">
+
 ## 📘 **About This Version**
+</div>
 > **v0.1.0 - Project Foundation**  
 This version marks the establishment of the project’s base architecture - focusing on structure, maintainability, and workflow discipline. The next stage will move toward visual interaction, JSON integration, and AI-based functionality.
 
 
+<div align="center">
+
 ## 🧭 **Why Fluix**
+</div>
 - Fluix isn’t about competing with big AI tools - it’s about accessibility.
 - Where others complicate, Fluix simplifies.
 - Where others assume technical expertise, Fluix empowers beginners.
 - It’s an idea born from curiosity, collaboration, and the belief that "**The technology should be easy to create - not just to consume**".
 
 
+<div align="center">
+
 ## 👥 **The Team**
+</div>
 Fluix is being developed by a small but passionate group of first year BCA students - learning, experimenting, and building from the ground up. Each contributor plays a unique role in backend logic, UI design, and system structuring, united by a shared goal : to make AI creation simple, elegant, and truly accessible.
