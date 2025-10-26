@@ -58,7 +58,7 @@ SUMMARY
 ## 🗞️ <font color="#e36c09">Oct 26, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)
 - Edited [Yazdaan](https://github.com/SenorDan031)’s **Oct 25th** "dev-report" for improved readability and consistency.
-- Replaced <p> tags with <div> tags in the main `README.md` to properly center headings and enhance layout alignment.
+- Replaced `<p>` tags with `<div>` tags in the main `README.md` to properly center headings and enhance layout alignment.
 
 
 ## 🗞️ <font color="#e36c09">Oct 25, 2025 - Saturday</font>
