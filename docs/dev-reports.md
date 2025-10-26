@@ -59,6 +59,10 @@ SUMMARY
 #### [Uday](https://github.com/udaysh134)
 - Edited [Yazdaan](https://github.com/SenorDan031)’s **Oct 25th** "dev-report" for improved readability and consistency.
 - Replaced `<p>` tags with `<div>` tags in the main `README.md` to properly center headings and enhance layout alignment.
+- Created and added Fluix's concept's mockup images in `README.md` to better convey the sense of the project with clear visuals.
+- Removed "Example Layout" from "**Demo Preview (Concept UI)**" section as it was no longer needed.
+- Created `./assets` directory with `/designs` and `/sketches` subfolders for organizing concept visuals.
+- Added images inside `assets/sketches` and `assets/designs` to use them inside `README.md` for display.
 
 
 ## 🗞️ <font color="#e36c09">Oct 25, 2025 - Saturday</font>

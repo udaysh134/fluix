@@ -48,32 +48,29 @@ Fluix aims to become an **intuitive no-code platform** for building and deployin
 
 ## 🧠 **Demo Preview (Concept UI)**
 </div>
-Below is an early conceptual mockup representing how Fluix’s user dashboard will eventually look and function.
+Below are **conceptual mockups** showcasing how Fluix’s platform may look once fully developed. The aim is to highlight simplicity, accessibility, and visual flow for non-technical users.
 
-### 💬 Manage Your Chatbots Effortlessly
-A simple, clean interface that lets users:
-- `Add`, `Edit`, and `Delete` question-answer pairs visually.
-- Organize them into categories for better context.
-- View and test responses instantly.
+### 🏠 Signed-In Homepage
+A clean dashboard for first-time users to create their first AI bot instantly.
 
-**Example Layout:**
-```
-┌───────────────────────────────────────────────┐
-│ Fluix Dashboard                               │
-├───────────────────────────────────────────────┤
-│ [ + ] Create New Bot                          │
-│-----------------------------------------------│
-│ 🤖 Bot Name : Campus AI                       │
-│-----------------------------------------------│
-│ Q: What are library hours?                    │
-│ A: The library is open from 8 AM to 8 PM.     │
-│-----------------------------------------------│
-│ Q: Who is the HOD of Computer Science?        │
-│ A: Dr. R.K. Sharma is the current HOD.        │
-│-----------------------------------------------│
-│ [ Add New Q/A ]   [ Edit ]   [ Delete ]       │
-└───────────────────────────────────────────────┘
-```
+![Fluix Mockup – Signed In](./assets/designs/Mockup_1%20(Signed%20In).png)
+
+### 🤖 Bot Selection Page
+Displays all your existing bots. Manage multiple chatbots seamlessly - open, edit, or create new ones.
+
+![Fluix Mockup – Bot Selection](./assets/designs/Mockup_2%20(Bot%20Selection).png)
+
+### 💬 Bot Editor Page
+Central workspace for managing Q&A data. Add, modify, or delete entries visually while testing responses live on the right side.
+
+![Fluix Mockup – Bot Editor](./assets/designs/Mockup_3%20(Bot%20Editor).png)
+
+### ✏️ Query Editor Page
+Dedicated editor for creating or updating a single question, its tags, and responses. Simple, intuitive, and minimal.
+
+![Fluix Mockup – Query Editor](./assets/designs/Mockup_4%20(Query%20Editor).png)
+
+✨ *These designs represent the visual philosophy of Fluix - fast, modern, and effortless for everyone.* ✨
 
 ### 🌍 Deploy Instantly
 With a single click, Fluix generates a lightweight snippet:
