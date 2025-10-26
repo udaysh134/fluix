@@ -61,8 +61,13 @@ SUMMARY
 - Replaced `<p>` tags with `<div>` tags in the main `README.md` to properly center headings and enhance layout alignment.
 - Created and added Fluix's concept's mockup images in `README.md` to better convey the sense of the project with clear visuals.
 - Removed "Example Layout" from "**Demo Preview (Concept UI)**" section as it was no longer needed.
-- Created `./assets` directory with `/designs` and `/sketches` subfolders for organizing concept visuals.
+- Created `assets` directory with `/designs` and `/sketches` subfolders for organizing concept visuals.
 - Added images inside `assets/sketches` and `assets/designs` to use them inside `README.md` for display.
+- Created `/packages` folder in `src/backend` to store external libraries for better portability.
+- Added **cJSON** library (`cJSON.c/h`) inside `packages/cJSON` to remove dependency on external installation.
+- Moved all `.c` files from `src/backend/include` to `src/backend/src` for cleaner structure and maintainability; only header files remain in `/include`.
+- Relocated `searcher.c` to `src/backend/tests` since it’s not yet part of the main executable build.
+- Edited `Makefile` to reflect all new directory changes.
 
 
 ## 🗞️ <font color="#e36c09">Oct 25, 2025 - Saturday</font>

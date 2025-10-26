@@ -4,8 +4,8 @@
 #include <ctype.h>
 #include <windows.h>
 
-#include "utils.h"
-#include "colors.h"
+#include "../include/utils.h"
+#include "../include/colors.h"
 
 
 /*

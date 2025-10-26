@@ -4,9 +4,9 @@
 #include <Windows.h>
 #include <ctype.h>
 
-#include "user.h"
-#include "colors.h"
-#include "utils.h"
+#include "../include/user.h"
+#include "../include/colors.h"
+#include "../include/utils.h"
 
 // Declarations
 void optSignIn();

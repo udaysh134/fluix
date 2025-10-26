@@ -3,12 +3,12 @@ all: fluix
 
 fluix:
 	gcc	src/backend/src/main.c \
-		src/backend/include/launch.c \
-		src/backend/include/admin.c \
-		src/backend/include/user.c \
-		src/backend/include/utils.c \
-		-o fluix.exe
+		src/backend/src/launch.c \
+		src/backend/src/admin.c \
+		src/backend/src/user.c \
+		src/backend/src/utils.c \
+		-o Fluix.exe
 
 # Run target
 run: fluix
-	.\fluix.exe
+	.\Fluix.exe
