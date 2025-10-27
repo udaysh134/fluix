@@ -61,6 +61,8 @@ SUMMARY
 - Completed `searchDir()` function to dynamically locate a **file** or a **folder** by "_name_" and "_path_" from any directory.
 - Enhanced `searchDir()` function with parameters - "_path_", "_type_" and "_name_" for maximum accessibility and flexibility in future file and folder searches.
 - Worked on finishing off the **User Panel** - added `validateUsername()` function, tested `searchDir()` function and followed internal guidelines for proceeding on the User Panel functionality.
+- Added new mockup images in `assets/designs`.
+- Updated layout of `README.md` with new `<div>` tags to display mockups of both Light and Dark mode side-by-side.
 
 
 ## 🗞️ <font color="#e36c09">Oct 26, 2025 - Sunday</font>

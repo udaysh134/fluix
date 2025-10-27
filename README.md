@@ -55,22 +55,82 @@ Below are **conceptual mockups** showcasing how Fluix’s platform may look once
 ### 🏠 Signed-In Homepage
 A clean dashboard for first-time users to create their first AI bot instantly.
 
-![Fluix Mockup – Signed In](./assets/designs/Mockup_1%20(Signed%20In).png)
+<div align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <b>Light Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_1L - Signed_In.png" width="400"/>
+            </td>
+            <td align="center">
+                <b>Dark Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_1D - Signed_In.png" width="400"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
 ### 🤖 Bot Selection Page
 Displays all your existing bots. Manage multiple chatbots seamlessly - open, edit, or create new ones.
 
-![Fluix Mockup – Bot Selection](./assets/designs/Mockup_2%20(Bot%20Selection).png)
+<div align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <b>Light Mode</b>
+                <br>
+                <img src="./assets/designs//MCKP_2L - Bot_Selection.png" width="400"/>
+            </td>
+            <td align="center">
+                <b>Dark Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_2D - Bot_Selection.png" width="400"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
 ### 💬 Bot Editor Page
 Central workspace for managing Q&A data. Add, modify, or delete entries visually while testing responses live on the right side.
 
-![Fluix Mockup – Bot Editor](./assets/designs/Mockup_3%20(Bot%20Editor).png)
+<div align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <b>Light Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_3L - Bot_Editor_1.png" width="400"/>
+            </td>
+            <td align="center">
+                <b>Dark Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_3D - Bot_Editor_1.png" width="400"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
 ### ✏️ Query Editor Page
 Dedicated editor for creating or updating a single question, its tags, and responses. Simple, intuitive, and minimal.
 
-![Fluix Mockup – Query Editor](./assets/designs/Mockup_4%20(Query%20Editor).png)
+<div align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <b>Light Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_4L - Query_Editor.png" width="400"/>
+            </td>
+            <td align="center">
+                <b>Dark Mode</b>
+                <br>
+                <img src="./assets/designs/MCKP_4D - Query_Editor.png" width="400"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
 ✨ *These designs represent the visual philosophy of Fluix - fast, modern, and effortless for everyone.* ✨
 
