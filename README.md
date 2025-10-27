@@ -59,12 +59,12 @@ A clean dashboard for first-time users to create their first AI bot instantly.
     <table>
         <tr>
             <td align="center">
-                <b>Light Mode</b>
+                <!-- <b>Light Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_1L - Signed_In.png" width="400"/>
             </td>
             <td align="center">
-                <b>Dark Mode</b>
+                <!-- <b>Dark Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_1D - Signed_In.png" width="400"/>
             </td>
@@ -79,12 +79,12 @@ Displays all your existing bots. Manage multiple chatbots seamlessly - open, edi
     <table>
         <tr>
             <td align="center">
-                <b>Light Mode</b>
+                <!-- <b>Light Mode</b> -->
                 <br>
                 <img src="./assets/designs//MCKP_2L - Bot_Selection.png" width="400"/>
             </td>
             <td align="center">
-                <b>Dark Mode</b>
+                <!-- <b>Dark Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_2D - Bot_Selection.png" width="400"/>
             </td>
@@ -99,12 +99,12 @@ Central workspace for managing Q&A data. Add, modify, or delete entries visually
     <table>
         <tr>
             <td align="center">
-                <b>Light Mode</b>
+                <!-- <b>Light Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_3L - Bot_Editor_1.png" width="400"/>
             </td>
             <td align="center">
-                <b>Dark Mode</b>
+                <!-- <b>Dark Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_3D - Bot_Editor_1.png" width="400"/>
             </td>
@@ -119,12 +119,12 @@ Dedicated editor for creating or updating a single question, its tags, and respo
     <table>
         <tr>
             <td align="center">
-                <b>Light Mode</b>
+                <!-- <b>Light Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_4L - Query_Editor.png" width="400"/>
             </td>
             <td align="center">
-                <b>Dark Mode</b>
+                <!-- <b>Dark Mode</b> -->
                 <br>
                 <img src="./assets/designs/MCKP_4D - Query_Editor.png" width="400"/>
             </td>
