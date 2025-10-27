@@ -9,7 +9,6 @@
 
 </div>
 
-
 **Fluix** is a no-code AI chatbot builder that enables anyone - students, teachers, or businesses to create and deploy intelligent, customized chatbots effortlessly. With an intuitive and minimal interface, users can simply add questions and answers, organize them into categories, and let Fluix handle everything behind the scenes - no coding, no manual JSON editing, or backend configuration required.
 
 Once your bot is ready, deploy it instantly using an embed snippet - just like adding a YouTube video, and get a fully responsive, intelligent chatbot tailored for your school, organization, or business.
@@ -19,6 +18,7 @@ Once your bot is ready, deploy it instantly using an embed snippet - just like a
 
 ## 🚀 **Current Progress**
 </div>
+
 The current stage of Fluix focuses on **laying the project’s foundation** and building strong internal systems before scaling to full functionality.  
 
 **Implemented so far :**
@@ -34,6 +34,7 @@ The current stage of Fluix focuses on **laying the project’s foundation** and 
 
 ## 🌱 **Vision & Next Steps**
 </div>
+
 Fluix aims to become an **intuitive no-code platform** for building and deploying custom AI chatbots - a bridge between technical complexity and everyday usability.
 
 **Upcoming goals :**
@@ -48,6 +49,7 @@ Fluix aims to become an **intuitive no-code platform** for building and deployin
 
 ## 🧠 **Demo Preview (Concept UI)**
 </div>
+
 Below are **conceptual mockups** showcasing how Fluix’s platform may look once fully developed. The aim is to highlight simplicity, accessibility, and visual flow for non-technical users.
 
 ### 🏠 Signed-In Homepage
@@ -73,7 +75,7 @@ Dedicated editor for creating or updating a single question, its tags, and respo
 ✨ *These designs represent the visual philosophy of Fluix - fast, modern, and effortless for everyone.* ✨
 
 ### 🌍 Deploy Instantly
-With a single click, Fluix generates a lightweight snippet:
+With a single click, Fluix generates a lightweight snippet :
 ```html
 <script src="https://fluix.com/bot.js" data-bot-id="campus123"></script>
 ```
@@ -84,6 +86,7 @@ Paste it into any website and your chatbot instantly appears as a responsive bub
 
 ## 📘 **About This Version**
 </div>
+
 > **v0.1.0 - Project Foundation**  
 This version marks the establishment of the project’s base architecture - focusing on structure, maintainability, and workflow discipline. The next stage will move toward visual interaction, JSON integration, and AI-based functionality.
 
@@ -92,6 +95,7 @@ This version marks the establishment of the project’s base architecture - focu
 
 ## 🧭 **Why Fluix**
 </div>
+
 - Fluix isn’t about competing with big AI tools - it’s about accessibility.
 - Where others complicate, Fluix simplifies.
 - Where others assume technical expertise, Fluix empowers beginners.
@@ -102,4 +106,5 @@ This version marks the establishment of the project’s base architecture - focu
 
 ## 👥 **The Team**
 </div>
+
 Fluix is being developed by a small but passionate group of first year BCA students - learning, experimenting, and building from the ground up. Each contributor plays a unique role in backend logic, UI design, and system structuring, united by a shared goal : to make AI creation simple, elegant, and truly accessible.
