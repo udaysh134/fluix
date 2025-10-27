@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <Windows.h>
 #include <ctype.h>
+#include <string.h>
 
 #include "../include/user.h"
 #include "../include/colors.h"
@@ -12,6 +13,7 @@
 void optSignIn();
 void optSignUp();
 void checkUsername();
+void *validateUsername(char name[]);
 
 
 /*
@@ -26,30 +28,30 @@ void isUser() {
 
     checkUsername();
 
-    while (1) {
-        printf("%sUser Panel%s\n%s\n%s\n%s\n", CMD_COL_GREEN, CMD_COL_RESET, lsThick, userOptions, lsThin);
+    // while (1) {
+    //     printf("%sUser Panel%s\n%s\n%s\n%s\n", CMD_COL_GREEN, CMD_COL_RESET, lsThick, userOptions, lsThin);
 
-        char selectionId = getchar();
-        eatBuffer();
+    //     char selectionId = getchar();
+    //     eatBuffer();
 
-        switch (tolower(selectionId)) {
-            case '1':
-                optSignIn();
-                break;
-            case '2':
-                optSignUp();
-                break;
-            case 'b':
-                system("cls");
-                return;
-            case '0':
-                system("cls");
-                exitThanks('y');
-                exit(0);
-            default:
-                printf("%sYou gave an invalid input! Please choose among these only - 1/2/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
-        }
-    }
+    //     switch (tolower(selectionId)) {
+    //         case '1':
+    //             optSignIn();
+    //             break;
+    //         case '2':
+    //             optSignUp();
+    //             break;
+    //         case 'b':
+    //             system("cls");
+    //             return;
+    //         case '0':
+    //             system("cls");
+    //             exitThanks('y');
+    //             exit(0);
+    //         default:
+    //             printf("%sYou gave an invalid input! Please choose among these only - 1/2/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+    //     }
+    // }
 
     free(lsThick);
     free(lsThin);
@@ -64,7 +66,7 @@ OTHER FUNCTIONS
 // ------=>> | Checks if a folder with the given username exists | <<=------
 void checkUsername() {
     char *prefix = inputPrefix();
-    char username[20];
+    char username[15];
 
     system("cls");
 
@@ -74,16 +76,17 @@ void checkUsername() {
 
         if (username == NULL) {
             printf("%sYou didn't provide anything, please provide a valid username.%s", CMD_COL_RED, CMD_COL_RESET);
-            break;
         }
-
+        
+        searchDir(".\\src\\db", "folder", username);
+        // validateUsername(username);
+        
         /**
          * 1. Validate the user input here, according to the standards, for example :
          * 2. Check if the given input is not initiating with a number, capital letter, or special character
          * 3. Then only proceed to the following step...
          */
 
-        username[strcspn(username, "\n")] = '\0';
 
         /**
          * 1. Once we have the username, we can use that string literal to check if a folder exists exactly with this name.
@@ -116,4 +119,19 @@ void optSignUp() {
      * 5. Now the user is inside "User Panel" and can add new bots.
      * 6. We take leave from this function from here, as our work is done.
      */
+}
+
+
+void *validateUsername(char name[]) {
+    name[strcspn(name, "\n")] = '\0';
+
+    if (isdigit(name[0])) {
+        printf("%sError : You can't initiate a username with a number.%s", CMD_COL_RED, CMD_COL_RESET);
+    } else if (ispunct(name[0])) {
+        printf("%sError : You can't initiate a username with a special character.%s", CMD_COL_RED, CMD_COL_RESET);
+    } else if (strlen(name) > 16) {
+        printf("%sError : Your username cannot exceed 15 characters.%s", CMD_COL_RED, CMD_COL_RESET);
+    } else {
+        return name;
+    }
 }

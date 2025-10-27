@@ -58,6 +58,9 @@ SUMMARY
 ## 🗞️ <font color="#e36c09">Oct 27, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Reformatted `README.md` to fix bold text inconsistencies caused by HTML spacing issues.
+- Completed `searchDir()` function to dynamically locate a **file** or a **folder** by "_name_" and "_path_" from any directory.
+- Enhanced `searchDir()` function with parameters - "_path_", "_type_" and "_name_" for maximum accessibility and flexibility in future file and folder searches.
+- Worked on finishing off the **User Panel** - added `validateUsername()` function, tested `searchDir()` function and followed internal guidelines for proceeding on the User Panel functionality.
 
 
 ## 🗞️ <font color="#e36c09">Oct 26, 2025 - Sunday</font>
