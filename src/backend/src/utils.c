@@ -73,7 +73,9 @@ void exitThanks(char clearScreen) {
 5. DIRECTORY SEARCH FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-void searchDir(char path[], char type[], char name[]) {
+SearchResult searchDir(char path[], char type[], char name[]) {
+    SearchResult result = {0};
+
     char srchPath[MAX_PATH];
     snprintf(srchPath, sizeof(srchPath), "%s\\*", path);
 
@@ -81,27 +83,28 @@ void searchDir(char path[], char type[], char name[]) {
     HANDLE hFind = FindFirstFile(srchPath, &findData);
 
     if (hFind == INVALID_HANDLE_VALUE) {
-        printf("Unable to open directory: %s\n", path);
-        return;
+        result.code = 2; // Unable to open directory
+        return result;
     }
 
     int found = 0;
 
     do {
-        // Skip current and parent directory entries
         if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
 
         int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
 
-        if (strcmp(type, "folder") == 0 && isFolder) { // To search a folder
+        if (strcmp(type, "folder") == 0 && isFolder) {
             if (strcmp(findData.cFileName, name) == 0) {
-                printf("Found folder: %s\\%s\n", path, name);
+                strcpy(result.name, findData.cFileName);
+                result.code = 0; // success
                 found = 1;
                 break;
             }
-        } else if (strcmp(type, "file") == 0 && !isFolder) { // To search a file
+        } else if (strcmp(type, "file") == 0 && !isFolder) {
             if (strcmp(findData.cFileName, name) == 0) {
-                printf("Found file: %s\\%s\n", path, name);
+                strcpy(result.name, findData.cFileName);
+                result.code = 0; // success
                 found = 1;
                 break;
             }
@@ -110,8 +113,7 @@ void searchDir(char path[], char type[], char name[]) {
 
     FindClose(hFind);
 
-    if (!found) {
-        const char *placeholder = strcmp(type, "folder") == 0 ? "Folder" : "File";
-        printf("%s '%s' not found in %s\n", placeholder, name, path);
-    }
+    if (!found) result.code = 1; // Directory not found
+
+    return result;
 }

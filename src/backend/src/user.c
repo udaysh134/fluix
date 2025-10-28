@@ -78,7 +78,10 @@ void checkUsername() {
             printf("%sYou didn't provide anything, please provide a valid username.%s", CMD_COL_RED, CMD_COL_RESET);
         }
         
-        searchDir(".\\src\\db", "folder", username);
+        SearchResult res = searchDir(".\\src\\db", "folder", username);
+        printf("%d", res.code);
+        printf("%s", res.name);
+
         // validateUsername(username);
         
         /**

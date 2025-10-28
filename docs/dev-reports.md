@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 28, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `searchDir()` function in `utils.h` to return a `struct` instead of `void`.
+- Reimplemented `searchDir()` in `utils.c` to return both status code (0/1/2) and the found file/folder name.
+- Tested the updated function in `user.c` using a relative path and other custom parameters.
+
+
 ## 🗞️ <font color="#e36c09">Oct 27, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Reformatted `README.md` to fix bold text inconsistencies caused by HTML spacing issues.
