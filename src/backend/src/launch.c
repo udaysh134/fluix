@@ -30,10 +30,10 @@ void launch() {
         switch (tolower(personId)) {
             case 'a':
                 isAdmin();
-                break;
+                return;
             case 'u':
                 isUser();
-                break;
+                return;
             case '0':
                 exitThanks('y');
                 return;

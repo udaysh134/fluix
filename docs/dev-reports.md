@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 29, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Fixed re-execution issue in `launch()` by adding "return" statements at lines 33 and 36 in `launch.c`.
+- Completed `checkUsername()` function in `user.c` to enable progression in `optSignIn()` and `optSignUp()` functions.
+- Updated `optSignIn()` and `optSignUp()` to accept a string parameter, allowing continuation from the ending of `checkUsername()` function.
+
+
 ## 🗞️ <font color="#e36c09">Oct 28, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Updated `searchDir()` function in `utils.h` to return a `struct` instead of `void`.

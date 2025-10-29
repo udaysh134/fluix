@@ -10,8 +10,8 @@
 #include "../include/utils.h"
 
 // Declarations
-void optSignIn();
-void optSignUp();
+void optSignIn(char name[]);
+void optSignUp(char name[]);
 void checkUsername();
 void *validateUsername(char name[]);
 
@@ -60,50 +60,52 @@ void isUser() {
 
 /*
 ----------------------------------------------------------------------------------------------------
-OTHER FUNCTIONS
+MAJOR FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 // ------=>> | Checks if a folder with the given username exists | <<=------
 void checkUsername() {
     char *prefix = inputPrefix();
-    char username[15];
+    char userInput[16];
 
     system("cls");
 
-    while (1) {
-        printf("%s%sPlease provide your USERNAME : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-        scanf("%s", &username);
+    rptr1:
 
-        if (username == NULL) {
-            printf("%sYou didn't provide anything, please provide a valid username.%s", CMD_COL_RED, CMD_COL_RESET);
-        }
-        
-        SearchResult res = searchDir(".\\src\\db", "folder", username);
-        printf("%d", res.code);
-        printf("%s", res.name);
+    printf("%s%sPlease provide your USERNAME : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+    scanf("%15s", &userInput);
 
-        // validateUsername(username);
-        
-        /**
-         * 1. Validate the user input here, according to the standards, for example :
-         * 2. Check if the given input is not initiating with a number, capital letter, or special character
-         * 3. Then only proceed to the following step...
-         */
+    if (userInput == NULL) {
+        printf("%sYou didn't provide anything, please provide a valid username.\n%s", CMD_COL_RED, CMD_COL_RESET);
+        eatBuffer();
+        goto rptr1;
+    }
 
-
-        /**
-         * 1. Once we have the username, we can use that string literal to check if a folder exists exactly with this name.
-         * 2. We only need to search inside this directory "<root>/src/db/", we'll use "searchDir()" function from "utils.c" for that.
-         * 3. If we find it, we internally treat it as "Sign In" and redirect the code to "optSignIn()" function.
-         * 4. If we can't find a folder with this name, we treat it as "Sign Up" and ask user if they'd like to continue with that name.
-         * 5. If the user choses to go with the name, redirect the code to "optSignUp()" function.
-         */
-        break;
+    if (strlen(userInput) >= sizeof(userInput) - 1) {
+        printf("%sThe username cannot be of more than 15 characters.\n%s", CMD_COL_RED, CMD_COL_RESET);
+        eatBuffer();
+        goto rptr1;
+    }
+    
+    SearchResult res = searchDir(".\\src\\db", "folder", userInput);
+    
+    if (res.code == 0) { // 0 means success
+        optSignIn(res.name);
+    } else if (res.code == 1) { // 1 means failure, directory not found
+        optSignUp(userInput);
+    } else if (res.code == 2) { // 2 means failure, unable to open directory
+        printf("%sAn internal error occurred!\n", CMD_COL_RED);
+        Sleep(1000);
+        printf("Exiting the program!%s", CMD_COL_RESET);
+        Sleep(2000);
+        exit(0);
     }
 }
 
 
-void optSignIn() {
+// ------=>> | Lets user proceed with their Bot Selection | <<=------
+void optSignIn(char name[]) {
+    printf("Sign In");
     /**
      * 1. First we change the directory to get inside the user's folder.
      * 2. Then we re-search inside this directory if we can find a JSON file.
@@ -113,7 +115,9 @@ void optSignIn() {
 }
 
 
-void optSignUp() {
+// ------=>> | Lets user create an account for themselves | <<=------
+void optSignUp(char name[]) {
+    printf("Sign Up");
     /**
      * 1. We now ask user what username will they like to continue signing up with.
      * 2. We then re-validate that input if it matches with our standards or not.
@@ -125,6 +129,11 @@ void optSignUp() {
 }
 
 
+/*
+----------------------------------------------------------------------------------------------------
+MINOR FUNCTIONS
+----------------------------------------------------------------------------------------------------
+*/
 void *validateUsername(char name[]) {
     name[strcspn(name, "\n")] = '\0';
 
