@@ -60,6 +60,7 @@ SUMMARY
 - Fixed re-execution issue in `launch()` by adding "return" statements at lines 33 and 36 in `launch.c`.
 - Completed `checkUsername()` function in `user.c` to enable progression in `optSignIn()` and `optSignUp()` functions.
 - Updated `optSignIn()` and `optSignUp()` to accept a string parameter, allowing continuation from the ending of `checkUsername()` function.
+- Continued refining `optSignIn()` function to improve logic and progress toward completion.
 
 
 ## 🗞️ <font color="#e36c09">Oct 28, 2025 - Tuesday</font>

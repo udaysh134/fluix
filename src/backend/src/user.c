@@ -105,13 +105,12 @@ void checkUsername() {
 
 // ------=>> | Lets user proceed with their Bot Selection | <<=------
 void optSignIn(char name[]) {
-    printf("Sign In");
-    /**
-     * 1. First we change the directory to get inside the user's folder.
-     * 2. Then we re-search inside this directory if we can find a JSON file.
-     * 3. If we find even a single JSON file (which is a bot, for user), we ask user which one would they like to access?
-     * 4. Whatever bot they choose to work on, we'll redirect the code to another function, which will carry on with the procedure.
-     */
+    char *prefix = inputPrefix();
+
+    printf("%sAn account was found with the username%s %s\"%s\"%s\n", CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_MAGENTA, name, CMD_COL_RESET);
+    printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+
+    char continuation = getchar();
 }
 
 
