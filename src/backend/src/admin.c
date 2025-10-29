@@ -4,9 +4,9 @@
 #include <string.h>
 #include <Windows.h>
 
-#include "admin.h"
-#include "colors.h"
-#include "utils.h"
+#include "../include/admin.h"
+#include "../include/colors.h"
+#include "../include/utils.h"
 
 // Definitions
 const char configPass[] = "fluixo";

@@ -55,14 +55,82 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 29, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Fixed re-execution issue in `launch()` by adding "return" statements at lines 33 and 36 in `launch.c`.
+- Completed `checkUsername()` function in `user.c` to enable progression in `optSignIn()` and `optSignUp()` functions.
+- Updated `optSignIn()` and `optSignUp()` to accept a string parameter, allowing continuation from the ending of `checkUsername()` function.
+- Continued refining `optSignIn()` function to improve logic and progress toward completion.
+
+
+## 🗞️ <font color="#e36c09">Oct 28, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `searchDir()` function in `utils.h` to return a `struct` instead of `void`.
+- Reimplemented `searchDir()` in `utils.c` to return both status code (0/1/2) and the found file/folder name.
+- Tested the updated function in `user.c` using a relative path and other custom parameters.
+
+
+## 🗞️ <font color="#e36c09">Oct 27, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Reformatted `README.md` to fix bold text inconsistencies caused by HTML spacing issues.
+- Completed `searchDir()` function to dynamically locate a **file** or a **folder** by "_name_" and "_path_" from any directory.
+- Enhanced `searchDir()` function with parameters - "_path_", "_type_" and "_name_" for maximum accessibility and flexibility in future file and folder searches.
+- Worked on finishing off the **User Panel** - added `validateUsername()` function, tested `searchDir()` function and followed internal guidelines for proceeding on the User Panel functionality.
+- Added new mockup images in `assets/designs`.
+- Updated layout of `README.md` with new `<div>` tags to display mockups of both Light and Dark mode side-by-side.
+
+
+## 🗞️ <font color="#e36c09">Oct 26, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Edited [Yazdaan](https://github.com/SenorDan031)’s **Oct 25th** "dev-report" for improved readability and consistency.
+- Replaced `<p>` tags with `<div>` tags in the main `README.md` to properly center headings and enhance layout alignment.
+- Created and added Fluix's concept's mockup images in `README.md` to better convey the sense of the project with clear visuals.
+- Removed "Example Layout" from "**Demo Preview (Concept UI)**" section as it was no longer needed.
+- Created `assets` directory with `/designs` and `/sketches` subfolders for organizing concept visuals.
+- Added images inside `assets/sketches` and `assets/designs` to use them inside `README.md` for display.
+- Created `/packages` folder in `src/backend` to store external libraries for better portability.
+- Added **cJSON** library (`cJSON.c/h`) inside `packages/cJSON` to remove dependency on external installation.
+- Moved all `.c` files from `src/backend/include` to `src/backend/src` for cleaner structure and maintainability; only header files remain in `/include`.
+- Relocated `searcher.c` to `src/backend/tests` since it’s not yet part of the main executable build.
+- Edited `Makefile` to reflect all new directory changes.
+
+
+## 🗞️ <font color="#e36c09">Oct 25, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Completed full rewrite and expansion of the main project `README.md`.
+- Replaced placeholder description with complete structured documentation.
+- Added sections for overview, current progress, vision, demo preview, and team info.
+- Documented implemented backend systems, upcoming goals, and concept UI layout.
+- Added badges below the “**Fluix**” title for better readability and quick access to key info.
+#### [Yazdaan](https://github.com/SenorDan031)
+- Added `SEARCH Y (COPY).c` in `src/backend/tests` and `searcher.c` in `src/backend/include`.
+- Completed search function to retrieve answers from user input queries.
+- Added `dbstruct002.json` in `src/backend/tests` to include usable data to run tests for searching.
+
+
+## 🗞️ <font color="#e36c09">Oct 15, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Resized `Fluix Logo.png` to maintain a 1:1 ratio for consistent display across the site.
+- Added `Fluix Logo.png` as the favicon in the head section of `index.html` and extended title of the page.
+
+
 ## 🗞️ <font color="#e36c09">Oct 14, 2025 - Tuesday</font>
 #### [Japnoor](https://github.com/kaurjapnoor60-max)
 - Added a hover effect over **Sign In** button with "transform" and "shadow" properties.
+- Added "**Fluix**" logo as header on the webpage - modified `index.html` and `style.css` accordingly.
 #### [Uday](https://github.com/udaysh134)
 - Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - hover effect over **Sign In** button.
 - Added detailed instructions in `user.c` for building the main core of the User Panel and its functionalities.
 - Added `/css`, `/js`, and `/pages` folders inside `src/frontend/src/` to organize the frontend structure and relocated files accordingly.
 - Formatted and organized `index.html` and `style.css`, fixing indentations and spacing for a cleaner code structure.
+- Re-wrote [Chirag](https://github.com/chirag88533)'s log more precisely to maintain consistency.
+- Logged a missing entry from [Japnoor](https://github.com/kaurjapnoor60-max) - addition of "Fluix" logo.
+- Renamed `FLUIX logo 3RG.png` to `Fluix Logo.png` and moved it into `../assets/images/` to maintain an organization.
+- Fixed relative path of `Fluix Logo.png` in `index.html` to ensure proper file tracking.
+- Re-formatted `index.html` and `style.css` to fix indentations and unnecessary spaces.
+- Fixed oversized Fluix logo issue causing it to dominate the screen layout.
+#### [Chirag](https://github.com/chirag88533)
+- Made few changes in `search_C1.c`, which enabled explicit user input for searching a term from a file.
 
 
 ## 🗞️ <font color="#e36c09">Oct 13, 2025 - Monday</font>

@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <windows.h>
+#include <string.h>
 
-#include "utils.h"
-#include "colors.h"
+#include "../include/utils.h"
+#include "../include/colors.h"
 
 
 /*
@@ -72,6 +73,47 @@ void exitThanks(char clearScreen) {
 5. DIRECTORY SEARCH FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-void searchDir(char path[], char type[], char nameToSearch[]) {
-    
+SearchResult searchDir(char path[], char type[], char name[]) {
+    SearchResult result = {0};
+
+    char srchPath[MAX_PATH];
+    snprintf(srchPath, sizeof(srchPath), "%s\\*", path);
+
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = FindFirstFile(srchPath, &findData);
+
+    if (hFind == INVALID_HANDLE_VALUE) {
+        result.code = 2; // Unable to open directory
+        return result;
+    }
+
+    int found = 0;
+
+    do {
+        if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
+
+        int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+
+        if (strcmp(type, "folder") == 0 && isFolder) {
+            if (strcmp(findData.cFileName, name) == 0) {
+                strcpy(result.name, findData.cFileName);
+                result.code = 0; // success
+                found = 1;
+                break;
+            }
+        } else if (strcmp(type, "file") == 0 && !isFolder) {
+            if (strcmp(findData.cFileName, name) == 0) {
+                strcpy(result.name, findData.cFileName);
+                result.code = 0; // success
+                found = 1;
+                break;
+            }
+        }
+    } while (FindNextFile(hFind, &findData));
+
+    FindClose(hFind);
+
+    if (!found) result.code = 1; // Directory not found
+
+    return result;
 }
