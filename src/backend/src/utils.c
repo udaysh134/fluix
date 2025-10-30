@@ -125,12 +125,12 @@ SearchResult searchDir(char path[], char type[], char name[]) {
 6. INPUT TEXT MASKING FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-void maskInput(char *destination, int maxLen) {
+void maskInput(char *destination, int maxSize) {
     int i = 0;
     char ch;
 
     while (1) {
-        ch = getch(); // Read character without display
+        ch = getch(); // Reads character without display
 
         if (ch == 13) { // ASCII for "Enter" key
             destination[i] = '\0';
@@ -141,7 +141,7 @@ void maskInput(char *destination, int maxLen) {
                 i--;
                 printf("\b \b"); // Removes last input
             }
-        } else if (i < maxLen - 1) {
+        } else if (i < maxSize - 1) {
             destination[i++] = ch;
             printf("*"); // Print astrisk in place of given input
         }

@@ -13,6 +13,6 @@ typedef struct {
 
 SearchResult searchDir(char path[], char type[], char name[]);
 
-void maskInput(char *destination, int maxLen);
+void maskInput(char *destination, int maxSize);
 
 #endif

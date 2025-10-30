@@ -60,6 +60,9 @@ SUMMARY
 - Integrated and refactored `password.c` to create a reusable `maskInput()` function in `utils.c` for terminal input masking.
 - Updated related declarations and logic in `utils.h` and `utils.c`.
 - Fixed the `scanf()` issue in `optSigIn()` and added a "**switch**" case structure to continue sign-in logic development.
+- Integrated `maskInput()` in `admin.c` to securely handle hidden passcode input.
+- Cleaned up formatting and minor issues across multiple files.
+- Removed `password.c` since its functionality was merged into the new `maskInput()` function.
 
 
 ## 🗞️ <font color="#e36c09">Oct 29, 2025 - Wednesday</font>

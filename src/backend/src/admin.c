@@ -29,8 +29,9 @@ void isAdmin() {
         char jumpCode_1[] = "0";
 
         printf("%s%sWhat's the PASSCODE? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        maskInput(pass, sizeof(pass));
 
-        if (fgets(pass, sizeof(pass), stdin) == NULL) {
+        if (pass == NULL) {
             printf("%sThere was an error! Please provide a valid input.%s", CMD_COL_RED, CMD_COL_RESET);
             break;
         }

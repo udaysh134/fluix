@@ -74,7 +74,7 @@ void checkUsername() {
 
     printf("%s%sPlease provide your USERNAME : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     maskInput(userInput, sizeof(userInput));
-    scanf("%15s", &userInput);
+    // scanf("%15s", &userInput);
 
     if (userInput == NULL) {
         printf("%sYou didn't provide anything, please provide a valid username.\n%s", CMD_COL_RED, CMD_COL_RESET);
