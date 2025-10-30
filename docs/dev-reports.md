@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 30, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Integrated and refactored `password.c` to create a reusable `maskInput()` function in `utils.c` for terminal input masking.
+- Updated related declarations and logic in `utils.h` and `utils.c`.
+- Fixed the `scanf()` issue in `optSigIn()` and added a "**switch**" case structure to continue sign-in logic development.
+
+
 ## 🗞️ <font color="#e36c09">Oct 29, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Fixed re-execution issue in `launch()` by adding "return" statements at lines 33 and 36 in `launch.c`.

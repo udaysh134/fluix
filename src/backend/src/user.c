@@ -73,6 +73,7 @@ void checkUsername() {
     rptr1:
 
     printf("%s%sPlease provide your USERNAME : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+    maskInput(userInput, sizeof(userInput));
     scanf("%15s", &userInput);
 
     if (userInput == NULL) {
@@ -106,11 +107,24 @@ void checkUsername() {
 // ------=>> | Lets user proceed with their Bot Selection | <<=------
 void optSignIn(char name[]) {
     char *prefix = inputPrefix();
+    char continuation;
 
     printf("%sAn account was found with the username%s %s\"%s\"%s\n", CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_MAGENTA, name, CMD_COL_RESET);
     printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
 
-    char continuation = getchar();
+    scanf(" %c", &continuation);
+
+    switch (tolower(continuation)) {
+        case 'y':
+        
+            break;
+        case 'n':
+        
+            break;
+        default:
+        
+            break;
+    }
 }
 
 

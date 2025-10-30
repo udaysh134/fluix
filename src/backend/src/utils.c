@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <windows.h>
 #include <string.h>
+#include <conio.h>
 
 #include "../include/utils.h"
 #include "../include/colors.h"
@@ -97,14 +98,14 @@ SearchResult searchDir(char path[], char type[], char name[]) {
         if (strcmp(type, "folder") == 0 && isFolder) {
             if (strcmp(findData.cFileName, name) == 0) {
                 strcpy(result.name, findData.cFileName);
-                result.code = 0; // success
+                result.code = 0; // Success
                 found = 1;
                 break;
             }
         } else if (strcmp(type, "file") == 0 && !isFolder) {
             if (strcmp(findData.cFileName, name) == 0) {
                 strcpy(result.name, findData.cFileName);
-                result.code = 0; // success
+                result.code = 0; // Success
                 found = 1;
                 break;
             }
@@ -116,4 +117,33 @@ SearchResult searchDir(char path[], char type[], char name[]) {
     if (!found) result.code = 1; // Directory not found
 
     return result;
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+6. INPUT TEXT MASKING FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+void maskInput(char *destination, int maxLen) {
+    int i = 0;
+    char ch;
+
+    while (1) {
+        ch = getch(); // Read character without display
+
+        if (ch == 13) { // ASCII for "Enter" key
+            destination[i] = '\0';
+            printf("\n");
+            break;
+        } else if (ch == 8) { // ASCII for "Backspace" key
+            if (i > 0) {
+                i--;
+                printf("\b \b"); // Removes last input
+            }
+        } else if (i < maxLen - 1) {
+            destination[i++] = ch;
+            printf("*"); // Print astrisk in place of given input
+        }
+    }
 }
