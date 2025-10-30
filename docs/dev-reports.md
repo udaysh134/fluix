@@ -63,6 +63,7 @@ SUMMARY
 - Integrated `maskInput()` in `admin.c` to securely handle hidden passcode input.
 - Cleaned up formatting and minor issues across multiple files.
 - Removed `password.c` since its functionality was merged into the new `maskInput()` function.
+- Fixed few bugs and did some formatting in files like `launch.c`, `user.c` and `utils.c`.
 
 
 ## 🗞️ <font color="#e36c09">Oct 29, 2025 - Wednesday</font>

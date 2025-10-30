@@ -92,8 +92,10 @@ void checkUsername() {
     
     if (res.code == 0) { // 0 means success
         optSignIn(res.name);
+        return;
     } else if (res.code == 1) { // 1 means failure, directory not found
         optSignUp(userInput);
+        return;
     } else if (res.code == 2) { // 2 means failure, unable to open directory
         printf("%sAn internal error occurred!\n", CMD_COL_RED);
         Sleep(1000);
@@ -109,7 +111,7 @@ void optSignIn(char name[]) {
     char *prefix = inputPrefix();
     char continuation;
 
-    printf("%sAn account was found with the username%s %s\"%s\"%s\n", CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_MAGENTA, name, CMD_COL_RESET);
+    printf("An account was found with the username %s\"%s\"%s\n", CMD_COL_GREEN, name, CMD_COL_RESET);
     printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
 
     scanf(" %c", &continuation);
@@ -130,7 +132,7 @@ void optSignIn(char name[]) {
 
 // ------=>> | Lets user create an account for themselves | <<=------
 void optSignUp(char name[]) {
-    printf("Sign Up");
+    printf("Sign Up\n");
     /**
      * 1. We now ask user what username will they like to continue signing up with.
      * 2. We then re-validate that input if it matches with our standards or not.

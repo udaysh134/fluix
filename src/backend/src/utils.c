@@ -143,7 +143,7 @@ void maskInput(char *destination, int maxSize) {
             }
         } else if (i < maxSize - 1) {
             destination[i++] = ch;
-            printf("*"); // Print astrisk in place of given input
+            printf("%s*%s", CMD_COL_BLACK, CMD_COL_RESET); // Print astrisk in place of given input
         }
     }
 }
