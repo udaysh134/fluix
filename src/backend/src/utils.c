@@ -74,8 +74,19 @@ void exitThanks(char clearScreen) {
 5. DIRECTORY SEARCH FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-SearchResult searchDir(char path[], char type[], char name[]) {
+/**
+ * 1. "path" - Relative path of the desired directory, like ".\\src\\db".
+ * 2. "type" - Select if it is a "file" or a "folder".
+ * 3. "mode" - Integer value of "0" or "1" (0 is "Target Mode", 1 is "List Mode").
+ * 4. "name" - Required if mode is 0, or leave it blank like (""). Any name is ignored by default.
+ */
+SearchResult searchDir(char path[], char type[], int mode, char name[]) {
     SearchResult result = {0};
+
+    if (mode != 0 && mode != 1) {
+        result.code = 3; // Mode not defined correctly
+        return result;
+    }
 
     char srchPath[MAX_PATH];
     snprintf(srchPath, sizeof(srchPath), "%s\\*", path);
@@ -88,34 +99,49 @@ SearchResult searchDir(char path[], char type[], char name[]) {
         return result;
     }
 
-    int found = 0;
+    // ------=>> | [MODE 0] - Target Mode (Search a specific file/folder with name) | <<=------
+    if (mode == 0) {
+        int found = 0;
 
-    do {
-        if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
+        do {
+            if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
 
-        int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+            int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
 
-        if (strcmp(type, "folder") == 0 && isFolder) {
-            if (strcmp(findData.cFileName, name) == 0) {
-                strcpy(result.name, findData.cFileName);
-                result.code = 0; // Success
-                found = 1;
-                break;
+            if ((strcmp(type, "folder") == 0 && isFolder) || (strcmp(type, "file") == 0 && !isFolder)) {
+                if (strcmp(findData.cFileName, name) == 0) {
+                    strcpy(result.name, findData.cFileName);
+                    result.code = 0; // Success
+                    found = 1;
+                    break;
+                }
             }
-        } else if (strcmp(type, "file") == 0 && !isFolder) {
-            if (strcmp(findData.cFileName, name) == 0) {
-                strcpy(result.name, findData.cFileName);
-                result.code = 0; // Success
-                found = 1;
-                break;
+        } while (FindNextFile(hFind, &findData));
+
+        if (!found) result.code = 1; // Directory not found
+    }
+
+    // ------=>> | [MODE 1] - List Mode (Search all files/folders in that path) | <<=------
+    else if (mode == 1) {
+        do {
+            if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
+
+            int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+
+            if ((strcmp(type, "folder") == 0 && isFolder) || (strcmp(type, "file") == 0 && !isFolder)) {
+                strcpy(result.names[result.count++], findData.cFileName);
             }
+        } while (FindNextFile(hFind, &findData));
+
+
+        if (result.count > 0) {
+            result.code = 0; // Success
+        } else {
+            result.code = 1; // Directory not found
         }
-    } while (FindNextFile(hFind, &findData));
+    }
 
     FindClose(hFind);
-
-    if (!found) result.code = 1; // Directory not found
-
     return result;
 }
 

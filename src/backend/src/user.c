@@ -67,6 +67,7 @@ MAJOR FUNCTIONS
 void checkUsername() {
     char *prefix = inputPrefix();
     char userInput[16];
+    SearchResult res1;
 
     system("cls");
 
@@ -88,15 +89,15 @@ void checkUsername() {
         goto rptr1;
     }
     
-    SearchResult res = searchDir(".\\src\\db", "folder", userInput);
+    res1 = searchDir(".\\src\\db", "folder", 0, userInput);
     
-    if (res.code == 0) { // 0 means success
-        optSignIn(res.name);
+    if (res1.code == 0) { // 0 means success
+        optSignIn(res1.name);
         return;
-    } else if (res.code == 1) { // 1 means failure, directory not found
+    } else if (res1.code == 1) { // 1 means failure, directory not found
         optSignUp(userInput);
         return;
-    } else if (res.code == 2) { // 2 means failure, unable to open directory
+    } else if (res1.code == 2) { // 2 means failure, unable to open directory
         printf("%sAn internal error occurred!\n", CMD_COL_RED);
         Sleep(1000);
         printf("Exiting the program!%s", CMD_COL_RESET);
@@ -110,6 +111,7 @@ void checkUsername() {
 void optSignIn(char name[]) {
     char *prefix = inputPrefix();
     char continuation;
+    SearchResult res2;
 
     printf("An account was found with the username %s\"%s\"%s\n", CMD_COL_GREEN, name, CMD_COL_RESET);
     printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
@@ -118,7 +120,8 @@ void optSignIn(char name[]) {
 
     switch (tolower(continuation)) {
         case 'y':
-        
+            res2 = searchDir(".\\src\\db\\udaysh", "folder", 1, "");
+            printf("%d, %s, %d", res2.code, res2.name, res2.count);
             break;
         case 'n':
         

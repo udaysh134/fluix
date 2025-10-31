@@ -55,6 +55,16 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Oct 31, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added a new functionality : "Mode" parameter in `searchDir()` to allow two operations — searching a specific file/folder by name or listing all contents within a directory.
+- Refactored the entire function logic to support both modes and documented clear usage instructions for developers.
+- Reordered parameters name and mode for better readability and consistency.
+- Updated struct in `utils.h` to include new fields : `names` and `count`.
+- Modified `searchDir()` implementation in `user.c` to align with the updated structure.
+- Verified the function in `optSignIn()` using the "List" mode for successful testing.
+
+
 ## 🗞️ <font color="#e36c09">Oct 30, 2025 - Thursday</font>
 #### [Uday](https://github.com/udaysh134)
 - Integrated and refactored `password.c` to create a reusable `maskInput()` function in `utils.c` for terminal input masking.
