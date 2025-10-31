@@ -9,6 +9,9 @@
 #include "../include/colors.h"
 #include "../include/utils.h"
 
+// Definitions
+#define DB_PATH ".\\src\\db\\"
+
 // Declarations
 void optSignIn(char name[]);
 void optSignUp(char name[]);
@@ -89,7 +92,7 @@ void checkUsername() {
         goto rptr1;
     }
     
-    res1 = searchDir(".\\src\\db", "folder", 0, userInput);
+    res1 = searchDir(DB_PATH, "folder", 0, userInput);
     
     if (res1.code == 0) { // 0 means success
         optSignIn(res1.name);
@@ -98,7 +101,13 @@ void checkUsername() {
         optSignUp(userInput);
         return;
     } else if (res1.code == 2) { // 2 means failure, unable to open directory
-        printf("%sAn internal error occurred!\n", CMD_COL_RED);
+        printf("%sAn internal error occurred! Error code : 2\n", CMD_COL_RED);
+        Sleep(1000);
+        printf("Exiting the program!%s", CMD_COL_RESET);
+        Sleep(2000);
+        exit(0);
+    } else if (res1.code == 3) { // 3 means failure, mode not defined correctly
+        printf("%sAn internal error occurred! Error code 3\n", CMD_COL_RED);
         Sleep(1000);
         printf("Exiting the program!%s", CMD_COL_RESET);
         Sleep(2000);
@@ -111,6 +120,8 @@ void checkUsername() {
 void optSignIn(char name[]) {
     char *prefix = inputPrefix();
     char continuation;
+    char userPath[50] = DB_PATH;
+
     SearchResult res2;
 
     printf("An account was found with the username %s\"%s\"%s\n", CMD_COL_GREEN, name, CMD_COL_RESET);
@@ -120,8 +131,15 @@ void optSignIn(char name[]) {
 
     switch (tolower(continuation)) {
         case 'y':
-            res2 = searchDir(".\\src\\db\\udaysh", "folder", 1, "");
-            printf("%d, %s, %d", res2.code, res2.name, res2.count);
+            strcat(userPath, name);
+            res2 = searchDir(userPath, "file", 1, "");
+
+            printf("Code : %d\nCount : %d\nNames :\n", res2.code, res2.count);
+
+            for (int i = 0; i < res2.count; i++) {
+                printf("%s\n", res2.names[i]);
+            }
+
             break;
         case 'n':
         

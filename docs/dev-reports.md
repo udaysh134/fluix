@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 1, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Defined the main DB path as a global variable in `user.c` for easier updates and maintenance.
+- Added a new condition in `checkUsername()` to handle error code 3 from `searchDir()` function.
+- Completed basic testing of `searchDir()`’s "**List**" mode; all returned data verified successfully.
+
+
 ## 🗞️ <font color="#e36c09">Oct 31, 2025 - Friday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added a new functionality : "Mode" parameter in `searchDir()` to allow two operations — searching a specific file/folder by name or listing all contents within a directory.
