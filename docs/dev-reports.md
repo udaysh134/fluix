@@ -61,6 +61,10 @@ SUMMARY
 - Included structured tables for "Core Team" and "Other Contributors" with dynamic GitHub avatars.
 - Added contributor guidelines and acknowledgment section for future maintainers.
 - Finalized Markdown formatting and layout for readability and professionalism.
+- Added “**Meet the Contributors**” section in `README.md`.
+- Integrated clickable GitHub profile avatars of the Core Team with inline styles for rounded corners.
+- Linked to the detailed `CONTRIBUTORS.md` file for full roles and acknowledgments.
+- Ensured consistent avatar sizing and alignment for clean visual balance.
 
 
 ## 🗞️ <font color="#e36c09">Nov 1, 2025 - Saturday</font>
