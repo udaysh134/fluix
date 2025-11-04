@@ -55,6 +55,14 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 5, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added `CONTRIBUTORS.md` file in the root directory.
+- Included structured tables for "Core Team" and "Other Contributors" with dynamic GitHub avatars.
+- Added contributor guidelines and acknowledgment section for future maintainers.
+- Finalized Markdown formatting and layout for readability and professionalism.
+
+
 ## 🗞️ <font color="#e36c09">Nov 1, 2025 - Saturday</font>
 #### [Uday](https://github.com/udaysh134)
 - Defined the main DB path as a global variable in `user.c` for easier updates and maintenance.
