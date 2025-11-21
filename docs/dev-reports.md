@@ -55,6 +55,11 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 21, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Nov 21, 2025 discussion summary and task list.
+
+
 ## 🗞️ <font color="#e36c09">Nov 5, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added `CONTRIBUTORS.md` file in the root directory.

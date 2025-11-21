@@ -1,3 +1,25 @@
+## 🗓️ <font color="#e36c09">Nov 21, 2025 - - - - - - - - ></font>
+### <font color="#fac08f">Discussion 8 :</font>
+- From now on, all discussions will be one-way updates from my side ([Uday](https://github.com/udaysh134)) through recorded videos. Any counterpoints, questions, opinions, or concerns from team members must be shared in the group chat.
+- This shift is happening because meetings haven’t been a viable option, and not everyone has always been able to join in.
+- All team or project-related discussions must happen only in the WhatsApp group. Personal DMs won’t count unless there’s an exception.
+- This ensures we maintain clear records of everyone’s input, especially since there won’t be any live meetings going forward.
+- A new “Rep Board” system will be established by me ([Uday](https://github.com/udaysh134)), followed by a public “Leaderboard.” This is being done for accountability and motivation and also for a clean shift of responsibilities, if that ever happens in future.
+- Once active, the Leaderboard (based on private reps from the project lead) will be updated every weekend.
+- Shared upcoming plans and walked through Fluix’s system in more detail.
+- Talked about the inclusion of `/packages` folder inside `src/backend/` and why it was needed.
+- Reviewed the team’s progress and made it clear that lack of output will have consequences.
+### <font color="#fac08f">Tasks :</font>
+- The team should aim to release Fluix v0.2.0 before the screening session in college.
+- Frontend team (including [Japnoor](https://github.com/kaurjapnoor60-max) and [Kashish](https://github.com/kash-12)) will create new HTML pages. Focus only on static UI for now - no animations or dynamic flow yet.
+- The UI must follow the mockups already provided in the main README.
+- All frontend members must use an indentation size of 4 spaces to keep HTML and CSS consistent across the project.
+- Backend’s first task is to implement a `.env` parser in `utils.c` for easier access to environment variables.
+- Backend also needs to continue building the `isUser()` function, which depends on completing `optSignIn()` and `optSignUp()`.
+- Completion of `optSignIn()` and `optSignUp()` will allow the workflow to be redirected into another file, `bot.c` to continue building the whole system.
+
+
+######
 ## 🗓️ <font color="#e36c09">Oct 12, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussion 7 :</font>
 - Started the discussion by making everyone aware that we won't be getting extra time in our college hours, so we have to manage this ourselves solely, at least until the screening session.
