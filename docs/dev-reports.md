@@ -55,7 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
-## 🗞️ <font color="#e36c09">Nov 21, 2025 - Wednesday</font>
+## 🗞️ <font color="#e36c09">Nov 23, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Nov 22, 2025 discussion and tasks, highlighting deadlines for all.
+- Corrected Nov 21st, 2025 dev-report entry by changing the day from Wednesday to Friday.
+
+
+## 🗞️ <font color="#e36c09">Nov 21, 2025 - Friday</font>
 #### [Uday](https://github.com/udaysh134)
 - Updated `activity-records.md` with Nov 21, 2025 discussion summary and task list.
 

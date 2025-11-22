@@ -1,3 +1,15 @@
+## 🗓️ <font color="#e36c09">Nov 22, 2025 - - - - - - - - ></font>
+### <font color="#fac08f">Discussion 9 :</font>
+- Set clear deadlines for each member based on their assigned tasks.
+- Talked about an important teamwork mindset : stepping in for someone during their absence should feel like responsibility, not burden.
+### <font color="#fac08f">Tasks :</font>
+- **Frontend :** Simplify the main page by removing the large Fluix text and aligning the layout more closely with the mockups. Apply a blue-accent theme (either dark or light), add a navigation bar with _Home, Features, Pricing, About,_ and _User_, and create separate HTML pages for the remaining sections.
+- Deadline for frontend's tasks is Nov 26th, 2025.
+- **Backend :** Finish the previously discussed `.env` parser function by tomorrow (November 23rd, 2025). Finalize the structure of `user.c` before November 26th, 2025 - this includes completing both `optSignIn()` and `optSignUp()` functions.
+- Completion of `user.c` will allow work to proceed to `bot.c`, so it is required before moving forward.
+
+
+######
 ## 🗓️ <font color="#e36c09">Nov 21, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussion 8 :</font>
 - From now on, all discussions will be one-way updates from my side ([Uday](https://github.com/udaysh134)) through recorded videos. Any counterpoints, questions, opinions, or concerns from team members must be shared in the group chat.
