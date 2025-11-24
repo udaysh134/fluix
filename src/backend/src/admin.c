@@ -9,7 +9,9 @@
 #include "../include/utils.h"
 
 // Definitions
-const char configPass[] = "fluixo";
+const char configPass[] = "fluixo"; //this code should be replaced if env parser is working fine
+
+//this code to be used in replacement to the code line no.12 char *configPass = NULL;
 
 
 /*
@@ -18,6 +20,16 @@ MAIN FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
 void isAdmin() {
+    /*
+     // Load password at runtime
+    configPass = getEnvValue("PASS");  // This here will use exact key value from settings.env file
+
+    if (configPass == NULL) {
+        printf("%sAdmin password not configured in settings.env%s\n", CMD_COL_RED, CMD_COL_RESET);
+        Sleep(2000);
+        return;
+    }*/
+    // above commented code should be unfreezed upon replacing code line no.12
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
