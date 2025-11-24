@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 24, 2025 - Sunday</font>
+#### [yazdaan](https://github.com/udaysh134)
+- Added envparser in utils.c
+- Added required header file function in utils.h
+- Added few codes in admin.c to replace the visible admin password with function to load the code form env file
+- Added an envloader function in main.c , this will load the file in the starting of program
+
 ## 🗞️ <font color="#e36c09">Nov 23, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)
 - Updated `activity-records.md` with Nov 22, 2025 discussion and tasks, highlighting deadlines for all.
