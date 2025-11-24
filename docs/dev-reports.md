@@ -57,8 +57,8 @@ SUMMARY
 -->
 ## 🗞️ <font color="#e36c09">Nov 24, 2025 - Sunday</font>
 #### [yazdaan](https://github.com/SenorDan031)
-- Added envparser in utils.c
-- Added required header file function in utils.h
+- Added an env parser function (function no.7) in utils.c
+- Added required functions in utils.h
 - Added few codes in admin.c to replace the visible admin password with function to load the code form env file
 - Added an envloader function in main.c , this will load the file in the starting of program
 
