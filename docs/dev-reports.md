@@ -56,7 +56,7 @@ SUMMARY
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
 ## 🗞️ <font color="#e36c09">Nov 24, 2025 - Sunday</font>
-#### [yazdaan](https://github.com/udaysh134)
+#### [yazdaan](https://github.com/SenorDan031)
 - Added envparser in utils.c
 - Added required header file function in utils.h
 - Added few codes in admin.c to replace the visible admin password with function to load the code form env file
