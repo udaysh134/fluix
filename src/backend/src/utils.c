@@ -9,6 +9,9 @@
 #include "../include/utils.h"
 #include "../include/colors.h"
 
+// Definitions
+#define ENV_LINE_MAX 256
+
 
 /*
 ----------------------------------------------------------------------------------------------------
@@ -175,104 +178,75 @@ void maskInput(char *destination, int maxSize) {
 }
 
 
-
 /*
- ----------------------------------------------------------------------------------------------------
- 7. ENV PARSER FUNCTIONS
- ----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+7. ENV PARSER FUNCTION
+----------------------------------------------------------------------------------------------------
 */
+char *parseEnv(const char *file, const char *key) {
+    FILE *openedFile = fopen(file, "r");
+    if (!openedFile) return NULL;
 
-/*----------------------NOTE--------------------------------------*/
+    char line[ENV_LINE_MAX];
 
-/* 
-The following parser was tested under custom conditions and have possible bugs.
-The code was tweaked with help of GPT and Gemini AI assistants.
-Code might need further optimizations and might not be 100% upto the mark.
-Trying to understand the parsing a bit better and will rework on it 
-------------------END OF NOTE----------------------*/
-/* remove this  comment line initiator and the closer on line no. 278 to make code functionable
-// Structure for key&value pair: This will help us store env variables
-typedef struct {
-    char key[50];
-    char value[200];
-} EnvPair;
+    while (fgets(line, sizeof(line), openedFile)) {
+        // (1). Skip comments and empty lines
+        if (line[0] == '#' || line[0] == '\n') continue;
 
-// Storage for parsed values: 20 pairs max
-static EnvPair env[20]; // Array to hold env key-value pairs
-static int envCount = 0; // Number of loaded env variables
+        // (2). Skip lines with no equal sign, meaning no values
+        char *equalSign = strchr(line, '=');
+        if (!equalSign) continue;
 
+        *equalSign = '\0';
+        char *extractedKey = line;
+        char *extractedValue = equalSign + 1;
 
-// Trim spaces around a string
-static char *trim(char *str) {
-    while (isspace((unsigned char)*str)) str++; // trim leading spaces
-    char *end = str + strlen(str) - 1;  // point to last character
-    while (end > str && isspace((unsigned char)*end)) *end-- = '\0'; // trim trailing spaces
-    return str; // return trimmed string
-}
+        // (3). Trim spaces around extracted KEY (if any)
+        while (*extractedKey == ' ' || *extractedKey == '\t') extractedKey++;
+        char *end = extractedKey + strlen(extractedKey) - 1;
+        while (end > extractedKey && (*end == ' ' || *end == '\t' || *end == '\r')) *end-- = '\0';
 
+        // (4). Trim spaces on left from extracted VALUE (if any)
+        while (*extractedValue == ' ' || *extractedValue == '\t') extractedValue++;
 
-// Remove surrounding quotes
-static char *removeQuotes(char *str) { // Remove surrounding quotes if present
-    int len = strlen(str);
-    if (len >= 2 &&
-       ((str[0] == '"' && str[len-1] == '"') ||
-        (str[0] == '\'' && str[len-1] == '\''))) {
-        str[len-1] = '\0';
-        return str + 1; // return string without quotes
-    }
-    return str; // return original string
-}
+        // (5). Handling line comments
+        for (char *ptr = extractedValue; *ptr; ptr++) {
+            if (*ptr == '#') {
+                *ptr = '\0';
+                break;
+            }
+        }
 
+        // (6). Trim right spaces or newline from cleaned value
+        end = extractedValue + strlen(extractedValue) - 1;
+        while (end > extractedValue && (*end == ' ' || *end == '\t' || *end == '\n' || *end == '\r')) *end-- = '\0';
 
-// Load .env-style file
-int loadEnvFromFile(const char *path) {
-    FILE *fp = fopen(path, "r");
-    if (!fp) {
-        return 0; // failed to open file
-    }
+        // (7). Remove surrounding quotes
+        if ((extractedValue[0] == '"' || extractedValue[0] == '\'' || extractedValue[0] == '`')) {
+            char quoteType = extractedValue[0];
+            size_t len = strlen(extractedValue);
 
-    char line[256];  // buffer for each line
+            if (len >= 2 && extractedValue[len - 1] == quoteType) {
+                extractedValue[len - 1] = '\0';
+                extractedValue++;
+            }
+        }
 
-    while (fgets(line, sizeof(line), fp)) {   // read line by line
-        char *ln = trim(line);  // trim spaces
+        // (8). Comparing keys - Final returning of the VALUE
+        if (strcmp(extractedKey, key) == 0) {
+            char *value = malloc(strlen(extractedValue) + 1);
 
-        if (ln[0] == '\0' || ln[0] == '#')  // skip empty lines and comments
-            continue;
+            if (!value) {
+                fclose(openedFile);
+                return NULL;
+            }
 
-        char *eq = strchr(ln, '=');
-        if (!eq)
-            continue;   // skip lines without '='
-
-        *eq = '\0';
-        char *key = trim(ln);
-        char *val = trim(eq + 1);
-
-        val = removeQuotes(val);  // remove surrounding quotes
-
-        // prevent overflow / too many entries
-        if (envCount < (int)(sizeof(env) / sizeof(env[0]))) {
-            strncpy(env[envCount].key, key, sizeof(env[envCount].key) - 1);
-            env[envCount].key[sizeof(env[envCount].key) - 1] = '\0';
-            strncpy(env[envCount].value, val, sizeof(env[envCount].value) - 1);
-            env[envCount].value[sizeof(env[envCount].value) - 1] = '\0';
-            envCount++;
-        } else {
-            // reached maximum capacity; ignore further entries
-            // you can log or handle this case if needed
+            strcpy(value, extractedValue);
+            fclose(openedFile);
+            return value;
         }
     }
 
-    fclose(fp);
-    return 1;
+    fclose(openedFile);
+    return NULL;
 }
-
-
-// Fetch value for a key
-char *getEnvValue(const char *key) {  // retrieve value by key
-    for (int i = 0; i < envCount; i++) {   // search for key
-        if (strcmp(env[i].key, key) == 0)
-            return env[i].value;  // return corresponding value
-    }
-    return NULL;  // key not found
-}
-*/

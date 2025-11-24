@@ -55,12 +55,21 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
-## 🗞️ <font color="#e36c09">Nov 24, 2025 - Sunday</font>
-#### [yazdaan](https://github.com/SenorDan031)
-- Added an env parser function (function no.7) in utils.c
-- Added required functions in utils.h
-- Added few codes in admin.c to replace the visible admin password with function to load the code form env file
-- Added an envloader function in main.c , this will load the file in the starting of program
+## 🗞️ <font color="#e36c09">Nov 25, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Created `parseEnv()` function to parse env data dynamically.
+- Removed `getEnvValue()`, `loadEnvFromFile()` and related sub-functions to replace them with `parseEnv()`.
+- Adjusted and fixed code in `admin.c` to use new `parseEnv()` and optimized some code logic.
+- Removed commented section from [Yazdaan](https://github.com/SenorDan031) in `admin.c` and `main.c`.
+- Reformatted [Yazdaan](https://github.com/SenorDan031)'s logs for consistency.
+
+
+## 🗞️ <font color="#e36c09">Nov 24, 2025 - Monday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Created `getEnvValue()` and `loadEnvFromFile()` functions as env parsers, in `utils.c/h`.
+- Added `loadEnvFromFile()` function in `main.c` to load env file's data into a struct before initiation.
+- Added commented code in `admin.c` to replace visible configPass variable with the parser function.
+
 
 ## 🗞️ <font color="#e36c09">Nov 23, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)

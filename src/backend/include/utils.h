@@ -16,8 +16,6 @@ typedef struct {
 SearchResult searchDir(char path[], char type[], int mode, char name[]);
 
 void maskInput(char *destination, int maxSize);
-
-int loadEnvFromFile(const char *path); //Helps in loading the env file
-char *getEnvValue(const char *key);  // helps in retrieving value by key
+char *parseEnv(const char *file, const char *key);
 
 #endif

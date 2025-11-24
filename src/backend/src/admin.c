@@ -8,11 +8,6 @@
 #include "../include/colors.h"
 #include "../include/utils.h"
 
-// Definitions
-const char configPass[] = "fluixo"; //this code should be replaced if env parser is working fine
-
-//this code to be used in replacement to the code line no.12 char *configPass = NULL;
-
 
 /*
 ----------------------------------------------------------------------------------------------------
@@ -20,16 +15,16 @@ MAIN FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
 void isAdmin() {
-    /*
-     // Load password at runtime
-    configPass = getEnvValue("PASS");  // This here will use exact key value from settings.env file
+    char *configPass = parseEnv(".\\src\\config\\settings.env", "PASS");
 
-    if (configPass == NULL) {
-        printf("%sAdmin password not configured in settings.env%s\n", CMD_COL_RED, CMD_COL_RESET);
+    if(!configPass) {
+        printf("%sAn internal error occurred! Problem with ENV file.\n%s", CMD_COL_RED, CMD_COL_RESET);
+        Sleep(1000);
+        printf("Exiting the program!%s", CMD_COL_RESET);
         Sleep(2000);
-        return;
-    }*/
-    // above commented code should be unfreezed upon replacing code line no.12
+        exit(0);
+    }
+
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
@@ -43,8 +38,8 @@ void isAdmin() {
         printf("%s%sWhat's the PASSCODE? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
         maskInput(pass, sizeof(pass));
 
-        if (pass == NULL) {
-            printf("%sThere was an error! Please provide a valid input.%s", CMD_COL_RED, CMD_COL_RESET);
+        if (!pass || pass == NULL) {
+            printf("%sAn error occured. Please provide a valid input..%s\n", CMD_COL_RED, CMD_COL_RESET);
             break;
         }
 
@@ -56,6 +51,7 @@ void isAdmin() {
             Sleep(2000);
             printf("%s%sPress \"Enter\" to go back or \"0\" to exit : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
 
+            free(configPass);
             free(lsThick);
             free(lsThin);
 
