@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 26, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added a clearer navigation step in `checkUsername()` before calling `optSignUp()` function in `user.c`.
+- The navigation system now first asks for the confirmation before jumping into the `optSignUp()` function.
+- Added more instructions inside `optSignUp()` for better clarity.
+
+
 ## 🗞️ <font color="#e36c09">Nov 25, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Created `parseEnv()` function to parse env data dynamically.

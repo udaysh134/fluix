@@ -68,6 +68,7 @@ MAJOR FUNCTIONS
 */
 // ------=>> | Checks if a folder with the given username exists | <<=------
 void checkUsername() {
+    char *lsThin = lineSep('-', 50);
     char *prefix = inputPrefix();
     char userInput[16];
     SearchResult res1;
@@ -98,7 +99,35 @@ void checkUsername() {
         optSignIn(res1.name);
         return;
     } else if (res1.code == 1) { // 1 means failure, directory not found
-        optSignUp(userInput);
+        char answer;
+
+        printf("Seems like there's no user with the username %s\"%s\"%s in our database.", CMD_COL_GREEN, userInput, CMD_COL_RESET);
+        Sleep(500);
+
+        rptr2:
+
+        printf("\n%s%sWould you like to create one? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        scanf("%c", &answer);
+        eatBuffer();
+
+        switch (tolower(answer)) {
+            case 'y':
+                optSignUp(userInput);
+                free(lsThin);
+                break;
+            case 'n':
+                printf("%s\nRedirecting to the main menu...", lsThin);
+                Sleep(2000);
+
+                system("cls");
+                free(lsThin);
+                break;
+            default:
+                printf("%sYou chose a wrong option! Please provide a valid input (Y/N).%s", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr2;
+        }
+
+        free(lsThin);
         return;
     } else if (res1.code == 2) { // 2 means failure, unable to open directory
         printf("%sAn internal error occurred! Error code : 2\n", CMD_COL_RED);
@@ -153,7 +182,17 @@ void optSignIn(char name[]) {
 
 // ------=>> | Lets user create an account for themselves | <<=------
 void optSignUp(char name[]) {
+    /**
+     * 1. Seems like there's no user with that username in our database.
+     * 2. Would you like to continue with that username?
+     * 3. If "YES" - validate username, if "NO" - ask them what new username will be? If given, validate it.
+     * 4. If validation is successful - create a folder with that username, if not - keep asking a new username with the condition
+     * 5. When the folder is created, redirect the code to "bot.c"
+     */
+
     printf("Sign Up\n");
+
+
     /**
      * 1. We now ask user what username will they like to continue signing up with.
      * 2. We then re-validate that input if it matches with our standards or not.
