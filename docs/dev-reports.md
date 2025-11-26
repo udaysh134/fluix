@@ -60,6 +60,8 @@ SUMMARY
 - Added a clearer navigation step in `checkUsername()` before calling `optSignUp()` function in `user.c`.
 - The navigation system now first asks for the confirmation before jumping into the `optSignUp()` function.
 - Added more instructions inside `optSignUp()` for better clarity.
+- Cleaned up unused and commented code from `isUser()` function.
+- Removed `checkUsername()` and moved its logic directly into `isUser()` to reduce extra steps.
 
 
 ## 🗞️ <font color="#e36c09">Nov 25, 2025 - Tuesday</font>

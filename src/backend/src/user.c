@@ -15,7 +15,6 @@
 // Declarations
 void optSignIn(char name[]);
 void optSignUp(char name[]);
-void checkUsername();
 void *validateUsername(char name[]);
 
 
@@ -25,51 +24,8 @@ MAIN FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
 void isUser() {
-    char *lsThick = lineSep('=', 50);
-    char *lsThin = lineSep('-', 50);
-    char userOptions[] = "(1) - Sign In\n(2) - Sign Up\n(B) - Go back\n(0) - Exit";
-
-    checkUsername();
-
-    // while (1) {
-    //     printf("%sUser Panel%s\n%s\n%s\n%s\n", CMD_COL_GREEN, CMD_COL_RESET, lsThick, userOptions, lsThin);
-
-    //     char selectionId = getchar();
-    //     eatBuffer();
-
-    //     switch (tolower(selectionId)) {
-    //         case '1':
-    //             optSignIn();
-    //             break;
-    //         case '2':
-    //             optSignUp();
-    //             break;
-    //         case 'b':
-    //             system("cls");
-    //             return;
-    //         case '0':
-    //             system("cls");
-    //             exitThanks('y');
-    //             exit(0);
-    //         default:
-    //             printf("%sYou gave an invalid input! Please choose among these only - 1/2/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
-    //     }
-    // }
-
-    free(lsThick);
-    free(lsThin);
-}
-
-
-/*
-----------------------------------------------------------------------------------------------------
-MAJOR FUNCTIONS
-----------------------------------------------------------------------------------------------------
-*/
-// ------=>> | Checks if a folder with the given username exists | <<=------
-void checkUsername() {
-    char *lsThin = lineSep('-', 50);
     char *prefix = inputPrefix();
+    char *lsThin = lineSep('-', 50);
     char userInput[16];
     SearchResult res1;
 
@@ -145,7 +101,11 @@ void checkUsername() {
 }
 
 
-// ------=>> | Lets user proceed with their Bot Selection | <<=------
+/*
+----------------------------------------------------------------------------------------------------
+OTHER FUNCTIONS
+----------------------------------------------------------------------------------------------------
+*/
 void optSignIn(char name[]) {
     char *prefix = inputPrefix();
     char continuation;
@@ -180,7 +140,6 @@ void optSignIn(char name[]) {
 }
 
 
-// ------=>> | Lets user create an account for themselves | <<=------
 void optSignUp(char name[]) {
     /**
      * 1. Seems like there's no user with that username in our database.
