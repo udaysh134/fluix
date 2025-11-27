@@ -63,6 +63,7 @@ SUMMARY
 - Refactored, reformatted and cleaned the code of `user.c` for clearer logic, expanding if-else code blocks.
 - Shifted input checks and switch case handling logic from `optSignIn()` & `optSignUp()` to `isUser()` function.
 - Added clear, structured instructions and improved documentation across `user.c`.
+- Included `bot.c` in project's Makefile to avoid future incompatability.
 
 
 ## 🗞️ <font color="#e36c09">Nov 26, 2025 - Wednesday</font>
