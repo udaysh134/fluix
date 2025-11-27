@@ -27,15 +27,12 @@ void isUser() {
     char *prefix = inputPrefix();
     char *lsThin = lineSep('-', 50);
     char userInput[16];
-    SearchResult res1;
 
     system("cls");
-
     rptr1:
 
     printf("%s%sPlease provide your USERNAME : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     maskInput(userInput, sizeof(userInput));
-    // scanf("%15s", &userInput);
 
     if (userInput == NULL) {
         printf("%sYou didn't provide anything, please provide a valid username.\n%s", CMD_COL_RED, CMD_COL_RESET);
@@ -49,26 +46,32 @@ void isUser() {
         goto rptr1;
     }
     
-    res1 = searchDir(DB_PATH, "folder", 0, userInput);
-    
-    if (res1.code == 0) { // 0 means success
-        optSignIn(res1.name);
-        return;
-    } else if (res1.code == 1) { // 1 means failure, directory not found
-        char answer;
 
-        printf("Seems like there's no user with the username %s\"%s\"%s in our database.", CMD_COL_GREEN, userInput, CMD_COL_RESET);
+    // ------=>> | Main work starts from here, by searching the folder with the user input | <<=------
+    SearchResult res;
+    res = searchDir(DB_PATH, "folder", 0, userInput);
+
+    /**
+     * If "res.code = 0", it means success
+     * If "res.code = 1", it means failure, directory not found
+     * If "res.code = 2", it means failure, unable to open directory
+     * If "res.code = 3", it means failure, mode not defined correctly
+     */
+    if (res.code == 0) { // Eventually leading to optSignIn() function
+        char answer1;
+
+        printf("An account was found with the username %s\"%s\"%s.\n", CMD_COL_GREEN, res.name, CMD_COL_RESET);
         Sleep(500);
 
         rptr2:
 
-        printf("\n%s%sWould you like to create one? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-        scanf("%c", &answer);
+        printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        scanf("%c", &answer1);
         eatBuffer();
 
-        switch (tolower(answer)) {
+        switch (tolower(answer1)) {
             case 'y':
-                optSignUp(userInput);
+                optSignIn(res.name);
                 free(lsThin);
                 break;
             case 'n':
@@ -85,17 +88,60 @@ void isUser() {
 
         free(lsThin);
         return;
-    } else if (res1.code == 2) { // 2 means failure, unable to open directory
+    } 
+    
+    else if (res.code == 1) {  // Eventually leading to optSignUp() function
+        char answer2;
+
+        printf("Seems like there's no user with the username %s\"%s\"%s in our database.", CMD_COL_GREEN, userInput, CMD_COL_RESET);
+        Sleep(500);
+
+        rptr3:
+
+        printf("\n%s%sWould you like to create one? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        scanf("%c", &answer2);
+        eatBuffer();
+
+        switch (tolower(answer2)) {
+            case 'y':
+                optSignUp(userInput);
+                free(lsThin);
+                break;
+            case 'n':
+                printf("%s\nRedirecting to the main menu...", lsThin);
+                Sleep(2000);
+
+                system("cls");
+                free(lsThin);
+                break;
+            default:
+                printf("%sYou chose a wrong option! Please provide a valid input (Y/N).%s", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr3;
+        }
+
+        free(lsThin);
+        return;
+    } 
+    
+    else if (res.code == 2) { // Error handling : Need to give proper path
         printf("%sAn internal error occurred! Error code : 2\n", CMD_COL_RED);
         Sleep(1000);
+
         printf("Exiting the program!%s", CMD_COL_RESET);
         Sleep(2000);
+
+        free(lsThin);
         exit(0);
-    } else if (res1.code == 3) { // 3 means failure, mode not defined correctly
+    } 
+    
+    else if (res.code == 3) { // Error handling : Provide MODE for searchDir() function
         printf("%sAn internal error occurred! Error code 3\n", CMD_COL_RED);
         Sleep(1000);
+
         printf("Exiting the program!%s", CMD_COL_RESET);
         Sleep(2000);
+
+        free(lsThin);
         exit(0);
     }
 }
@@ -103,63 +149,29 @@ void isUser() {
 
 /*
 ----------------------------------------------------------------------------------------------------
-OTHER FUNCTIONS
+MAJOR FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 void optSignIn(char name[]) {
-    char *prefix = inputPrefix();
-    char continuation;
-    char userPath[50] = DB_PATH;
+    /**
+     * 1. Directly provide the "User Panel" for this user with three options.
+     * 2. These options will be : "New Bot", "My Bots (...)", "Exit"
+     * 3. Provide further functionalities by redirecting to bot.c
+     */
 
-    SearchResult res2;
-
-    printf("An account was found with the username %s\"%s\"%s\n", CMD_COL_GREEN, name, CMD_COL_RESET);
-    printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-
-    scanf(" %c", &continuation);
-
-    switch (tolower(continuation)) {
-        case 'y':
-            strcat(userPath, name);
-            res2 = searchDir(userPath, "file", 1, "");
-
-            printf("Code : %d\nCount : %d\nNames :\n", res2.code, res2.count);
-
-            for (int i = 0; i < res2.count; i++) {
-                printf("%s\n", res2.names[i]);
-            }
-
-            break;
-        case 'n':
-        
-            break;
-        default:
-        
-            break;
-    }
+     printf("Sign In");
 }
 
 
 void optSignUp(char name[]) {
     /**
-     * 1. Seems like there's no user with that username in our database.
-     * 2. Would you like to continue with that username?
-     * 3. If "YES" - validate username, if "NO" - ask them what new username will be? If given, validate it.
-     * 4. If validation is successful - create a folder with that username, if not - keep asking a new username with the condition
-     * 5. When the folder is created, redirect the code to "bot.c"
+     * 1. Run the validation of username in a loop, untill it's validated.
+     * 2. Create a folder for the user, "src/db/<validated_username>".
+     * 3. Direct the user to the "User Panel" with three options : "New Bot", "My Bots (...)", "Exit"
+     * 4. Provide further functionalities by redirecting to bot.c
      */
 
-    printf("Sign Up\n");
-
-
-    /**
-     * 1. We now ask user what username will they like to continue signing up with.
-     * 2. We then re-validate that input if it matches with our standards or not.
-     * 3. If it can't pass the validation, we keep running the same in loop.
-     * 4. If it passes our validation, we create a folder with that name inside "db" folder, and this will be our "User Creation".
-     * 5. Now the user is inside "User Panel" and can add new bots.
-     * 6. We take leave from this function from here, as our work is done.
-     */
+     printf("Sign Up");
 }
 
 
@@ -172,11 +184,11 @@ void *validateUsername(char name[]) {
     name[strcspn(name, "\n")] = '\0';
 
     if (isdigit(name[0])) {
-        printf("%sError : You can't initiate a username with a number.%s", CMD_COL_RED, CMD_COL_RESET);
+        return printf("%sError : You can't initiate a username with a number.%s", CMD_COL_RED, CMD_COL_RESET);
     } else if (ispunct(name[0])) {
-        printf("%sError : You can't initiate a username with a special character.%s", CMD_COL_RED, CMD_COL_RESET);
+        return printf("%sError : You can't initiate a username with a special character.%s", CMD_COL_RED, CMD_COL_RESET);
     } else if (strlen(name) > 16) {
-        printf("%sError : Your username cannot exceed 15 characters.%s", CMD_COL_RED, CMD_COL_RESET);
+        return printf("%sError : Your username cannot exceed 15 characters.%s", CMD_COL_RED, CMD_COL_RESET);
     } else {
         return name;
     }

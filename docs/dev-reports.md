@@ -55,13 +55,21 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 27, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Cleaned up unused and commented code from `isUser()` function.
+- Removed `checkUsername()` and moved its logic directly into `isUser()` to reduce extra steps.
+- Fixed misplaced Nov 27th logs by moving them from the Nov 26th section to the correct date in `dev-reports.md`.
+- Refactored, reformatted and cleaned the code of `user.c` for clearer logic, expanding if-else code blocks.
+- Shifted input checks and switch case handling logic from `optSignIn()` & `optSignUp()` to `isUser()` function.
+- Added clear, structured instructions and improved documentation across `user.c`.
+
+
 ## 🗞️ <font color="#e36c09">Nov 26, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added a clearer navigation step in `checkUsername()` before calling `optSignUp()` function in `user.c`.
 - The navigation system now first asks for the confirmation before jumping into the `optSignUp()` function.
 - Added more instructions inside `optSignUp()` for better clarity.
-- Cleaned up unused and commented code from `isUser()` function.
-- Removed `checkUsername()` and moved its logic directly into `isUser()` to reduce extra steps.
 
 
 ## 🗞️ <font color="#e36c09">Nov 25, 2025 - Tuesday</font>
