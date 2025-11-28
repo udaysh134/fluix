@@ -163,16 +163,46 @@ void optSignIn(char name[]) {
 }
 
 
-void optSignUp(char name[]) {
+void optSignUp(char name[]) 
+{
     /**
      * 1. Run the validation of username in a loop, untill it's validated.
      * 2. Create a folder for the user, "src/db/<validated_username>".
      * 3. Direct the user to the "User Panel" with three options : "New Bot", "My Bots (...)", "Exit"
      * 4. Provide further functionalities by redirecting to bot.c
      */
+    while (1) {
+        if (validateUsername(name) != NULL) {break;} // username is valid
+        else{
+            printf("\nTry again.\n\n");}
+        // 4. Create directory inside db/
+        char userPath[50]= DB_PATH;
+        sprintf(userPath, name);
 
-     printf("Sign Up");
+        if (CreateDirectory(userPath, NULL)) 
+        { 
+            // Directory created successfully
+            printf(" User created successfully!\n");
+            printf(" Folder created: %s\n", userPath);
+
+            // 5. User is now in User Panel
+            printf("===== Welcome to User Panel, %s =====\n", name);
+            printf("You can now add your bots...\n");
+
+            // 6. Work is done
+            return;
+        }
+        else 
+        {
+            if (!CreateDirectory(userPath, NULL)) {
+                printf("Directory not created. Possibly already exists.\n");}
+            else{
+                printf("failed to create directory. error code");
+            }
+        }   
+    }
 }
+
 
 
 /*
