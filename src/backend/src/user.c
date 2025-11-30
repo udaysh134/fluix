@@ -8,6 +8,7 @@
 #include "../include/user.h"
 #include "../include/colors.h"
 #include "../include/utils.h"
+#include "../include/bot.h"
 
 // Definitions
 #define DB_PATH ".\\src\\db\\"
