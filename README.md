@@ -168,3 +168,28 @@ This version marks the establishment of the project’s base architecture - focu
 </div>
 
 Fluix is being developed by a small but passionate group of first year BCA students - learning, experimenting, and building from the ground up. Each contributor plays a unique role in backend logic, UI design, and system structuring, united by a shared goal : to make AI creation simple, elegant, and truly accessible.
+
+
+### 🙌 Meet the Contributors
+<p align="center">
+  <a href="https://github.com/udaysh134">
+    <img src="https://avatars.githubusercontent.com/udaysh134" width="50" style="border-radius: 10%;"/>
+  </a>
+  <a href="https://github.com/kaurjapnoor60-max">
+    <img src="https://avatars.githubusercontent.com/kaurjapnoor60-max" width="50" style="border-radius: 10%;"/>
+  </a>
+  <a href="https://github.com/kash-12">
+    <img src="https://avatars.githubusercontent.com/kash-12" width="50" style="border-radius: 10%;"/>
+  </a>
+  <a href="https://github.com/SenorDan031">
+    <img src="https://avatars.githubusercontent.com/SenorDan031" width="50" style="border-radius: 10%;"/>
+  </a>
+  <a href="https://github.com/manikant12aggi">
+    <img src="https://avatars.githubusercontent.com/manikant12aggi" width="50" style="border-radius: 10%;"/>
+  </a>
+  <a href="https://github.com/chirag88533">
+    <img src="https://avatars.githubusercontent.com/chirag88533" width="50" style="border-radius: 10%;"/>
+  </a>
+</p>
+
+> See full roles, contributors, and acknowledgments in the [**CONTRIBUTORS**](./CONTRIBUTORS.md) file.

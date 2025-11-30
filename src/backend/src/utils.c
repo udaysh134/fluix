@@ -4,9 +4,13 @@
 #include <ctype.h>
 #include <windows.h>
 #include <string.h>
+#include <conio.h>
 
 #include "../include/utils.h"
 #include "../include/colors.h"
+
+// Definitions
+#define ENV_LINE_MAX 256
 
 
 /*
@@ -73,8 +77,19 @@ void exitThanks(char clearScreen) {
 5. DIRECTORY SEARCH FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-SearchResult searchDir(char path[], char type[], char name[]) {
+/**
+ * 1. "path" - Relative path of the desired directory, like ".\\src\\db".
+ * 2. "type" - Select if it is a "file" or a "folder".
+ * 3. "mode" - Integer value of "0" or "1" (0 is "Target Mode", 1 is "List Mode").
+ * 4. "name" - Required if mode is 0, or leave it blank like (""). Any name is ignored by default.
+ */
+SearchResult searchDir(char path[], char type[], int mode, char name[]) {
     SearchResult result = {0};
+
+    if (mode != 0 && mode != 1) {
+        result.code = 3; // Mode not defined correctly
+        return result;
+    }
 
     char srchPath[MAX_PATH];
     snprintf(srchPath, sizeof(srchPath), "%s\\*", path);
@@ -87,33 +102,151 @@ SearchResult searchDir(char path[], char type[], char name[]) {
         return result;
     }
 
-    int found = 0;
+    // ------=>> | [MODE 0] - Target Mode (Search a specific file/folder with name) | <<=------
+    if (mode == 0) {
+        int found = 0;
 
-    do {
-        if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
+        do {
+            if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
 
-        int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+            int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
 
-        if (strcmp(type, "folder") == 0 && isFolder) {
-            if (strcmp(findData.cFileName, name) == 0) {
-                strcpy(result.name, findData.cFileName);
-                result.code = 0; // success
-                found = 1;
-                break;
+            if ((strcmp(type, "folder") == 0 && isFolder) || (strcmp(type, "file") == 0 && !isFolder)) {
+                if (strcmp(findData.cFileName, name) == 0) {
+                    strcpy(result.name, findData.cFileName);
+                    result.code = 0; // Success
+                    found = 1;
+                    break;
+                }
             }
-        } else if (strcmp(type, "file") == 0 && !isFolder) {
-            if (strcmp(findData.cFileName, name) == 0) {
-                strcpy(result.name, findData.cFileName);
-                result.code = 0; // success
-                found = 1;
+        } while (FindNextFile(hFind, &findData));
+
+        if (!found) result.code = 1; // Directory not found
+    }
+
+    // ------=>> | [MODE 1] - List Mode (Search all files/folders in that path) | <<=------
+    else if (mode == 1) {
+        do {
+            if (strcmp(findData.cFileName, ".") == 0 || strcmp(findData.cFileName, "..") == 0) continue;
+
+            int isFolder = (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+
+            if ((strcmp(type, "folder") == 0 && isFolder) || (strcmp(type, "file") == 0 && !isFolder)) {
+                strcpy(result.names[result.count++], findData.cFileName);
+            }
+        } while (FindNextFile(hFind, &findData));
+
+
+        if (result.count > 0) {
+            result.code = 0; // Success
+        } else {
+            result.code = 1; // Directory not found
+        }
+    }
+
+    FindClose(hFind);
+    return result;
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+6. INPUT TEXT MASKING FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+void maskInput(char *destination, int maxSize) {
+    int i = 0;
+    char ch;
+
+    while (1) {
+        ch = getch(); // Reads character without display
+
+        if (ch == 13) { // ASCII for "Enter" key
+            destination[i] = '\0';
+            printf("\n");
+            break;
+        } else if (ch == 8) { // ASCII for "Backspace" key
+            if (i > 0) {
+                i--;
+                printf("\b \b"); // Removes last input
+            }
+        } else if (i < maxSize - 1) {
+            destination[i++] = ch;
+            printf("%s*%s", CMD_COL_BLACK, CMD_COL_RESET); // Print astrisk in place of given input
+        }
+    }
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+7. ENV PARSER FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+char *parseEnv(const char *file, const char *key) {
+    FILE *openedFile = fopen(file, "r");
+    if (!openedFile) return NULL;
+
+    char line[ENV_LINE_MAX];
+
+    while (fgets(line, sizeof(line), openedFile)) {
+        // (1). Skip comments and empty lines
+        if (line[0] == '#' || line[0] == '\n') continue;
+
+        // (2). Skip lines with no equal sign, meaning no values
+        char *equalSign = strchr(line, '=');
+        if (!equalSign) continue;
+
+        *equalSign = '\0';
+        char *extractedKey = line;
+        char *extractedValue = equalSign + 1;
+
+        // (3). Trim spaces around extracted KEY (if any)
+        while (*extractedKey == ' ' || *extractedKey == '\t') extractedKey++;
+        char *end = extractedKey + strlen(extractedKey) - 1;
+        while (end > extractedKey && (*end == ' ' || *end == '\t' || *end == '\r')) *end-- = '\0';
+
+        // (4). Trim spaces on left from extracted VALUE (if any)
+        while (*extractedValue == ' ' || *extractedValue == '\t') extractedValue++;
+
+        // (5). Handling line comments
+        for (char *ptr = extractedValue; *ptr; ptr++) {
+            if (*ptr == '#') {
+                *ptr = '\0';
                 break;
             }
         }
-    } while (FindNextFile(hFind, &findData));
 
-    FindClose(hFind);
+        // (6). Trim right spaces or newline from cleaned value
+        end = extractedValue + strlen(extractedValue) - 1;
+        while (end > extractedValue && (*end == ' ' || *end == '\t' || *end == '\n' || *end == '\r')) *end-- = '\0';
 
-    if (!found) result.code = 1; // Directory not found
+        // (7). Remove surrounding quotes
+        if ((extractedValue[0] == '"' || extractedValue[0] == '\'' || extractedValue[0] == '`')) {
+            char quoteType = extractedValue[0];
+            size_t len = strlen(extractedValue);
 
-    return result;
+            if (len >= 2 && extractedValue[len - 1] == quoteType) {
+                extractedValue[len - 1] = '\0';
+                extractedValue++;
+            }
+        }
+
+        // (8). Comparing keys - Final returning of the VALUE
+        if (strcmp(extractedKey, key) == 0) {
+            char *value = malloc(strlen(extractedValue) + 1);
+
+            if (!value) {
+                fclose(openedFile);
+                return NULL;
+            }
+
+            strcpy(value, extractedValue);
+            fclose(openedFile);
+            return value;
+        }
+    }
+
+    fclose(openedFile);
+    return NULL;
 }

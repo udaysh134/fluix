@@ -55,6 +55,100 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 30, 2025 - Thursday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Reviewed [Manikant's](https://github.com/manikant12aggi) code in bot.c .
+- Made possible changes in bot.c code, making it more neat and easy to understand.
+## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Assigned tasks to [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533), bot functions [bot.c] and optSignIn()[user.c] respectively.
+- Reviewed [Manikant's](https://github.com/manikant12aggi)code on optSignUp()[user.c]for possible bugs.
+- Initiated work on bot.c file.
+## 🗞️ <font color="#e36c09">Nov 27, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Cleaned up unused and commented code from `isUser()` function.
+- Removed `checkUsername()` and moved its logic directly into `isUser()` to reduce extra steps.
+- Fixed misplaced Nov 27th logs by moving them from the Nov 26th section to the correct date in `dev-reports.md`.
+- Refactored, reformatted and cleaned the code of `user.c` for clearer logic, expanding if-else code blocks.
+- Shifted input checks and switch case handling logic from `optSignIn()` & `optSignUp()` to `isUser()` function.
+- Added clear, structured instructions and improved documentation across `user.c`.
+- Included `bot.c` in project's Makefile to avoid future incompatability.
+
+
+## 🗞️ <font color="#e36c09">Nov 26, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added a clearer navigation step in `checkUsername()` before calling `optSignUp()` function in `user.c`.
+- The navigation system now first asks for the confirmation before jumping into the `optSignUp()` function.
+- Added more instructions inside `optSignUp()` for better clarity.
+
+
+## 🗞️ <font color="#e36c09">Nov 25, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Created `parseEnv()` function to parse env data dynamically.
+- Removed `getEnvValue()`, `loadEnvFromFile()` and related sub-functions to replace them with `parseEnv()`.
+- Adjusted and fixed code in `admin.c` to use new `parseEnv()` and optimized some code logic.
+- Removed commented section from [Yazdaan](https://github.com/SenorDan031) in `admin.c` and `main.c`.
+- Reformatted [Yazdaan](https://github.com/SenorDan031)'s logs for consistency.
+
+
+## 🗞️ <font color="#e36c09">Nov 24, 2025 - Monday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Created `getEnvValue()` and `loadEnvFromFile()` functions as env parsers, in `utils.c/h`.
+- Added `loadEnvFromFile()` function in `main.c` to load env file's data into a struct before initiation.
+- Added commented code in `admin.c` to replace visible configPass variable with the parser function.
+
+
+## 🗞️ <font color="#e36c09">Nov 23, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Nov 22, 2025 discussion and tasks, highlighting deadlines for all.
+- Corrected Nov 21st, 2025 dev-report entry by changing the day from Wednesday to Friday.
+
+
+## 🗞️ <font color="#e36c09">Nov 21, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Nov 21, 2025 discussion summary and task list.
+
+
+## 🗞️ <font color="#e36c09">Nov 5, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added `CONTRIBUTORS.md` file in the root directory.
+- Included structured tables for "Core Team" and "Other Contributors" with dynamic GitHub avatars.
+- Added contributor guidelines and acknowledgment section for future maintainers.
+- Finalized Markdown formatting and layout for readability and professionalism.
+- Added “**Meet the Contributors**” section in `README.md`.
+- Integrated clickable GitHub profile avatars of the Core Team with inline styles for rounded corners.
+- Linked to the detailed `CONTRIBUTORS.md` file for full roles and acknowledgments.
+- Ensured consistent avatar sizing and alignment for clean visual balance.
+
+
+## 🗞️ <font color="#e36c09">Nov 1, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Defined the main DB path as a global variable in `user.c` for easier updates and maintenance.
+- Added a new condition in `checkUsername()` to handle error code 3 from `searchDir()` function.
+- Completed basic testing of `searchDir()`’s "**List**" mode; all returned data verified successfully.
+
+
+## 🗞️ <font color="#e36c09">Oct 31, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added a new functionality : "Mode" parameter in `searchDir()` to allow two operations — searching a specific file/folder by name or listing all contents within a directory.
+- Refactored the entire function logic to support both modes and documented clear usage instructions for developers.
+- Reordered parameters name and mode for better readability and consistency.
+- Updated struct in `utils.h` to include new fields : `names` and `count`.
+- Modified `searchDir()` implementation in `user.c` to align with the updated structure.
+- Verified the function in `optSignIn()` using the "List" mode for successful testing.
+
+
+## 🗞️ <font color="#e36c09">Oct 30, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Integrated and refactored `password.c` to create a reusable `maskInput()` function in `utils.c` for terminal input masking.
+- Updated related declarations and logic in `utils.h` and `utils.c`.
+- Fixed the `scanf()` issue in `optSigIn()` and added a "**switch**" case structure to continue sign-in logic development.
+- Integrated `maskInput()` in `admin.c` to securely handle hidden passcode input.
+- Cleaned up formatting and minor issues across multiple files.
+- Removed `password.c` since its functionality was merged into the new `maskInput()` function.
+- Fixed few bugs and did some formatting in files like `launch.c`, `user.c` and `utils.c`.
+
+
 ## 🗞️ <font color="#e36c09">Oct 29, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Fixed re-execution issue in `launch()` by adding "return" statements at lines 33 and 36 in `launch.c`.

@@ -9,8 +9,13 @@ void exitThanks(char clearScreen);
 typedef struct {
     int code;
     char name[256];
+    char names[100][256];
+    int count;
 } SearchResult;
 
-SearchResult searchDir(char path[], char type[], char name[]);
+SearchResult searchDir(char path[], char type[], int mode, char name[]);
+
+void maskInput(char *destination, int maxSize);
+char *parseEnv(const char *file, const char *key);
 
 #endif
