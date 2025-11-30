@@ -55,6 +55,15 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Reviewed [Manikant's](https://github.com/manikant12aggi) code in bot.c .
+- Made possible changes in bot.c code, making it more neat and easy to understand.
+## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Assigned tasks to [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533), bot functions [bot.c] and optSignIn()[user.c] respectively.
+- Reviewed [Manikant's](https://github.com/manikant12aggi)code on optSignUp()[user.c]for possible bugs.
+- Initiated work on bot.c file.
 ## 🗞️ <font color="#e36c09">Nov 27, 2025 - Thursday</font>
 #### [Uday](https://github.com/udaysh134)
 - Cleaned up unused and commented code from `isUser()` function.
