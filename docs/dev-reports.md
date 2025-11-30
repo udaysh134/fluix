@@ -61,6 +61,11 @@ SUMMARY
 - Updated bot.c code, for more understanding and modularity.
 - Added bot.h file in src->backend->include folder.
 - Added a pre-processor directive command to enable importing of bot functions in user.c file.
+- Added QNA.h file in src->backend->include folder.
+- Renamed SEARCH Y1.c in tests folder to QNA.c
+- linked Ask_Fluix() in bot.c, bot ready to answer questions based on created database(dbstruct002.json)
+- QNA.h and updates on files : bot.c , user.c  QNA.c were made by [Yazdaan's](https://github.com/SenorDann) alternate ID i.e., SenorDann.
+
 ## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
 #### [Yazdaan](https://github.com/SenorDan031)
 - Assigned tasks to [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533), bot functions [bot.c] and optSignIn()[user.c] respectively.
