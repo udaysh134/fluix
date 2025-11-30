@@ -11,7 +11,7 @@
 
 #include "../include/user.h"
 #include "../packages/cJson/cJSON.h"
-<<<<<<< HEAD
+
 #include "../include/bot.h"
 
 #include "../include/QNA.h"
@@ -75,4 +75,5 @@ int main(){
 }
 
 */
+
 
