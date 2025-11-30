@@ -58,7 +58,9 @@ SUMMARY
 ## 🗞️ <font color="#e36c09">Nov 30, 2025 - Thursday</font>
 #### [Yazdaan](https://github.com/SenorDan031)
 - Reviewed [Manikant's](https://github.com/manikant12aggi) code in bot.c .
-- Made possible changes in bot.c code, making it more neat and easy to understand.
+- Updated bot.c code, for more understanding and modularity.
+- Added bot.h file in src->backend->include folder.
+- Added a pre-processor directive command to enable importing of bot functions in user.c file.
 ## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
 #### [Yazdaan](https://github.com/SenorDan031)
 - Assigned tasks to [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533), bot functions [bot.c] and optSignIn()[user.c] respectively.
