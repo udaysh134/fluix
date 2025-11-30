@@ -23,19 +23,9 @@ void Create_Bot();  //Once coded, this will allow user to create new bots {PENDI
 void Access_Bot(); //Once coded, this will allow user to access their bots {PENDING}
 void Edit_Bot();  //Once coded, this will allow user to edit their existing bots {PENDING}
 Void Ask_Fluix(); //Once coded, this will allow user to ask questions to their bot {DONE function uses: QNA.c , dbstruct002.json , cJSON library}
-=======
-//#include "../include/bot.h"
-//#include ""
-
+*/
+     
 /*
-// Declarations
-void Create_Bot();  //Once coded, this will allow user to create new bots {PENDING}
-void Access_Bot(); //Once coded, this will allow user to access their bots {PENDING}
-void Edit_Bot();  //Once coded, this will allow user to edit their existing bots {PENDING}
-Void Ask_Fluix(); //Once coded, this will allow user to ask questions to their bot {PENDING}
->>>>>>> 096ce807a092ea776605effecd39519bb7eeb99a
-
-
 void Access_Bot(){
 
      // Here, we will give user the choice to whether update, ask questions or delete their bot database
@@ -85,3 +75,4 @@ int main(){
 }
 
 */
+
