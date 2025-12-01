@@ -34,7 +34,9 @@ void Access_Bot(){
      char choice[7];
      printf("1. Ignite your curiousity with FLUIX");
      printf("\n2. Update your bot  ");
-     printf("\n3. Create a new bot\n")
+     printf("\n3. Create a new bot\n");
+     printf("4. Exit\n");
+     
    
      printf("Enter valid choice number from above options: ");
      fgets(choice,sizeof(choice),stdin);
