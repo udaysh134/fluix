@@ -63,12 +63,40 @@ void Access_Bot(){
           default:
                //invalid choice
                printf("Uhh-ohh!!\nYour input choice seems to be invalid :(\nPlease try again :)\n");
-               
+               break;
 
      }
 
 }
-
+void edit_Bot(){
+     //function to edit bot(database) according to user
+     printf("1.add new QnA pair");
+     printf("\n2.update existing QnA pair");
+     printf("\n3.delete existing QnA pair");
+     printf("\n4.exit");
+     char choice[7];
+     printf("\nEnter the valid choice number from above options:");
+     fgets(choice,sizeof(choice),stdin);
+     switch(choice){
+          case '1':
+               //To add new QnA Pair bot(database)
+               break;
+          case '2':
+               //To update existing QnA Pair bot(database)
+               break;
+          case '3':
+               //To delete existing QnA Pair bot(database)
+               break;
+          case '4':
+               //To exit from edit bot menu
+               printf("Exit from edit bot menu:\n");
+               break;
+          default:
+               //invalid choice
+               printf("your choice seems to be invalid.\n (:Please try again:)\n");
+               break;
+     }
+}
 
 int main(){
     return 0;
