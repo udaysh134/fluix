@@ -16,7 +16,7 @@
 // Declarations
 void optSignIn(char name[]);
 void optSignUp(char name[]);
-void *validateUsername(char name[]);
+char *validateUsername(char name[]);
 
 
 /*
@@ -159,8 +159,8 @@ void optSignIn(char name[]) {
      * 2. These options will be : "New Bot", "My Bots (...)", "Exit"
      * 3. Provide further functionalities by redirecting to bot.c
      */
-
-     printf("Sign In");
+    printf("Sign In : ");
+    printf("%s\n", name);
 }
 
 
@@ -171,37 +171,7 @@ void optSignUp(char name[]) {
      * 3. Direct the user to the "User Panel" with three options : "New Bot", "My Bots (...)", "Exit"
      * 4. Provide further functionalities by redirecting to bot.c
      */
-
-    while (1) {
-        if (validateUsername(name) != NULL) {break;} // username is valid
-        else{
-            printf("\nTry again.\n\n");}
-        // 4. Create directory inside db/
-        char userPath[50]= DB_PATH;
-        sprintf(userPath, name);
-
-        if (CreateDirectory(userPath, NULL)) 
-        { 
-            // Directory created successfully
-            printf(" User created successfully!\n");
-            printf(" Folder created: %s\n", userPath);
-
-            // 5. User is now in User Panel
-            printf("===== Welcome to User Panel, %s =====\n", name);
-            printf("You can now add your bots...\n");
-
-            // 6. Work is done
-            return;
-        }
-        else 
-        {
-            if (!CreateDirectory(userPath, NULL)) {
-                printf("Directory not created. Possibly already exists.\n");}
-            else{
-                printf("failed to create directory. error code");
-            }
-        }   
-    }
+    char *finalName = validateUsername(name);
 }
 
 
@@ -210,16 +180,60 @@ void optSignUp(char name[]) {
 MINOR FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
-void *validateUsername(char name[]) {
-    name[strcspn(name, "\n")] = '\0';
+char *validateUsername(char name[]) {
+    char *prefix = inputPrefix();
+    char *lsThin = lineSep('-', 50);
+    static char nameInput[17];
+    strcpy(nameInput, name);
 
-    if (isdigit(name[0])) {
-        return printf("%sError : You can't initiate a username with a number.%s", CMD_COL_RED, CMD_COL_RESET);
-    } else if (ispunct(name[0])) {
-        return printf("%sError : You can't initiate a username with a special character.%s", CMD_COL_RED, CMD_COL_RESET);
-    } else if (strlen(name) > 16) {
-        return printf("%sError : Your username cannot exceed 15 characters.%s", CMD_COL_RED, CMD_COL_RESET);
-    } else {
-        return name;
+    rptr4:
+    
+    nameInput[strcspn(nameInput, "\n")] = '\0';
+
+    if (isdigit(nameInput[0])) { // Error handling : In case, name starts with a number
+        printf("\n%s\n%sError : You can't initiate a username with a number.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
     }
+
+    if (ispunct(nameInput[0])) { // Error handling : In case, name starts with punctuations
+        printf("\n%s\n%sError : You can't initiate a username with a special character.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+        
+        goto rptr4;
+    }
+
+    if (strlen(nameInput) > 15) { // Error handling : In case, name contains more than 15 characters
+        printf("\n%s\n%sError : Your username cannot exceed 15 characters.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        eatBuffer();
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    if (strlen(nameInput) < 3) { // Error handling : In case, name contains less than 3 characters
+        printf("\n%s\n%sError : Your username needs to be of at least 3 letters.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    SearchResult res;
+    res = searchDir(DB_PATH, "folder", 0, nameInput);
+
+    if (res.code == 0) { // Error handling : In case, folder already exists
+        printf("\n%s\n%sError : Please choose another username, this already exists.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    free(lsThin);
+    return nameInput;
 }

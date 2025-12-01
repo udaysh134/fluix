@@ -61,6 +61,8 @@ SUMMARY
 - Fixed incorrect day labels in previous dev report headings.
 - Removed [Yazdaan](https://github.com/SenorDan031)'s dev reports entries of 29th Nov as they weren't any real changes made in the code base. Purpose of `dev-reports.md` is to only track all changes made by anyone, responsibly by themselves.
 - Rewrote [Yazdaan](https://github.com/SenorDan031)'s 30th Nov's dev entries for consistency.
+- Created `validateUsername()` function from scratch with two added error handlings and better response system.
+- Removed [Manikant](https://github.com/manikant12aggi)'s `optSignUp()` function's code as it was dysfunctional because of the 'while' loop.
 
 
 ## 🗞️ <font color="#e36c09">Dec 1, 2025 - Monday</font>
