@@ -55,6 +55,11 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 3, 2025 - Tuesday</font>
+#### [Yazdaan](https://github.com/SenorDan031)
+- Added more tag supports in dbstruct002.json file.
+- dbstruct002.json renamed to PSIT_INQ-json.
+- Fixed the alternate ID issue and 'merge conflict' code issues.
 ## 🗞️ <font color="#e36c09">Dec 2, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Removed leftover code from merge conflict in `user.c`.
