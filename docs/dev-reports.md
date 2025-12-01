@@ -55,6 +55,11 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 1, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Discussion 10 and tasks for Nov 27, 2025.
+
+
 ## 🗞️ <font color="#e36c09">Nov 30, 2025 - Thursday</font>
 #### [Yazdaan](https://github.com/SenorDan031)
 - Reviewed [Manikant's](https://github.com/manikant12aggi) code in bot.c .
