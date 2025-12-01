@@ -1,3 +1,17 @@
+## 🗓️ <font color="#e36c09">Nov 27, 2025 - - - - - - - - ></font>
+### <font color="#fac08f">Discussion 10 :</font>
+- Walked through the updated structure of `user.c` and explained why the changes were necessary.
+- Created flowcharts and visually broke down how the code has been flowing so far, and how it will progress going forward.
+- Discussed the upcoming “User Panel”, its options, and the functions behind them (like `createBot()` and `accessBots(...)` functions).
+- Talked about the planned structure of `bot.c` and how it will integrate with `user.c`.
+- Outlined the upcoming `data.c` module with functions like `view()`, `add()`, `edit()`, and `delete()`.
+- Revisited code modularity and how everything stays clean and organized, using `launch.c`, `admin.c`, and `user.c` (with its sub-functions) as examples.
+### <font color="#fac08f">Tasks :</font>
+- Finish watching the latest discussion video by the end of the day.
+- Get comfortable with the code structure, using the flowcharts as optional visual support for both the team and the general public.
+
+
+######
 ## 🗓️ <font color="#e36c09">Nov 22, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussion 9 :</font>
 - Set clear deadlines for each member based on their assigned tasks.

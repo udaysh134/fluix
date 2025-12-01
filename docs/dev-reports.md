@@ -55,22 +55,30 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
-## 🗞️ <font color="#e36c09">Nov 30, 2025 - Thursday</font>
-#### [Yazdaan](https://github.com/SenorDan031)
-- Reviewed [Manikant's](https://github.com/manikant12aggi) code in bot.c .
-- Updated bot.c code, for more understanding and modularity.
-- Added bot.h file in src->backend->include folder.
-- Added a pre-processor directive command to enable importing of bot functions in user.c file.
-- Added QNA.h file in src->backend->include folder.
-- Renamed SEARCH Y1.c in tests folder to QNA.c
-- linked Ask_Fluix() in bot.c, bot ready to answer questions based on created database(dbstruct002.json)
-- QNA.h and updates on files : bot.c , user.c  QNA.c were made by [Yazdaan's](https://github.com/SenorDann) alternate ID i.e., SenorDann.
+## 🗞️ <font color="#e36c09">Dec 2, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Removed leftover code from merge conflict in `user.c`.
+- Fixed incorrect day labels in previous dev report headings.
+- Removed [Yazdaan](https://github.com/SenorDan031)'s dev reports entries of 29th Nov as they weren't any real changes made in the code base. Purpose of `dev-reports.md` is to only track all changes made by anyone, responsibly by themselves.
+- Rewrote [Yazdaan](https://github.com/SenorDan031)'s 30th Nov's dev entries for consistency.
 
-## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
+
+## 🗞️ <font color="#e36c09">Dec 1, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Discussion 10 and tasks for Nov 27, 2025.
+
+
+## 🗞️ <font color="#e36c09">Nov 30, 2025 - Sunday</font>
 #### [Yazdaan](https://github.com/SenorDan031)
-- Assigned tasks to [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533), bot functions [bot.c] and optSignIn()[user.c] respectively.
-- Reviewed [Manikant's](https://github.com/manikant12aggi)code on optSignUp()[user.c]for possible bugs.
-- Initiated work on bot.c file.
+- Updated `bot.c` with commented out code of sub-functions planned to be used later on.
+- Added `bot.h` in `src/backend/include` directory.
+- Added the pre-processor directive to enable importing of bot functions in `user.c`.
+- Added `QNA.h` in `src/backend/include` directory.
+- Renamed `SEARCH Y1.c` to `QNA.c` from `/tests` folder.
+- Linked `Ask_Fluix()` function in `bot.c`.
+- `QNA.h` and updates on files : `bot.c`, `user.c` and `QNA.c` were made by [Yazdaan](https://github.com/SenorDann)'s alternate ID, [SenorDann](https://github.com/SenorDann).
+
+
 ## 🗞️ <font color="#e36c09">Nov 27, 2025 - Thursday</font>
 #### [Uday](https://github.com/udaysh134)
 - Cleaned up unused and commented code from `isUser()` function.

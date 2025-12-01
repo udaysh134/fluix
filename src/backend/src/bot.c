@@ -11,7 +11,7 @@
 
 #include "../include/user.h"
 #include "../packages/cJson/cJSON.h"
-<<<<<<< HEAD
+
 #include "../include/bot.h"
 
 #include "../include/QNA.h"
@@ -23,19 +23,9 @@ void Create_Bot();  //Once coded, this will allow user to create new bots {PENDI
 void Access_Bot(); //Once coded, this will allow user to access their bots {PENDING}
 void Edit_Bot();  //Once coded, this will allow user to edit their existing bots {PENDING}
 Void Ask_Fluix(); //Once coded, this will allow user to ask questions to their bot {DONE function uses: QNA.c , dbstruct002.json , cJSON library}
-=======
-//#include "../include/bot.h"
-//#include ""
-
+*/
+     
 /*
-// Declarations
-void Create_Bot();  //Once coded, this will allow user to create new bots {PENDING}
-void Access_Bot(); //Once coded, this will allow user to access their bots {PENDING}
-void Edit_Bot();  //Once coded, this will allow user to edit their existing bots {PENDING}
-Void Ask_Fluix(); //Once coded, this will allow user to ask questions to their bot {PENDING}
->>>>>>> 096ce807a092ea776605effecd39519bb7eeb99a
-
-
 void Access_Bot(){
 
      // Here, we will give user the choice to whether update, ask questions or delete their bot database
@@ -44,7 +34,9 @@ void Access_Bot(){
      char choice[7];
      printf("1. Ignite your curiousity with FLUIX");
      printf("\n2. Update your bot  ");
-     printf("\n3. Create a new bot\n")
+     printf("\n3. Create a new bot\n");
+     printf("4. Exit\n");
+     
    
      printf("Enter valid choice number from above options: ");
      fgets(choice,sizeof(choice),stdin);
@@ -73,12 +65,40 @@ void Access_Bot(){
           default:
                //invalid choice
                printf("Uhh-ohh!!\nYour input choice seems to be invalid :(\nPlease try again :)\n");
-               
+               break;
 
      }
 
 }
-
+void edit_Bot(){
+     //function to edit bot(database) according to user
+     printf("1.add new QnA pair");
+     printf("\n2.update existing QnA pair");
+     printf("\n3.delete existing QnA pair");
+     printf("\n4.exit");
+     char choice[7];
+     printf("\nEnter the valid choice number from above options:");
+     fgets(choice,sizeof(choice),stdin);
+     switch(choice){
+          case '1':
+               //To add new QnA Pair bot(database)
+               break;
+          case '2':
+               //To update existing QnA Pair bot(database)
+               break;
+          case '3':
+               //To delete existing QnA Pair bot(database)
+               break;
+          case '4':
+               //To exit from edit bot menu
+               printf("Exit from edit bot menu:\n");
+               break;
+          default:
+               //invalid choice
+               printf("your choice seems to be invalid.\n (:Please try again:)\n");
+               break;
+     }
+}
 
 int main(){
     return 0;
