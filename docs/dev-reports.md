@@ -55,11 +55,6 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
-## 🗞️ <font color="#e36c09">Dec 3, 2025 - Tuesday</font>
-#### [Yazdaan](https://github.com/SenorDan031)
-- Added more tag supports in dbstruct002.json file.
-- dbstruct002.json renamed to PSIT_INQ-json.
-- Fixed the alternate ID issue and 'merge conflict' code issues.
 ## 🗞️ <font color="#e36c09">Dec 2, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Removed leftover code from merge conflict in `user.c`.
@@ -68,6 +63,11 @@ SUMMARY
 - Rewrote [Yazdaan](https://github.com/SenorDan031)'s 30th Nov's dev entries for consistency.
 - Created `validateUsername()` function from scratch with two added error handlings and better response system.
 - Removed [Manikant](https://github.com/manikant12aggi)'s `optSignUp()` function's code as it was dysfunctional because of the 'while' loop.
+- Moved [Yazdaan](https://github.com/SenorDan031)'s wrongly dated dev entries into the correct (Dec 02, 2025) section and formatted it for consistency.
+#### [Yazdaan](https://github.com/SenorDan031)
+- Added more tag supports in `dbstruct002.json`.
+- Renamed `dbstruct002.json` to `PSIT_INQ-json`.
+- Fixed the alternate ID issue with the 'merge conflict' created in `bot.c/h`.
 
 
 ## 🗞️ <font color="#e36c09">Dec 1, 2025 - Monday</font>
