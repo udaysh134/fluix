@@ -17,6 +17,7 @@
 void optSignIn(char name[]);
 void optSignUp(char name[]);
 char *validateUsername(char name[]);
+void userPanel();
 
 
 /*
@@ -153,25 +154,50 @@ void isUser() {
 MAJOR FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
+// ------=>> | User with Sign In flow | <<=------
 void optSignIn(char name[]) {
-    /**
-     * 1. Directly provide the "User Panel" for this user with three options.
-     * 2. These options will be : "New Bot", "My Bots (...)", "Exit"
-     * 3. Provide further functionalities by redirecting to bot.c
-     */
-    printf("Sign In : ");
-    printf("%s\n", name);
+    char *lsThin = lineSep('-', 50);
+
+    printf("%s\nTrying to gather resources to log you in!", lsThin);
+    Sleep(2000);
+    printf("\nPlease wait...");
+    Sleep(2000);
+    system("cls");
+
+    free(lsThin);
+    userPanel();
 }
 
 
+// ------=>> | User with Sign Up flow | <<=------
 void optSignUp(char name[]) {
-    /**
-     * 1. Run the validation of username in a loop, untill it's validated.
-     * 2. Create a folder for the user, "src/db/<validated_username>".
-     * 3. Direct the user to the "User Panel" with three options : "New Bot", "My Bots (...)", "Exit"
-     * 4. Provide further functionalities by redirecting to bot.c
-     */
-    char *finalName = validateUsername(name);
+    char path[] = DB_PATH;
+    char *finalUsername = validateUsername(name);
+    char *lsThin = lineSep('-', 50);
+
+    strcat(path, finalUsername);
+
+    if (CreateDirectory(path, NULL)) {
+        printf("%s\nSuccess! A user was created with the name %s\"%s\"%s", lsThin, CMD_COL_GREEN, finalUsername, CMD_COL_RESET);
+        Sleep(2000);
+        printf("\nRedirecting to your User Panel...");
+        Sleep(2000);
+        system("cls");
+
+        free(lsThin);
+        userPanel();
+    } else {
+        printf("%s\n%sAn internal error occurred! Please contact your developers.\n", lsThin, CMD_COL_RED);
+        Sleep(1000);
+
+        printf("Exiting the program!%s", CMD_COL_RESET);
+        Sleep(2000);
+
+        free(lsThin);
+        exit(0);
+    }
+
+    free(lsThin);
 }
 
 
@@ -236,4 +262,9 @@ char *validateUsername(char name[]) {
 
     free(lsThin);
     return nameInput;
+}
+
+
+void userPanel() {
+
 }

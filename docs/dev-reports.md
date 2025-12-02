@@ -64,6 +64,8 @@ SUMMARY
 - Created `validateUsername()` function from scratch with two added error handlings and better response system.
 - Removed [Manikant](https://github.com/manikant12aggi)'s `optSignUp()` function's code as it was dysfunctional because of the 'while' loop.
 - Moved [Yazdaan](https://github.com/SenorDan031)'s wrongly dated dev entries into the correct (Dec 02, 2025) section and formatted it for consistency.
+- Created another function `userPanel()` in `user.c` to further divide module in readable and understandable code structure.
+- Completed `optSignIn()` and `optSignUp()` functions, redirecting both into new `userPanel()` function.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added more tag supports in `dbstruct002.json`.
 - Renamed `dbstruct002.json` to `PSIT_INQ-json`.
