@@ -17,7 +17,7 @@
 void optSignIn(char name[]);
 void optSignUp(char name[]);
 char *validateUsername(char name[]);
-void userPanel();
+void userPanel(char dir[], char username[]);
 
 
 /*
@@ -156,7 +156,10 @@ MAJOR FUNCTIONS
 */
 // ------=>> | User with Sign In flow | <<=------
 void optSignIn(char name[]) {
+    char path[256];
     char *lsThin = lineSep('-', 50);
+
+    snprintf(path, sizeof(path), "%s%s", DB_PATH, name);
 
     printf("%s\nPlease wait...", lsThin);
     Sleep(2000);
@@ -165,7 +168,7 @@ void optSignIn(char name[]) {
     system("cls");
 
     free(lsThin);
-    userPanel();
+    userPanel(path, name);
 }
 
 
@@ -185,7 +188,7 @@ void optSignUp(char name[]) {
         system("cls");
 
         free(lsThin);
-        userPanel();
+        userPanel(path, finalUsername);
     } else {
         printf("%s\n%sAn internal error occurred! Please contact your developers.\n", lsThin, CMD_COL_RED);
         Sleep(1000);
@@ -265,33 +268,46 @@ char *validateUsername(char name[]) {
 
 
 // ------=>> | Final User Panel for both Sign In and Sign Up flow | <<=------
-void userPanel() {
+void userPanel(char dir[], char username[]) {
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
+    int fileCount = 0;
+
+    SearchResult res;
+    res = searchDir(dir, "file", 1, "");
+    if (res.code == 0) fileCount = res.count;
 
     system("cls");
 
-    printf("%s\n%s\t\t   User Panel%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, lsThick, lsThin);
+    printf("%s\n%s\t  USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
     printf("%s %sWhat next? : %s", prefix,  CMD_COL_CYAN, CMD_COL_RESET);
     
     char selection = getchar();
     eatBuffer();
 
     switch (tolower(selection)) {
-    case 'n':
+        case 'n':
+            createBot();
+            break;
+        case 'a':
+            if (fileCount == 0) {
+                printf("%sYou don't currently have any bot. Create a new bot first!%s", CMD_COL_RED, CMD_COL_RESET);
+            } else {
+                accessBots();
+            }
+
+            break;
+        case 'd':
         
-        break;
-    case 'a':
-        
-        break;
-    case 'r':
-        system("cls");
-        return;
-    case '0':
-        exitThanks('y');
-        exit(0);
-    default:
-        printf("%sYou gave an invalid input! Please choose among these only - N/A/R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            break;
+        case 'r':
+            system("cls");
+            return;
+        case '0':
+            exitThanks('y');
+            exit(0);
+        default:
+            printf("%sYou gave an invalid input! Please choose among these only - N/A/D/R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
     }
 }

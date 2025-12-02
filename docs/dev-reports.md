@@ -69,6 +69,9 @@ SUMMARY
 - Added folder `./assets/flowcharts` with `.png` flowchart files to clarify and get a better understanding of backend process line.
 - Finalized User Panel layout with working navigation options and fixed buffer overflow in `optSignUp()`.
 - Updated `admin.c` with two new menu options and refactored `launch.c` to support the new streamlined navigation flow.
+- Added parameter and `searchDir()` code to `userPanel()` to display username and available bots.
+- Updated User Panel layout for consistent data formatting and presentation.
+- Added a new menu option in User Panel for deleting the user account via switch-case.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added more tag supports in `dbstruct002.json`.
 - Renamed `dbstruct002.json` to `PSIT_INQ-json`.
