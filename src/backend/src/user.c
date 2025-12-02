@@ -163,7 +163,7 @@ void optSignIn(char name[]) {
 
     printf("%s\nPlease wait...", lsThin);
     Sleep(2000);
-    printf("\nTrying to log you in...");
+    printf("\nLogging you in...");
     Sleep(2000);
     system("cls");
 
@@ -183,7 +183,7 @@ void optSignUp(char name[]) {
     if (CreateDirectory(path, NULL)) {
         printf("%s\nSuccess! A user was created with the name %s\"%s\"%s", lsThin, CMD_COL_GREEN, finalUsername, CMD_COL_RESET);
         Sleep(2000);
-        printf("\nRedirecting to your User Panel...");
+        printf("\nTaking you to your User Panel...");
         Sleep(2000);
         system("cls");
 
@@ -278,11 +278,16 @@ void userPanel(char dir[], char username[]) {
     res = searchDir(dir, "file", 1, "");
     if (res.code == 0) fileCount = res.count;
 
+
+    // Actual User Panel starts from here
+    rptr5:
     system("cls");
 
-    printf("%s\n%s\t  USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
+    char printOptions[1024];
+    snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
+    printf(printOptions);
+
     printf("%s %sWhat next? : %s", prefix,  CMD_COL_CYAN, CMD_COL_RESET);
-    
     char selection = getchar();
     eatBuffer();
 
@@ -292,14 +297,72 @@ void userPanel(char dir[], char username[]) {
             break;
         case 'a':
             if (fileCount == 0) {
-                printf("%sYou don't currently have any bot. Create a new bot first!%s", CMD_COL_RED, CMD_COL_RESET);
+                printf("%sYou don't currently have any bot. Create a new bot first!%s\n", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr5;
             } else {
                 accessBots();
             }
 
             break;
         case 'd':
-        
+            rptr6:
+
+            system("cls");
+            printf(printOptions);
+            printf("%s %sAre you sure you want to delete your account? This is irreversible! (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+
+            char choice = tolower(getchar());
+            eatBuffer();
+
+            if (choice == 'y') {
+                int delStatus = deleteDir(dir);
+
+                if (delStatus == 0) {
+                    printf("%sAn internal error occured while deleting your account. Please try again later!%s", CMD_COL_RED, CMD_COL_RESET);
+                    Sleep(1000);
+
+                    printf("Exiting the program!%s", CMD_COL_RESET);
+                    Sleep(2000);
+
+                    free(lsThick);
+                    free(lsThin);
+                    exit(0);
+                } else if (delStatus == 1) {
+                    printf("%s Deletion in progress...", prefix);
+                    Sleep(3000);
+
+                    system("cls");
+                    printf(printOptions);
+                    printf("%s Your account %s\"%s\"%s was successfully deleted from our database.", prefix, CMD_COL_RED, username, CMD_COL_RESET);
+                    Sleep(5000);
+                    printf("\n%s Redirecting you to the main menu...", prefix);
+                    Sleep(4000);
+
+                    system("cls");
+
+                    free(lsThick);
+                    free(lsThin);
+
+                    break;
+                } else {
+                    printf("%sAn internal error occured while deleting your account. Please try again later!%s", CMD_COL_RED, CMD_COL_RESET);
+                    Sleep(1000);
+
+                    printf("Exiting the program!%s", CMD_COL_RESET);
+                    Sleep(2000);
+
+                    free(lsThick);
+                    free(lsThin);
+                    exit(0);
+                }
+            } else if (choice == 'n') {
+                goto rptr5;
+            } else {
+                printf("%sPlease provide a valid input. Answer with either \'Y\' or \'N\'.%s", CMD_COL_RED, CMD_COL_RESET);
+                Sleep(3000);
+                goto rptr6;
+            }
+            
             break;
         case 'r':
             system("cls");
@@ -309,5 +372,6 @@ void userPanel(char dir[], char username[]) {
             exit(0);
         default:
             printf("%sYou gave an invalid input! Please choose among these only - N/A/D/R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptr5;
     }
 }

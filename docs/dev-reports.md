@@ -72,6 +72,8 @@ SUMMARY
 - Added parameter and `searchDir()` code to `userPanel()` to display username and available bots.
 - Updated User Panel layout for consistent data formatting and presentation.
 - Added a new menu option in User Panel for deleting the user account via switch-case.
+- Added `deleteDir()` function in `utils.c` for removing folders recursively.
+- Completed the `userPanel()` function in `user.c` with extra addition of 'delete my account' functionality.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added more tag supports in `dbstruct002.json`.
 - Renamed `dbstruct002.json` to `PSIT_INQ-json`.
