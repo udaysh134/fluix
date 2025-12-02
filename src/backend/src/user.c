@@ -1,7 +1,7 @@
 // Headers
 #include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
+#include <windows.h>
 #include <ctype.h>
 #include <string.h>
 
@@ -158,9 +158,9 @@ MAJOR FUNCTIONS
 void optSignIn(char name[]) {
     char *lsThin = lineSep('-', 50);
 
-    printf("%s\nTrying to gather resources to log you in!", lsThin);
+    printf("%s\nPlease wait...", lsThin);
     Sleep(2000);
-    printf("\nPlease wait...");
+    printf("\nTrying to log you in...");
     Sleep(2000);
     system("cls");
 
@@ -171,11 +171,11 @@ void optSignIn(char name[]) {
 
 // ------=>> | User with Sign Up flow | <<=------
 void optSignUp(char name[]) {
-    char path[] = DB_PATH;
+    char path[256];
     char *finalUsername = validateUsername(name);
     char *lsThin = lineSep('-', 50);
 
-    strcat(path, finalUsername);
+    snprintf(path, sizeof(path), "%s%s", DB_PATH, finalUsername);
 
     if (CreateDirectory(path, NULL)) {
         printf("%s\nSuccess! A user was created with the name %s\"%s\"%s", lsThin, CMD_COL_GREEN, finalUsername, CMD_COL_RESET);
@@ -196,8 +196,6 @@ void optSignUp(char name[]) {
         free(lsThin);
         exit(0);
     }
-
-    free(lsThin);
 }
 
 
@@ -206,6 +204,7 @@ void optSignUp(char name[]) {
 HELPER FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
+// ------=>> | Validate username all from one place | <<=------
 char *validateUsername(char name[]) {
     char *prefix = inputPrefix();
     char *lsThin = lineSep('-', 50);
@@ -265,6 +264,34 @@ char *validateUsername(char name[]) {
 }
 
 
+// ------=>> | Final User Panel for both Sign In and Sign Up flow | <<=------
 void userPanel() {
+    char *prefix = inputPrefix();
+    char *lsThick = lineSep('=', 50);
+    char *lsThin = lineSep('-', 50);
 
+    system("cls");
+
+    printf("%s\n%s\t\t   User Panel%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, lsThick, lsThin);
+    printf("%s %sWhat next? : %s", prefix,  CMD_COL_CYAN, CMD_COL_RESET);
+    
+    char selection = getchar();
+    eatBuffer();
+
+    switch (tolower(selection)) {
+    case 'n':
+        
+        break;
+    case 'a':
+        
+        break;
+    case 'r':
+        system("cls");
+        return;
+    case '0':
+        exitThanks('y');
+        exit(0);
+    default:
+        printf("%sYou gave an invalid input! Please choose among these only - N/A/R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+    }
 }
