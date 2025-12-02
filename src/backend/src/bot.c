@@ -1,20 +1,20 @@
-//file: bot.c
-//Description: File which will integrate QnA, parser aand other essential parsers functions
-//Required files to initiate bot.c: user.c, db.JSON, parser.env
+// Headers
+#include <stdio.h>
+
+#include "../include/colors.h"
+#include "../include/utils.h"
 
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<windows.h>
-#include <ctype.h>
+/*
+----------------------------------------------------------------------------------------------------
+MAIN FUNCTIONS
+----------------------------------------------------------------------------------------------------
+*/
+void createBot() {};
+void accessBots() {};
 
-#include "../include/user.h"
-#include "../packages/cJson/cJSON.h"
 
-#include "../include/bot.h"
 
-#include "../include/QNA.h"
 
 
 /*
@@ -103,5 +103,4 @@ void edit_Bot(){
 int main(){
     return 0;
 }
-
 */

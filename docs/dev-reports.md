@@ -74,6 +74,10 @@ SUMMARY
 - Added a new menu option in User Panel for deleting the user account via switch-case.
 - Added `deleteDir()` function in `utils.c` for removing folders recursively.
 - Completed the `userPanel()` function in `user.c` with extra addition of 'delete my account' functionality.
+- Added `data.c/h` as per the flowchart's plan, to continue code flow from `bot.c` to `data.c` and its functions.
+- Moved `QNA.h` from `src/backend/include` to `src/backend/tests`, as everything will lead up to `bot.c` and `data.c`.
+- Added `createBot()` and `accessBots()` functions as declarations in `bot.c/h`, as per the pre-mapped plan.
+- Added `optView()`, `optAdd()`, `optEdit()` and `optDelete()` functions as declarations in `data.c/h`.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added more tag supports in `dbstruct002.json`.
 - Renamed `dbstruct002.json` to `PSIT_INQ.json`.

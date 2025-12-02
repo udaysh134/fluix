@@ -1,6 +1,7 @@
 #ifndef BOT_H
 #define BOT_H
 
-void Access_Bot();
+void createBot();
+void accessBots();
 
-#endif //BOT_H
+#endif
