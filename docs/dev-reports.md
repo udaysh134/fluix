@@ -66,6 +66,7 @@ SUMMARY
 - Moved [Yazdaan](https://github.com/SenorDan031)'s wrongly dated dev entries into the correct (Dec 02, 2025) section and formatted it for consistency.
 - Created another function `userPanel()` in `user.c` to further divide module in readable and understandable code structure.
 - Completed `optSignIn()` and `optSignUp()` functions, redirecting both into new `userPanel()` function.
+- Added folder `./assets/flowcharts` with `.png` flowchart files to clarify and get a better understanding of backend process line.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added more tag supports in `dbstruct002.json`.
 - Renamed `dbstruct002.json` to `PSIT_INQ-json`.
