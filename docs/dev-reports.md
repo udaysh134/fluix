@@ -76,7 +76,7 @@ SUMMARY
 - Completed the `userPanel()` function in `user.c` with extra addition of 'delete my account' functionality.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added more tag supports in `dbstruct002.json`.
-- Renamed `dbstruct002.json` to `PSIT_INQ-json`.
+- Renamed `dbstruct002.json` to `PSIT_INQ.json`.
 - Fixed the alternate ID issue with the 'merge conflict' created in `bot.c/h`.
 
 
