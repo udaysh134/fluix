@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 3, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Renamed `dbStruct.json` to `dataSchema.json` for clearer purpose.
+- Updated the data saving structure of `dataSchema.json` to include "**schemaVersion**" and "**bot**" metadata keys.
+- Moved all entries under a single "**entries**" key and removed the "**time**" field to simplify future data fetching.
+
+
 ## 🗞️ <font color="#e36c09">Dec 2, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Removed leftover code from merge conflict in `user.c`.
