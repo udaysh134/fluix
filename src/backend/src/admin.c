@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <Windows.h>
+#include <ctype.h>
 
 #include "../include/admin.h"
 #include "../include/colors.h"
@@ -47,22 +48,25 @@ void isAdmin() {
 
         if (strcmp(pass, configPass) == 0) {
             system("cls");
-            printf("%sAdmin Panel%s\n%s\nThere's nothing to show here for now.\n%s\n", CMD_COL_GREEN, CMD_COL_RESET, lsThick, lsThin);
-            Sleep(2000);
-            printf("%s%sPress \"Enter\" to go back or \"0\" to exit : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+            printf("%s\n%s\t\t   ADMIN PANEL%s\n%s\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, lsThick, lsThin);
+            printf("%s%sWhat now? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
 
             free(configPass);
             free(lsThick);
             free(lsThin);
 
-            char jumpCode_2 = getchar();
+            char selection = getchar();
 
-            if(jumpCode_2 == 48) { // 48 is 0 in ASCII
-                exitThanks('y');
-                exit(0);
-            } else {
-                system("cls");
-                return;
+            switch (tolower(selection)) {
+                case 'r':
+                    system("cls");
+                    return;
+                case '0':
+                    exitThanks('y');
+                    exit(0);
+                default:
+                    printf("%sYou gave an invalid input! Please choose among these only - R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+                    break;
             }
         } else if (strcmp(pass, jumpCode_1) == 0) {
             system("cls");

@@ -2,7 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 #include "../packages/cJson/cJSON.h"
-
+//#include "../include/QNA.h"
+#define QNA_DATABASE_PATH "../tests/dbstruct002.json"
 
 void toLowerCase(char *str) {
     for (int i = 0; str[i]; i++) {
@@ -15,10 +16,10 @@ void removeNewline(char *str) {
     str[strcspn(str, "\n")] = '\0';
 }
 //Ask_fluix function definition
-int main() {
-    FILE *fp = fopen("dbstruct002.json", "r");
+int Ask_Fluix() {
+    FILE *fp = fopen(QNA_DATABASE_PATH, "r");
     if (!fp) {
-        printf("Could not open dbstruct002.json\n");
+        printf("Could not open dbstruct002.json at file path: %s\n", QNA_DATABASE_PATH);
         return 1;
     }
 
@@ -98,6 +99,7 @@ int main() {
         }
     }
 
-    cJSON_Delete(json); 
+    cJSON_Delete(json);
     return 0;
 }
+ 

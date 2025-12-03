@@ -1,0 +1,39 @@
+{
+    "schemaVersion": 1.0,
+    "bot": {
+        "id": 1,
+        "name": "",
+        "description": "",
+        "tags": ["", "", ""],
+        "entryCount": 3,
+        "owner": "",
+        "createdAt": 1738889015,
+        "modifiedAt": 1738889015
+    },
+    "entries": [
+        {
+            "id": 1,
+            "tags": ["", "", ""],
+            "ques": "",
+            "ans": ["", ""],
+            "createdAt": 1738889015,
+            "modifiedAt": 1738889015
+        },
+        {
+            "id": 2,
+            "tags": ["", "", ""],
+            "ques": "",
+            "ans": ["", ""],
+            "createdAt": 1738889015,
+            "modifiedAt": 1738889015
+        },
+        {
+            "id": 3,
+            "tags": ["", "", ""],
+            "ques": "",
+            "ans": ["", ""],
+            "createdAt": 1738889015,
+            "modifiedAt": 1738889015
+        }
+    ]
+}

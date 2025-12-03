@@ -1,13 +1,14 @@
 // Headers
 #include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
+#include <windows.h>
 #include <ctype.h>
 #include <string.h>
 
 #include "../include/user.h"
 #include "../include/colors.h"
 #include "../include/utils.h"
+#include "../include/bot.h"
 
 // Definitions
 #define DB_PATH ".\\src\\db\\"
@@ -15,7 +16,8 @@
 // Declarations
 void optSignIn(char name[]);
 void optSignUp(char name[]);
-void *validateUsername(char name[]);
+char *validateUsername(char name[]);
+void userPanel(char dir[], char username[]);
 
 
 /*
@@ -152,74 +154,224 @@ void isUser() {
 MAJOR FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
+// ------=>> | User with Sign In flow | <<=------
 void optSignIn(char name[]) {
-    /**
-     * 1. Directly provide the "User Panel" for this user with three options.
-     * 2. These options will be : "New Bot", "My Bots (...)", "Exit"
-     * 3. Provide further functionalities by redirecting to bot.c
-     */
+    char path[256];
+    char *lsThin = lineSep('-', 50);
 
-     printf("Sign In");
+    snprintf(path, sizeof(path), "%s%s", DB_PATH, name);
+
+    printf("%s\nPlease wait...", lsThin);
+    Sleep(2000);
+    printf("\nLogging you in...");
+    Sleep(2000);
+    system("cls");
+
+    free(lsThin);
+    userPanel(path, name);
 }
 
 
-void optSignUp(char name[]) 
-{
-    /**
-     * 1. Run the validation of username in a loop, untill it's validated.
-     * 2. Create a folder for the user, "src/db/<validated_username>".
-     * 3. Direct the user to the "User Panel" with three options : "New Bot", "My Bots (...)", "Exit"
-     * 4. Provide further functionalities by redirecting to bot.c
-     */
-    while (1) {
-        if (validateUsername(name) != NULL) {break;} // username is valid
-        else{
-            printf("\nTry again.\n\n");}
-        // 4. Create directory inside db/
-        char userPath[50]= DB_PATH;
-        sprintf(userPath, name);
+// ------=>> | User with Sign Up flow | <<=------
+void optSignUp(char name[]) {
+    char path[256];
+    char *finalUsername = validateUsername(name);
+    char *lsThin = lineSep('-', 50);
 
-        if (CreateDirectory(userPath, NULL)) 
-        { 
-            // Directory created successfully
-            printf(" User created successfully!\n");
-            printf(" Folder created: %s\n", userPath);
+    snprintf(path, sizeof(path), "%s%s", DB_PATH, finalUsername);
 
-            // 5. User is now in User Panel
-            printf("===== Welcome to User Panel, %s =====\n", name);
-            printf("You can now add your bots...\n");
+    if (CreateDirectory(path, NULL)) {
+        printf("%s\nSuccess! A user was created with the name %s\"%s\"%s", lsThin, CMD_COL_GREEN, finalUsername, CMD_COL_RESET);
+        Sleep(2000);
+        printf("\nTaking you to your User Panel...");
+        Sleep(2000);
+        system("cls");
 
-            // 6. Work is done
-            return;
-        }
-        else 
-        {
-            if (!CreateDirectory(userPath, NULL)) {
-                printf("Directory not created. Possibly already exists.\n");}
-            else{
-                printf("failed to create directory. error code");
-            }
-        }   
+        free(lsThin);
+        userPanel(path, finalUsername);
+    } else {
+        printf("%s\n%sAn internal error occurred! Please contact your developers.\n", lsThin, CMD_COL_RED);
+        Sleep(1000);
+
+        printf("Exiting the program!%s", CMD_COL_RESET);
+        Sleep(2000);
+
+        free(lsThin);
+        exit(0);
     }
 }
 
 
-
 /*
 ----------------------------------------------------------------------------------------------------
-MINOR FUNCTIONS
+HELPER FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
-void *validateUsername(char name[]) {
-    name[strcspn(name, "\n")] = '\0';
+// ------=>> | Validate username all from one place | <<=------
+char *validateUsername(char name[]) {
+    char *prefix = inputPrefix();
+    char *lsThin = lineSep('-', 50);
+    static char nameInput[17];
+    strcpy(nameInput, name);
 
-    if (isdigit(name[0])) {
-        return printf("%sError : You can't initiate a username with a number.%s", CMD_COL_RED, CMD_COL_RESET);
-    } else if (ispunct(name[0])) {
-        return printf("%sError : You can't initiate a username with a special character.%s", CMD_COL_RED, CMD_COL_RESET);
-    } else if (strlen(name) > 16) {
-        return printf("%sError : Your username cannot exceed 15 characters.%s", CMD_COL_RED, CMD_COL_RESET);
-    } else {
-        return name;
+    rptr4:
+    
+    nameInput[strcspn(nameInput, "\n")] = '\0';
+
+    if (isdigit(nameInput[0])) { // Error handling : In case, name starts with a number
+        printf("\n%s\n%sError : You can't initiate a username with a number.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    if (ispunct(nameInput[0])) { // Error handling : In case, name starts with punctuations
+        printf("\n%s\n%sError : You can't initiate a username with a special character.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+        
+        goto rptr4;
+    }
+
+    if (strlen(nameInput) > 15) { // Error handling : In case, name contains more than 15 characters
+        printf("\n%s\n%sError : Your username cannot exceed 15 characters.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        eatBuffer();
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    if (strlen(nameInput) < 3) { // Error handling : In case, name contains less than 3 characters
+        printf("\n%s\n%sError : Your username needs to be of at least 3 letters.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    SearchResult res;
+    res = searchDir(DB_PATH, "folder", 0, nameInput);
+
+    if (res.code == 0) { // Error handling : In case, folder already exists
+        printf("\n%s\n%sError : Please choose another username, this already exists.%s\n", lsThin, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s%sPlease provide a new updated username : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        fgets(nameInput, sizeof(nameInput), stdin);
+
+        goto rptr4;
+    }
+
+    free(lsThin);
+    return nameInput;
+}
+
+
+// ------=>> | Final User Panel for both Sign In and Sign Up flow | <<=------
+void userPanel(char dir[], char username[]) {
+    char *prefix = inputPrefix();
+    char *lsThick = lineSep('=', 50);
+    char *lsThin = lineSep('-', 50);
+    int fileCount = 0;
+
+    SearchResult res;
+    res = searchDir(dir, "file", 1, "");
+    if (res.code == 0) fileCount = res.count;
+
+
+    // Actual User Panel starts from here
+    rptr5:
+    system("cls");
+
+    char printOptions[1024];
+    snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
+    printf(printOptions);
+
+    printf("%s %sWhat next? : %s", prefix,  CMD_COL_CYAN, CMD_COL_RESET);
+    char selection = getchar();
+    eatBuffer();
+
+    switch (tolower(selection)) {
+        case 'n':
+            createBot();
+            break;
+        case 'a':
+            if (fileCount == 0) {
+                printf("%sYou don't currently have any bot. Create a new bot first!%s\n", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr5;
+            } else {
+                accessBots();
+            }
+
+            break;
+        case 'd':
+            rptr6:
+
+            system("cls");
+            printf(printOptions);
+            printf("%s %sAre you sure you want to delete your account? This is irreversible! (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+
+            char choice = tolower(getchar());
+            eatBuffer();
+
+            if (choice == 'y') {
+                int delStatus = deleteDir(dir);
+
+                if (delStatus == 0) {
+                    printf("%sAn internal error occured while deleting your account. Please try again later!%s", CMD_COL_RED, CMD_COL_RESET);
+                    Sleep(1000);
+
+                    printf("Exiting the program!%s", CMD_COL_RESET);
+                    Sleep(2000);
+
+                    free(lsThick);
+                    free(lsThin);
+                    exit(0);
+                } else if (delStatus == 1) {
+                    printf("%s Deletion in progress...", prefix);
+                    Sleep(3000);
+
+                    system("cls");
+                    printf(printOptions);
+                    printf("%s Your account %s\"%s\"%s was successfully deleted from our database.", prefix, CMD_COL_RED, username, CMD_COL_RESET);
+                    Sleep(5000);
+                    printf("\n%s Redirecting you to the main menu...", prefix);
+                    Sleep(4000);
+
+                    system("cls");
+
+                    free(lsThick);
+                    free(lsThin);
+
+                    break;
+                } else {
+                    printf("%sAn internal error occured while deleting your account. Please try again later!%s", CMD_COL_RED, CMD_COL_RESET);
+                    Sleep(1000);
+
+                    printf("Exiting the program!%s", CMD_COL_RESET);
+                    Sleep(2000);
+
+                    free(lsThick);
+                    free(lsThin);
+                    exit(0);
+                }
+            } else if (choice == 'n') {
+                goto rptr5;
+            } else {
+                printf("%sPlease provide a valid input. Answer with either \'Y\' or \'N\'.%s", CMD_COL_RED, CMD_COL_RESET);
+                Sleep(3000);
+                goto rptr6;
+            }
+            
+            break;
+        case 'r':
+            system("cls");
+            return;
+        case '0':
+            exitThanks('y');
+            exit(0);
+        default:
+            printf("%sYou gave an invalid input! Please choose among these only - N/A/D/R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptr5;
     }
 }

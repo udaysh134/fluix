@@ -55,15 +55,59 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
-## 🗞️ <font color="#e36c09">Nov 30, 2025 - Thursday</font>
+## 🗞️ <font color="#e36c09">Dec 3, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Renamed `dbStruct.json` to `dataSchema.json` for clearer purpose.
+- Updated the data saving structure of `dataSchema.json` to include "**schemaVersion**" and "**bot**" metadata keys.
+- Moved all entries under a single "**entries**" key and removed the "**time**" field to simplify future data fetching.
+- Updated discussion and tasks of 2nd Dec 2025 in `activity-records.md`.
+
+
+## 🗞️ <font color="#e36c09">Dec 2, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Removed leftover code from merge conflict in `user.c`.
+- Fixed incorrect day labels in previous dev report headings.
+- Removed [Yazdaan](https://github.com/SenorDan031)'s dev reports entries of 29th Nov as they weren't any real changes made in the code base. Purpose of `dev-reports.md` is to only track all changes made by anyone, responsibly by themselves.
+- Rewrote [Yazdaan](https://github.com/SenorDan031)'s 30th Nov's dev entries for consistency.
+- Created `validateUsername()` function from scratch with two added error handlings and better response system.
+- Removed [Manikant](https://github.com/manikant12aggi)'s `optSignUp()` function's code as it was dysfunctional because of the 'while' loop.
+- Moved [Yazdaan](https://github.com/SenorDan031)'s wrongly dated dev entries into the correct (Dec 02, 2025) section and formatted it for consistency.
+- Created another function `userPanel()` in `user.c` to further divide module in readable and understandable code structure.
+- Completed `optSignIn()` and `optSignUp()` functions, redirecting both into new `userPanel()` function.
+- Added folder `./assets/flowcharts` with `.png` flowchart files to clarify and get a better understanding of backend process line.
+- Finalized User Panel layout with working navigation options and fixed buffer overflow in `optSignUp()`.
+- Updated `admin.c` with two new menu options and refactored `launch.c` to support the new streamlined navigation flow.
+- Added parameter and `searchDir()` code to `userPanel()` to display username and available bots.
+- Updated User Panel layout for consistent data formatting and presentation.
+- Added a new menu option in User Panel for deleting the user account via switch-case.
+- Added `deleteDir()` function in `utils.c` for removing folders recursively.
+- Completed the `userPanel()` function in `user.c` with extra addition of 'delete my account' functionality.
+- Added `data.c/h` as per the flowchart's plan, to continue code flow from `bot.c` to `data.c` and its functions.
+- Moved `QNA.h` from `src/backend/include` to `src/backend/tests`, as everything will lead up to `bot.c` and `data.c`.
+- Added `createBot()` and `accessBots()` functions as declarations in `bot.c/h`, as per the pre-mapped plan.
+- Added `optView()`, `optAdd()`, `optEdit()` and `optDelete()` functions as declarations in `data.c/h`.
 #### [Yazdaan](https://github.com/SenorDan031)
-- Reviewed [Manikant's](https://github.com/manikant12aggi) code in bot.c .
-- Made possible changes in bot.c code, making it more neat and easy to understand.
-## 🗞️ <font color="#e36c09">Nov 29, 2025 - Thursday</font>
+- Added more tag supports in `dbstruct002.json`.
+- Renamed `dbstruct002.json` to `PSIT_INQ.json`.
+- Fixed the alternate ID issue with the 'merge conflict' created in `bot.c/h`.
+
+
+## 🗞️ <font color="#e36c09">Dec 1, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `activity-records.md` with Discussion 10 and tasks for Nov 27, 2025.
+
+
+## 🗞️ <font color="#e36c09">Nov 30, 2025 - Sunday</font>
 #### [Yazdaan](https://github.com/SenorDan031)
-- Assigned tasks to [Manikant](https://github.com/manikant12aggi) and [Chirag](https://github.com/chirag88533), bot functions [bot.c] and optSignIn()[user.c] respectively.
-- Reviewed [Manikant's](https://github.com/manikant12aggi)code on optSignUp()[user.c]for possible bugs.
-- Initiated work on bot.c file.
+- Updated `bot.c` with commented out code of sub-functions planned to be used later on.
+- Added `bot.h` in `src/backend/include` directory.
+- Added the pre-processor directive to enable importing of bot functions in `user.c`.
+- Added `QNA.h` in `src/backend/include` directory.
+- Renamed `SEARCH Y1.c` to `QNA.c` from `/tests` folder.
+- Linked `Ask_Fluix()` function in `bot.c`.
+- `QNA.h` and updates on files : `bot.c`, `user.c` and `QNA.c` were made by [Yazdaan](https://github.com/SenorDann)'s alternate ID, [SenorDann](https://github.com/SenorDann).
+
+
 ## 🗞️ <font color="#e36c09">Nov 27, 2025 - Thursday</font>
 #### [Uday](https://github.com/udaysh134)
 - Cleaned up unused and commented code from `isUser()` function.

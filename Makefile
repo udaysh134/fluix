@@ -7,6 +7,7 @@ fluix:
 		src/backend/src/admin.c \
 		src/backend/src/user.c \
 		src/backend/src/bot.c \
+		src/backend/src/data.c \
 		src/backend/src/utils.c \
 		-o Fluix.exe
 

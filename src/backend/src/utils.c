@@ -250,3 +250,36 @@ char *parseEnv(const char *file, const char *key) {
     fclose(openedFile);
     return NULL;
 }
+
+
+/*
+----------------------------------------------------------------------------------------------------
+8. DELETE FOLDER FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+int deleteDir(const char *folder) {
+    char searchPath[MAX_PATH];
+    snprintf(searchPath, sizeof(searchPath), "%s\\*.*", folder);
+
+    WIN32_FIND_DATAA fd;
+    HANDLE hFind = FindFirstFileA(searchPath, &fd);
+
+    if (hFind == INVALID_HANDLE_VALUE) return 0;
+
+    do {
+        if (strcmp(fd.cFileName, ".") == 0 || strcmp(fd.cFileName, "..") == 0) continue;
+
+        char path[MAX_PATH];
+        snprintf(path, sizeof(path), "%s\\%s", folder, fd.cFileName);
+
+        if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+            deleteDir(path);
+            RemoveDirectoryA(path);
+        } else {
+            DeleteFileA(path);
+        }
+    } while (FindNextFileA(hFind, &fd));
+
+    FindClose(hFind);
+    return RemoveDirectoryA(folder); // Returns a BOOL, so 0 is failure, 1 is success
+}
