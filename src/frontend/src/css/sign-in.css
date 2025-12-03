@@ -106,7 +106,7 @@ body{
 
 .plus{
   width:88px;height:88px;border-radius:50%;
-  background:linear-gradient(180deg,#5b8df8,#3066e6);
+  background:#5b8df8;
   color:#fff;font-size:58px;line-height:86px;text-align:center;
   box-shadow: 0 18px 44px rgba(44,70,121,0.35), 0 2px 0 rgba(255,255,255,0.05) inset;
   transform: translateY(-8px);
