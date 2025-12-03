@@ -1,3 +1,13 @@
+## 🗓️ <font color="#e36c09">Dec 02, 2025 - - - - - - - - ></font>
+### <font color="#fac08f">Discussion 11 :</font>
+- Walked the team through the updated codebase and new project structure.
+- Reviewed and highlighted areas for improvement in code style and dev log writing.
+### <font color="#fac08f">Tasks :</font>
+- Shift all frontend and backend work from the "**main**" branch to your newly created respective branches - "**frontend**" & "**backend**".
+- Review and understand the whole codebase and current ground-level workflow, for all (priority for backend team).
+
+
+######
 ## 🗓️ <font color="#e36c09">Nov 27, 2025 - - - - - - - - ></font>
 ### <font color="#fac08f">Discussion 10 :</font>
 - Walked through the updated structure of `user.c` and explained why the changes were necessary.

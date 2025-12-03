@@ -60,6 +60,7 @@ SUMMARY
 - Renamed `dbStruct.json` to `dataSchema.json` for clearer purpose.
 - Updated the data saving structure of `dataSchema.json` to include "**schemaVersion**" and "**bot**" metadata keys.
 - Moved all entries under a single "**entries**" key and removed the "**time**" field to simplify future data fetching.
+- Updated discussion and tasks of 2nd Dec 2025 in `activity-records.md`.
 
 
 ## 🗞️ <font color="#e36c09">Dec 2, 2025 - Tuesday</font>
