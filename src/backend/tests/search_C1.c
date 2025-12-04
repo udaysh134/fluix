@@ -2,6 +2,7 @@
 #include <string.h>
 
 #define MAX 1000
+// Its the search function which can scan JASON file 
 
 void searchInFile(const char *filename, const char *searchTerm) {
     FILE *file = fopen(filename, "r");
@@ -22,16 +23,10 @@ void searchInFile(const char *filename, const char *searchTerm) {
 }
 
 int main() {
-    const char *filename = "data.json";  // Fixed file name
-    char searchTerm[MAX];
+    const char *filename = "data.jason";
+    const char *searchTerm = "New York";
 
-    printf("Enter the term/word to be searche : ");
-    if (fgets(searchTerm, MAX, stdin)) {
-        searchTerm[strcspn(searchTerm, "\n")] = 0; // Remove trailing newline
-        searchInFile(filename, searchTerm);
-    } else {
-        printf("Error reading input.\n");
-    }
+    searchInFile(filename, searchTerm);
 
     return 0;
 }
