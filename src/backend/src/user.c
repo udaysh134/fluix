@@ -300,7 +300,7 @@ void userPanel(char dir[], char username[]) {
                 printf("%sYou don't currently have any bot. Create a new bot first!%s\n", CMD_COL_RED, CMD_COL_RESET);
                 goto rptr5;
             } else {
-                accessBots();
+                accessBots(dir,username);
             }
 
             break;
