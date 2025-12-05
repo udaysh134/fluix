@@ -10,97 +10,60 @@
 MAIN FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
-void createBot() {};
-void accessBots() {};
+// ------=>> | Process intiates for creation of a new bot | <<=------
+void createBot() {
+     /**
+      * 1. The text based user panel UI will stay ON in this page, but options will change.
+      * 2. The user should be asked the Name, Description (optional) and Tags (optional) of the bot they're creating.
+      * 3. Taking this info, we'll now first - create a JSON with the name provided by the user
+      * 4. And then - we'll copy the basic structure we have from 'dataSchema.json' into this newly created bot file
+      * 5. Now that we have the file and the structure inside it, we'll start appending some data into data fields of that structure
+      */
 
 
+     /**
+      * 1. These data will be picked right then and there during the creation of the bot, like - name, description, tags
+      * 2. Other data fields include : 
+      *    ~ id - (which we'll assign right there)
+      *    ~ entryCount - (will be 0, as the bot was just created)
+      *    ~ owner - (will the username of that user)
+      *    ~ createdAt - (will be the exact current time in milliseconds)
+      *    ~ modifiedAt - (will be same as cretedAt, as the bot was just created)
+      */
 
 
+     /**
+      * 1. Once we insert all this data into their respective fields inside that user's specific bot's JSON file...
+      * 2. We'll then give the user a message that a bot with that specific name was created and now they can access their bot...
+      * 3. Using the second option from the User Panel, which is '(A) - Access your bots'.
+      * 4. And then we finally redirect the user to it's user panel.
+      */
 
-/*
-// WHAT's NEEDED TO BE CODED IN BOT.C FILE:
-void Create_Bot();  //Once coded, this will allow user to create new bots {PENDING}
-void Access_Bot(); //Once coded, this will allow user to access their bots {PENDING}
-void Edit_Bot();  //Once coded, this will allow user to edit their existing bots {PENDING}
-Void Ask_Fluix(); //Once coded, this will allow user to ask questions to their bot {DONE function uses: QNA.c , dbstruct002.json , cJSON library}
-*/
-     
-/*
-void Access_Bot(){
 
-     // Here, we will give user the choice to whether update, ask questions or delete their bot database
+     /**
+      * That's it, that's all we need to do inside this function.
+      */
+};
 
-     printf("\t\tWelcome to FLuix, {USERNAME_HERE}!\n\tWhat's the agenda today?");
-     char choice[7];
-     printf("1. Ignite your curiousity with FLUIX");
-     printf("\n2. Update your bot  ");
-     printf("\n3. Create a new bot\n");
-     printf("4. Exit\n");
-     
-   
-     printf("Enter valid choice number from above options: ");
-     fgets(choice,sizeof(choice),stdin);
 
-     switch(choice){
+// ------=>> | User accesses their bots' panel | <<=------
+void accessBots() {
+     /**
+      * 1. The text based user panel UI will stay ON in this page, but the 'USER PANEL' heading and the given options will change.
+      * 2. 'USER PANEL' heading will change to 'BOT PANEL', and options will be the names of the bots user currently has.
+      * 3. These options should be dynamic (for obvious reasons), meaning it should change according to the number of bots, user has.
+      * 4. There must also be two more options '(R) - Return back' and '(0) - Exit'
+      */
 
-          case '1':
-               //Allow user to interact with their bots
-               //Ask_Fluix();
-               break;
 
-          case '2':
-               //Update existing bot according to user preferences
-               //Edit_Bot();
-               break;
+     /**
+      * 1. When the user chooses a specific bot of their's, the program should detect which bot to select and based on that...
+      * 2. The next page will be the four key options for doing operations on the bot, which are 'view', 'add', 'edit', & 'delete'.
+      * 3. Now any chosen option will redirect the code flow to 'data.c' where these functions are actually defined.
+      */
 
-          case '3':
-               //Allow user to create new bot
-               //Create_Bot();
-               break;
-          case '4':
-              //Exit from bot access menu
-              printf("Exiting from FLUIX bot access menu...\n");
-              break;
-              
-          default:
-               //invalid choice
-               printf("Uhh-ohh!!\nYour input choice seems to be invalid :(\nPlease try again :)\n");
-               break;
 
-     }
-
-}
-void edit_Bot(){
-     //function to edit bot(database) according to user
-     printf("1.add new QnA pair");
-     printf("\n2.update existing QnA pair");
-     printf("\n3.delete existing QnA pair");
-     printf("\n4.exit");
-     char choice[7];
-     printf("\nEnter the valid choice number from above options:");
-     fgets(choice,sizeof(choice),stdin);
-     switch(choice){
-          case '1':
-               //To add new QnA Pair bot(database)
-               break;
-          case '2':
-               //To update existing QnA Pair bot(database)
-               break;
-          case '3':
-               //To delete existing QnA Pair bot(database)
-               break;
-          case '4':
-               //To exit from edit bot menu
-               printf("Exit from edit bot menu:\n");
-               break;
-          default:
-               //invalid choice
-               printf("your choice seems to be invalid.\n (:Please try again:)\n");
-               break;
-     }
-}
-
-int main(){
-    return 0;
-}
-*/
+     /**
+      * The work is completed here, we're done with the bot panel and the code is redirected to 'data.c'.
+      */
+};

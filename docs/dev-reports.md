@@ -55,6 +55,12 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 5, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Removed unused commented code from `bot.c`.
+- Added detailed flow instructions for `createBot()` and `accessBots()` in `bot.c`.
+
+
 ## 🗞️ <font color="#e36c09">Dec 3, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Renamed `dbStruct.json` to `dataSchema.json` for clearer purpose.
