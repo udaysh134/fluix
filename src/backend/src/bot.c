@@ -1,7 +1,6 @@
 // Headers
 #include <stdio.h>
-
-
+#include <stdlib.h>
 #include "../include/colors.h"
 #include "../include/utils.h"
 #include "../include/bot.h"
@@ -13,14 +12,20 @@ MAIN FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 // ------=>> | Process intiates for creation of a new bot | <<=------
-void createBot() {
+void createBot(char dir[], char username[]) {
       system("cls");
       char *prefix = inputPrefix();
       char *lsThick = lineSep('=', 50);
       char *lsThin = lineSep('-', 50);
       int fileCount = 0;
+      SearchResult res;
+      res = searchDir(dir, "file", 1, "");
+      if (res.code == 0) fileCount = res.count;
+      char printOptions[512];
+       
       snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
-     /**
+      printf(printOptions);
+      /**
       * 1. The text based user panel UI will stay ON in this page, but options will change.
       * 2. The user should be asked the Name, Description (optional) and Tags (optional) of the bot they're creating.
       * 3. Taking this info, we'll now first - create a JSON with the name provided by the user
