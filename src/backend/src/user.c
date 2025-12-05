@@ -293,7 +293,7 @@ void userPanel(char dir[], char username[]) {
 
     switch (tolower(selection)) {
         case 'n':
-            createBot();
+            createBot(dir,username);
             break;
         case 'a':
             if (fileCount == 0) {
