@@ -55,6 +55,12 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 6, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `CONTRIBUTORS.md` to reflect new change of team members.
+- Moved [Chirag](https://github.com/chirag88533) from the "**Core Team**" section to "**Past Contributors**" section.
+
+
 ## 🗞️ <font color="#e36c09">Dec 3, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Renamed `dbStruct.json` to `dataSchema.json` for clearer purpose.
