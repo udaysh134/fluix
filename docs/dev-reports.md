@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 6, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `CONTRIBUTORS.md` to reflect new change of team members.
+- Moved [Chirag](https://github.com/chirag88533) from the "**Core Team**" section to "**Past Contributors**" section.
+- Deleted `create_bot_exp0001.c` as it was created just for a test.
+
+
 ## 🗞️ <font color="#e36c09">Dec 5, 2025 - Friday</font>
 #### [Uday](https://github.com/udaysh134)
 - Removed unused commented code from `bot.c`.
