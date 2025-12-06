@@ -59,6 +59,7 @@ SUMMARY
 #### [Uday](https://github.com/udaysh134)
 - Updated `CONTRIBUTORS.md` to reflect new change of team members.
 - Moved [Chirag](https://github.com/chirag88533) from the "**Core Team**" section to "**Past Contributors**" section.
+- Deleted `create_bot_exp0001.c` as it was created just for a test.
 
 
 ## 🗞️ <font color="#e36c09">Dec 3, 2025 - Wednesday</font>
