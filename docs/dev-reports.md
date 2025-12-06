@@ -62,6 +62,12 @@ SUMMARY
 - Deleted `create_bot_exp0001.c` as it was created just for a test.
 
 
+## 🗞️ <font color="#e36c09">Dec 5, 2025 - Friday</font>
+#### [Uday](https://github.com/udaysh134)
+- Removed unused commented code from `bot.c`.
+- Added detailed flow instructions for `createBot()` and `accessBots()` in `bot.c`.
+
+
 ## 🗞️ <font color="#e36c09">Dec 3, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Renamed `dbStruct.json` to `dataSchema.json` for clearer purpose.
