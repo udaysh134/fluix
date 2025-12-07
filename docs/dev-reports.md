@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 7, 2025 - Sunday</font>
+#### [Uday](https://github.com/udaysh134)
+- Completed parameter definitions for `createBot()` and `accessBots()` in `bot.h`.
+- Cleaned and formatted `user.c`, refactored `snprintf()` for better readability and output structure.
+- Updated `bot.c` with required libraries, fixed function parameters, improved `snprintf()`, and advanced the bot creation panel.
+
+
 ## 🗞️ <font color="#e36c09">Dec 6, 2025 - Saturday</font>
 #### [Uday](https://github.com/udaysh134)
 - Updated `CONTRIBUTORS.md` to reflect new change of team members.

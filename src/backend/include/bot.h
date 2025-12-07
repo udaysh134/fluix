@@ -1,7 +1,7 @@
 #ifndef BOT_H
 #define BOT_H
 
-void createBot();
-void accessBots();
+void createBot(char path[], char username[]);
+void accessBots(char path[], char username[]);
 
 #endif

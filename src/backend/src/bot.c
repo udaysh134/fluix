@@ -1,9 +1,12 @@
 // Headers
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
+#include <ctype.h>
+#include <string.h>
+
 #include "../include/colors.h"
 #include "../include/utils.h"
-#include "../include/bot.h"
 
 
 /*
@@ -12,19 +15,36 @@ MAIN FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 // ------=>> | Process intiates for creation of a new bot | <<=------
-void createBot(char dir[], char username[]) {
-      system("cls");
+void createBot(char path[], char username[]) {
       char *prefix = inputPrefix();
       char *lsThick = lineSep('=', 50);
       char *lsThin = lineSep('-', 50);
-      int fileCount = 0;
-      SearchResult res;
-      res = searchDir(dir, "file", 1, "");
-      if (res.code == 0) fileCount = res.count;
-      char printOptions[512];
+
+      system("cls");
+
+      char printOptions[1024];
        
-      snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
+      snprintf(printOptions, sizeof(printOptions),
+            "%s"
+            "\n%s\t   USER PANEL - %s"
+            "%s%s%s"
+            "\n\t      (Bot Creation)"
+            "\n%s"
+            "\n(R) - Return back"
+            "\n(0) - Exit"
+            "\n%s"
+            "\n",
+
+            lsThick,
+            CMD_COL_GREEN, CMD_COL_RESET,
+            CMD_COL_BLACK, username, CMD_COL_RESET,
+            lsThick,
+            lsThin
+      );
       printf(printOptions);
+
+      free(lsThick);
+      free(lsThin);
       /**
       * 1. The text based user panel UI will stay ON in this page, but options will change.
       * 2. The user should be asked the Name, Description (optional) and Tags (optional) of the bot they're creating.
@@ -56,11 +76,11 @@ void createBot(char dir[], char username[]) {
      /**
       * That's it, that's all we need to do inside this function.
       */
-};
+}
 
 
 // ------=>> | User accesses their bots' panel | <<=------
-void accessBots() {
+void accessBots(char path[], char username[]) {
      /**
       * 1. The text based user panel UI will stay ON in this page, but the 'USER PANEL' heading and the given options will change.
       * 2. 'USER PANEL' heading will change to 'BOT PANEL', and options will be the names of the bots user currently has.
@@ -79,4 +99,4 @@ void accessBots() {
      /**
       * The work is completed here, we're done with the bot panel and the code is redirected to 'data.c'.
       */
-};
+}

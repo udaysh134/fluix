@@ -62,12 +62,12 @@ void isUser() {
     if (res.code == 0) { // Eventually leading to optSignIn() function
         char answer1;
 
-        printf("An account was found with the username %s\"%s\"%s.\n", CMD_COL_GREEN, res.name, CMD_COL_RESET);
+        printf("An account was found with the username %s\"%s\"%s.", CMD_COL_GREEN, res.name, CMD_COL_RESET);
         Sleep(500);
 
         rptr2:
 
-        printf("%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        printf("\n%s%sWould you like to continue signing in with this username? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
         scanf("%c", &answer1);
         eatBuffer();
 
@@ -284,7 +284,26 @@ void userPanel(char dir[], char username[]) {
     system("cls");
 
     char printOptions[1024];
-    snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s\n(N) - Create new Bot\n(A) - Access your Bots %s(%d)%s\n(D) - Delete your Account\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_BLACK, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
+    snprintf(printOptions, sizeof(printOptions),
+        "%s"
+        "\n%s\t   USER PANEL - %s"
+        "%s%s%s"
+        "\n%s"
+        "\n(N) - Create new Bot"
+        "\n(A) - Access your Bots %s(%d)%s"
+        "\n(D) - Delete your Account"
+        "\n(R) - Return back"
+        "\n(0) - Exit"
+        "\n%s"
+        "\n",
+
+        lsThick,
+        CMD_COL_GREEN, CMD_COL_RESET,
+        CMD_COL_BLACK, username, CMD_COL_RESET,
+        lsThick,
+        CMD_COL_BLACK, fileCount, CMD_COL_RESET,
+        lsThin
+    );
     printf(printOptions);
 
     printf("%s %sWhat next? : %s", prefix,  CMD_COL_CYAN, CMD_COL_RESET);
@@ -293,14 +312,14 @@ void userPanel(char dir[], char username[]) {
 
     switch (tolower(selection)) {
         case 'n':
-            createBot(dir,username);
+            createBot(dir, username);
             break;
         case 'a':
             if (fileCount == 0) {
                 printf("%sYou don't currently have any bot. Create a new bot first!%s\n", CMD_COL_RED, CMD_COL_RESET);
                 goto rptr5;
             } else {
-                accessBots(dir,username);
+                accessBots(dir, username);
             }
 
             break;
