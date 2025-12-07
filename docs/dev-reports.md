@@ -64,6 +64,7 @@ SUMMARY
 - Added inline commented guidance for teammates to continue extending the bot creation logic.
 - Updated `CONTRIBUTORS.md` to reflect new change of team members.
 - Moved [Manikant](https://github.com/manikant12aggi) from the "**Core Team**" section to "**Past Contributors**" section.
+- Removed [Chirag](https://github.com/chirag88533) and [Manikant](https://github.com/manikant12aggi) from "**The Team**" section of `README.md` file.
 
 
 ## 🗞️ <font color="#e36c09">Dec 6, 2025 - Saturday</font>

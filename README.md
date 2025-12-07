@@ -184,12 +184,6 @@ Fluix is being developed by a small but passionate group of first year BCA stude
   <a href="https://github.com/SenorDan031">
     <img src="https://avatars.githubusercontent.com/SenorDan031" width="50" style="border-radius: 10%;"/>
   </a>
-  <a href="https://github.com/manikant12aggi">
-    <img src="https://avatars.githubusercontent.com/manikant12aggi" width="50" style="border-radius: 10%;"/>
-  </a>
-  <a href="https://github.com/chirag88533">
-    <img src="https://avatars.githubusercontent.com/chirag88533" width="50" style="border-radius: 10%;"/>
-  </a>
 </p>
 
 > See full roles, contributors, and acknowledgments in the [**CONTRIBUTORS**](./CONTRIBUTORS.md) file.
