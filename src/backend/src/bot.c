@@ -7,6 +7,10 @@
 
 #include "../include/colors.h"
 #include "../include/utils.h"
+#include "../include/user.h"
+
+// Declarations
+void collectData(char path[], char username[]);
 
 
 /*
@@ -47,6 +51,39 @@ void createBot(char path[], char username[]) {
     /**
      * That's it, that's all we need to do inside this function.
      */
+    collectData(path, username);
+}
+
+
+// ------=>> | User accesses their bots' panel | <<=------
+void accessBots(char path[], char username[]) {
+    /**
+     * 1. The text based user panel UI will stay ON in this page, but the 'USER PANEL' heading and the given options will change.
+     * 2. 'USER PANEL' heading will change to 'BOT PANEL', and options will be the names of the bots user currently has.
+     * 3. These options should be dynamic (for obvious reasons), meaning it should change according to the number of bots, user has.
+     * 4. There must also be two more options '(R) - Return back' and '(0) - Exit'
+     */
+
+
+    /**
+     * 1. When the user chooses a specific bot of their's, the program should detect which bot to select and based on that...
+     * 2. The next page will be the four key options for doing operations on the bot, which are 'view', 'add', 'edit', & 'delete'.
+     * 3. Now any chosen option will redirect the code flow to 'data.c' where these functions are actually defined.
+     */
+
+
+    /**
+     * The work is completed here, we're done with the bot panel and the code is redirected to 'data.c'.
+     */
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+HELPER FUNCTIONS
+----------------------------------------------------------------------------------------------------
+*/
+void collectData(char path[], char username[]) {
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
@@ -59,6 +96,7 @@ void createBot(char path[], char username[]) {
     char tempTags[40] = "";
 
     // ------=>> | Actual functioning starts from here | <<=------
+    rptr1:
     system("cls");
       
     char printOptions[1024];
@@ -84,12 +122,37 @@ void createBot(char path[], char username[]) {
     // Asks NAME for the bot -------------------- >>
     printf("%s %sNAME%s of the bot? : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     scanf("%8s", &name);
+    
+    if((tolower(name[0]) == 'r' && tolower(name[1]) == '\0') || (tolower(name[0]) == '0' && tolower(name[1]) == '\0')) {
+        rptr2:
 
-    // Processing
-    // 1. Check if the input is just R or 0 - that'll be treated differently
-    // 2. Make sure the size is neither less than 3, nor greater than 8
-    // 3. Make sure it doesn't have any special character
-    // 4. Make sure the name doesn't already exist inside that user's folder
+        printf("%s %sAre you sure you want to abort? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+        eatBuffer();
+        char abortion = tolower(getchar());
+
+        switch (abortion) {
+            case 'y':
+                if (tolower(name[0]) == 'r') {
+                    userPanel(path, username);
+                } else {
+                    exitThanks('y');
+                    exit(0);
+                }
+            case 'n':
+                printf("Restarting bot creation...");
+                Sleep(2000);
+
+                goto rptr1;
+            default:
+                printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr2;
+        }
+    } else {
+        // Processing
+        // 1. Make sure the size is neither less than 3, nor greater than 8
+        // 2. Make sure it doesn't have any special character
+        // 3. Make sure the name doesn't already exist inside that user's folder
+    }
 
 
 
@@ -122,27 +185,4 @@ void createBot(char path[], char username[]) {
 
     free(lsThick);
     free(lsThin);
-}
-
-
-// ------=>> | User accesses their bots' panel | <<=------
-void accessBots(char path[], char username[]) {
-    /**
-     * 1. The text based user panel UI will stay ON in this page, but the 'USER PANEL' heading and the given options will change.
-     * 2. 'USER PANEL' heading will change to 'BOT PANEL', and options will be the names of the bots user currently has.
-     * 3. These options should be dynamic (for obvious reasons), meaning it should change according to the number of bots, user has.
-     * 4. There must also be two more options '(R) - Return back' and '(0) - Exit'
-     */
-
-
-    /**
-     * 1. When the user chooses a specific bot of their's, the program should detect which bot to select and based on that...
-     * 2. The next page will be the four key options for doing operations on the bot, which are 'view', 'add', 'edit', & 'delete'.
-     * 3. Now any chosen option will redirect the code flow to 'data.c' where these functions are actually defined.
-     */
-
-
-    /**
-     * The work is completed here, we're done with the bot panel and the code is redirected to 'data.c'.
-     */
 }

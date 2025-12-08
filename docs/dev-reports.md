@@ -55,6 +55,16 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 8, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added `collectData()` in `bot.c` to handle initial bot data input (name, description, tags). This data will be used later during actual bot file generation.
+- Tested and implemented logic for "**name**" data collection, with full back-and-forth navigation.
+- Modularized `userPanel()` by moving it to `user.h` with parameters.
+- Reorganized functions in `user.c` for better readability and structure.
+- Improved output formatting in `user.c` for better user experience.
+- Fixed buffer-related bugs in `user.c` and `bot.c` panels.
+
+
 ## 🗞️ <font color="#e36c09">Dec 7, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)
 - Completed parameter definitions for `createBot()` and `accessBots()` in `bot.h`.
