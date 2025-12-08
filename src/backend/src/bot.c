@@ -29,6 +29,87 @@ void createBot(char path[], char username[]) {
     dataSet res;
     res = collectData(path, username);
 
+    char confirmation[10];
+
+    printf("%sBot creation data collected:%s\n", CMD_COL_GREEN, CMD_COL_RESET);
+    printf("Name:        %s\n", res.name);
+    printf("Description: %s\n", res.desc);
+    printf("Tags:        %s, %s, %s\n", res.tags[0], res.tags[1], res.tags[2]);
+
+    Sleep(1000);
+
+    printf("%s>> Do you want to finalize these crednetials? (Y/N)%s: "CMD_COL_YELLOW, CMD_COL_RESET);
+    scanf("%9s", &confirmation);
+    eatBuffer();
+
+    if (tolower(confirmation[0]) == 'y' && tolower(confirmation[1]) == 'e' && tolower(confirmation[2])=='s') {
+        printf("%sFinalizing bot creation...%s\n", CMD_COL_GREEN, CMD_COL_RESET);
+        Sleep(2000);
+ 
+        char filePath[260];  
+
+    snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, res.name);
+
+    FILE *fp = fopen(filePath, "w");
+    if (!fp) {
+        printf("%sError: Could not create bot file at \"%s\"%s\n",
+               CMD_COL_RED, filePath, CMD_COL_RESET);
+        Sleep(2000);
+        return;
+    }
+
+    // timestamps (seconds since epoch for now)
+    time_t now = time(NULL);
+    long createdAt  = (long)now;
+    long modifiedAt = (long)now;
+
+    int botId      = 1;   
+    int entryCount = 0;   
+
+    //here we will register the final data into the bot file
+        fprintf(fp,
+        "{\n"
+        "    \"schemaVersion\": 1.0,\n"
+        "    \"bot\": {\n"
+        "        \"id\": %d,\n"
+        "        \"name\": \"%s\",\n"
+        "        \"description\": \"%s\",\n"
+        "        \"tags\": [\"%s\", \"%s\", \"%s\"],\n"
+        "        \"entryCount\": %d,\n"
+        "        \"owner\": \"%s\",\n"
+        "        \"createdAt\": %ld,\n"
+        "        \"modifiedAt\": %ld\n"
+        "    },\n"
+        "    \"entries\": []\n"
+        "}\n",
+        botId,
+        res.name,
+        res.desc,
+        res.tags[0], res.tags[1], res.tags[2],
+        entryCount,
+        username,
+        createdAt,
+        modifiedAt
+    );
+
+    fclose(fp);
+
+    printf("%sBot \"%s\" created successfully at: %s%s\n",
+           CMD_COL_GREEN, res.name, filePath, CMD_COL_RESET);
+    Sleep(2000);
+    printf("Redirecting to User Panel...\n");
+    Sleep(2000);
+    userPanel(path, username);
+
+    } 
+    
+    
+    else {
+        printf("%sBot creation aborted. Returning to User Panel...%s\n", CMD_COL_RED, CMD_COL_RESET);
+        Sleep(2000);
+        userPanel(path, username);
+    }
+
     /**
      * 1. The text based user panel UI will stay ON in this page, but options will change.
      * 2. The user should be asked the Name, Description (optional) and Tags (optional) of the bot they're creating.
