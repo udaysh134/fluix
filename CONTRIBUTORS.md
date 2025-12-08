@@ -4,13 +4,12 @@ We’re grateful to everyone who has contributed to **Fluix** - through developm
 ---
 
 ### 🌟 <font color="#e36c09">Core Team</font>
-|                                                                                             | **Name**             | **Username**                                               | **Role**           |
-| :-----------------------------------------------------------------------------------------: | :------------------- | :--------------------------------------------------------- | :----------------- |
-|     <img src="https://avatars.githubusercontent.com/udaysh134" width="40" height="40"/>     | Uday Shukla          | [@udaysh134](https://github.com/udaysh134)                 | Project Lead       |
-| <img src="https://avatars.githubusercontent.com/kaurjapnoor60-max" width="40" height="40"/> | Japnoor Kaur         | [@kaurjapnoor60-max](https://github.com/kaurjapnoor60-max) | Frontend Developer |
-|      <img src="https://avatars.githubusercontent.com/kash-12" width="40" height="40"/>      | Kashish Kushwaha     | [@kash-12](https://github.com/kash-12)                     | Frontend Developer |
-|    <img src="https://avatars.githubusercontent.com/SenorDan031" width="40" height="40"/>    | Mohd. Yazdaan Ansari | [@SenorDan031](https://github.com/SenorDan031)             | Backend Developer  |
-|  <img src="https://avatars.githubusercontent.com/manikant12aggi" width="40" height="40"/>   | Manikant Awasthi     | [@manikant12aggi](https://github.com/manikant12aggi)       | Backend Developer  |
+|                                                                                             | **Name**             | **Username**                                               | **Role**                          |
+| :-----------------------------------------------------------------------------------------: | :------------------- | :--------------------------------------------------------- | :-------------------------------- |
+|     <img src="https://avatars.githubusercontent.com/udaysh134" width="40" height="40"/>     | Uday Shukla          | [@udaysh134](https://github.com/udaysh134)                 | Project Lead<br>Backend Developer |
+| <img src="https://avatars.githubusercontent.com/kaurjapnoor60-max" width="40" height="40"/> | Japnoor Kaur         | [@kaurjapnoor60-max](https://github.com/kaurjapnoor60-max) | Frontend Developer                |
+|      <img src="https://avatars.githubusercontent.com/kash-12" width="40" height="40"/>      | Kashish Kushwaha     | [@kash-12](https://github.com/kash-12)                     | Frontend Developer                |
+|    <img src="https://avatars.githubusercontent.com/SenorDan031" width="40" height="40"/>    | Mohd. Yazdaan Ansari | [@SenorDan031](https://github.com/SenorDan031)             | Backend Developer                 |
 
 ---
 
@@ -22,9 +21,10 @@ We’re grateful to everyone who has contributed to **Fluix** - through developm
 ---
 
 ### 🗃️ <font color="#e36c09">Past Contributors</font>
-| **S.No.** | **Name**      | **Username**                                   |
-|:---------:| ------------- | ---------------------------------------------- |
-|     1     | Chirag Pandey | [@chirag88533](https://github.com/chirag88533) |
+| **S.No.** | **Name**         | **Username**                                         |
+| :-------: | ---------------- | ---------------------------------------------------- |
+|     1     | Chirag Pandey    | [@chirag88533](https://github.com/chirag88533)       |
+|     2     | Manikant Awasthi | [@manikant12aggi](https://github.com/manikant12aggi) |
 
 ---
 

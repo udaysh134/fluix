@@ -60,6 +60,11 @@ SUMMARY
 - Completed parameter definitions for `createBot()` and `accessBots()` in `bot.h`.
 - Cleaned and formatted `user.c`, refactored `snprintf()` for better readability and output structure.
 - Updated `bot.c` with required libraries, fixed function parameters, improved `snprintf()`, and advanced the bot creation panel.
+- Implemented initial core input flow in `bot.c` to capture name, description, and tags during bot creation.
+- Added inline commented guidance for teammates to continue extending the bot creation logic.
+- Updated `CONTRIBUTORS.md` to reflect new change of team members.
+- Moved [Manikant](https://github.com/manikant12aggi) from the "**Core Team**" section to "**Past Contributors**" section.
+- Removed [Chirag](https://github.com/chirag88533) and [Manikant](https://github.com/manikant12aggi) from "**The Team**" section of `README.md` file.
 
 
 ## 🗞️ <font color="#e36c09">Dec 6, 2025 - Saturday</font>
