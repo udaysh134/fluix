@@ -10,7 +10,13 @@
 #include "../include/user.h"
 
 // Declarations
-void collectData(char path[], char username[]);
+typedef struct {
+    char name[10];
+    char desc[1002];
+    char tags[3][12];
+} dataSet;
+
+dataSet collectData(char path[], char username[]);
 
 
 /*
@@ -20,6 +26,9 @@ MAIN FUNCTIONS
 */
 // ------=>> | Process intiates for creation of a new bot | <<=------
 void createBot(char path[], char username[]) {
+    dataSet res;
+    res = collectData(path, username);
+
     /**
      * 1. The text based user panel UI will stay ON in this page, but options will change.
      * 2. The user should be asked the Name, Description (optional) and Tags (optional) of the bot they're creating.
@@ -51,7 +60,6 @@ void createBot(char path[], char username[]) {
     /**
      * That's it, that's all we need to do inside this function.
      */
-    collectData(path, username);
 }
 
 
@@ -83,7 +91,10 @@ void accessBots(char path[], char username[]) {
 HELPER FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
-void collectData(char path[], char username[]) {
+// ------=>> | Bot creation, navigation and Data collection | <<=------
+dataSet collectData(char path[], char username[]) {
+    dataSet result = {0};
+
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
@@ -92,13 +103,14 @@ void collectData(char path[], char username[]) {
     char desc[1002] = "";
     char tags[3][12] = {0};
 
+    char tempName[10];
     char tempDesc[1002];
     char tempTags[40] = "";
 
-    // ------=>> | Actual functioning starts from here | <<=------
-    rptr1:
+    // Starts here
+    rptr0:
     system("cls");
-      
+
     char printOptions[1024];
     snprintf(printOptions, sizeof(printOptions),
         "%s"
@@ -119,20 +131,21 @@ void collectData(char path[], char username[]) {
     );
     printf(printOptions);
 
-    // Asks NAME for the bot -------------------- >>
+
+    // Bot's NAME section ---------------------------------------- >>
     printf("%s %sNAME%s of the bot? : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-    scanf("%8s", &name);
+    scanf("%8s", &tempName);
+    eatBuffer();
     
-    if((tolower(name[0]) == 'r' && tolower(name[1]) == '\0') || (tolower(name[0]) == '0' && tolower(name[1]) == '\0')) {
-        rptr2:
+    if((tolower(tempName[0]) == 'r' && tolower(tempName[1]) == '\0') || (tolower(tempName[0]) == '0' && tolower(tempName[1]) == '\0')) {
+        rptr1:
 
-        printf("%s %sAre you sure you want to abort? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-        eatBuffer();
-        char abortion = tolower(getchar());
+        printf("%s %sAre you sure you want to abort? (Y/N) : %s", prefix, CMD_COL_RED, CMD_COL_RESET);
+        char confirmation = tolower(getchar());
 
-        switch (abortion) {
+        switch (confirmation) {
             case 'y':
-                if (tolower(name[0]) == 'r') {
+                if (tolower(tempName[0]) == 'r') {
                     userPanel(path, username);
                 } else {
                     exitThanks('y');
@@ -142,47 +155,99 @@ void collectData(char path[], char username[]) {
                 printf("Restarting bot creation...");
                 Sleep(2000);
 
-                goto rptr1;
+                goto rptr0;
             default:
                 printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
-                goto rptr2;
+                goto rptr1;
         }
     } else {
-        // Processing
+        // Processing + Error Handling
+
         // 1. Make sure the size is neither less than 3, nor greater than 8
         // 2. Make sure it doesn't have any special character
         // 3. Make sure the name doesn't already exist inside that user's folder
     }
 
 
-
-    // Asks DESCRIPTION of the bot -------------------- >>
+    // Bot's DESCRIPTION section ---------------------------------------- >>
     printf("%s %sDESCRIPTION%s of the bot? %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
-    eatBuffer();
     fgets(tempDesc, sizeof(tempDesc), stdin);
 
-    // Processing
-    // 1. Check if the input is just R or 0 - that'll be treated differently
-    // 3. Make sure the size is neither less than 15, nor greater than 1000
-    // 4. Make sure it doesn't contain quotes (single & double) and backticks
+    tempDesc[strcspn(tempDesc, "\n")] = '\0';
+
+    if((tolower(tempDesc[0]) == 'r' && tolower(tempDesc[1]) == '\0') || (tolower(tempDesc[0]) == '0' && tolower(tempDesc[1]) == '\0')) {
+        rptr2:
+
+        printf("%s %sAre you sure you want to abort? (Y/N) : %s", prefix, CMD_COL_RED, CMD_COL_RESET);
+        char confirmation = tolower(getchar());
+
+        switch (confirmation) {
+            case 'y':
+                if (tolower(tempDesc[0]) == 'r') {
+                    userPanel(path, username);
+                } else {
+                    exitThanks('y');
+                    exit(0);
+                }
+            case 'n':
+                printf("Restarting bot creation...");
+                Sleep(2000);
+
+                goto rptr0;
+            default:
+                printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr2;
+        }
+    } else {
+        // Processing + Error Handling
+
+        // 1. Make sure the size is neither less than 15, nor greater than 1000
+        // 2. Make sure it doesn't contain quotes (single & double) and backticks
+    }
 
 
-
-    // Asks TAGS for the bot -------------------- >>
+    // Bot's TAGS section ---------------------------------------- >>
     printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
-    eatBuffer();
     fgets(tempTags, sizeof(tempTags), stdin);
 
-    // Processing
-    // 1. Check if the input is just R or 0 - that'll be treated differently
-    // 2. Check if it contains any comma(s)...
-    //    - if not, make sure the the whole input is not greater than 10
-    //    - if it does, seperate strings with commas and check if they too aren't greater than 10
-    // 3. After separation check each separated string if it contains any spaces...
-    //    - if it does, remove all spaces and merge everything into one string
-    // 4. Now treat all those separated strings as finalized, and save them one by one in "tags" array
-      
+    tempTags[strcspn(tempTags, "\n")] = '\0';
+
+    if((tolower(tempTags[0]) == 'r' && tolower(tempTags[1]) == '\0') || (tolower(tempTags[0]) == '0' && tolower(tempTags[1]) == '\0')) {
+        rptr3:
+
+        printf("%s %sAre you sure you want to abort? (Y/N) : %s", prefix, CMD_COL_RED, CMD_COL_RESET);
+        char confirmation = tolower(getchar());
+
+        switch (confirmation) {
+            case 'y':
+                if (tolower(tempTags[0]) == 'r') {
+                    userPanel(path, username);
+                } else {
+                    exitThanks('y');
+                    exit(0);
+                }
+            case 'n':
+                printf("Restarting bot creation...");
+                Sleep(2000);
+
+                goto rptr0;
+            default:
+                printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr3;
+        }
+    } else {
+        // Processing + Error Handling
+
+        // 1. Check if it contains any comma(s)...
+        //    - if not, make sure the the whole input is not greater than 10
+        //    - if it does, seperate strings with commas and check if they too aren't greater than 10
+        // 2. After separation check each separated string if it contains any spaces...
+        //    - if it does, remove all spaces and merge everything into one string
+        // 3. Now treat all those separated strings as finalized, and save them one by one in "tags" array
+    } 
 
     free(lsThick);
     free(lsThin);
+
+    return result;
 }

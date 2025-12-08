@@ -253,6 +253,8 @@ void userPanel(char dir[], char username[]) {
             } else {
                 accessBots(dir, username);
             }
+
+            break;
         case 'd':
             rptr6:
 
@@ -323,6 +325,8 @@ void userPanel(char dir[], char username[]) {
             printf("%sYou gave an invalid input! Please choose among these only - N/A/D/R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
             goto rptr5;
     }
+
+    userPanel(dir, username);
 }
 
 

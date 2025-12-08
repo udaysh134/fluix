@@ -63,6 +63,10 @@ SUMMARY
 - Reorganized functions in `user.c` for better readability and structure.
 - Improved output formatting in `user.c` for better user experience.
 - Fixed buffer-related bugs in `user.c` and `bot.c` panels.
+- Refactored `userPanel()` to call itself recursively when returning from *Bot Creation* / *Access Panel*.
+- Updated `collectedData()` to return a `struct` for structured data flow into `createBot()`, for bot file generation in `bot.c`.
+- Finalized *return* and *exit* handling across all data collection points (name, description, tags).
+- Resolved many buffer-related conflicts and stabilized navigation for the "**Bot Creation**" panel.
 
 
 ## 🗞️ <font color="#e36c09">Dec 7, 2025 - Sunday</font>
