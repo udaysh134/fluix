@@ -39,11 +39,11 @@ void createBot(char path[], char username[]) {
 
     Sleep(1000);
 
-    printf("%s>> Do you want to finalize these crednetials? (Y/N)%s: "CMD_COL_YELLOW, CMD_COL_RESET);
-    scanf("%9s", &confirmation);
+    printf("%s>> Do you want to finalize these credentials? (Yes/No)%s: "CMD_COL_YELLOW, CMD_COL_RESET);
+    scanf("%9s", confirmation);
     eatBuffer();
 
-    if (tolower(confirmation[0]) == 'y' && tolower(confirmation[1]) == 'e' && tolower(confirmation[2])=='s') {
+    if (tolower(confirmation[0]) == 'y' || tolower(confirmation[1]) == 'e' || tolower(confirmation[2]) == 's') {
         printf("%sFinalizing bot creation...%s\n", CMD_COL_GREEN, CMD_COL_RESET);
         Sleep(2000);
  
@@ -216,7 +216,7 @@ dataSet collectData(char path[], char username[]) {
 
     // Bot's NAME section ---------------------------------------- >>
     printf("%s %sNAME%s of the bot? : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-    scanf("%8s", &tempName);
+    scanf("%8s", tempName);
     eatBuffer();
     
     if((tolower(tempName[0]) == 'r' && tolower(tempName[1]) == '\0') || (tolower(tempName[0]) == '0' && tolower(tempName[1]) == '\0')) {
@@ -243,6 +243,8 @@ dataSet collectData(char path[], char username[]) {
                 goto rptr1;
         }
     } else {
+
+        strcpy(result.name, tempName);
         // Processing + Error Handling
 
         // 1. Make sure the size is neither less than 3, nor greater than 8
@@ -281,6 +283,7 @@ dataSet collectData(char path[], char username[]) {
                 goto rptr2;
         }
     } else {
+        strcpy(result.desc, tempDesc);
         // Processing + Error Handling
 
         // 1. Make sure the size is neither less than 15, nor greater than 1000
@@ -318,6 +321,25 @@ dataSet collectData(char path[], char username[]) {
                 goto rptr3;
         }
     } else {
+        // Split and save tags
+        char *token = strtok(tempTags, ",");
+        int idx = 0;
+
+        while (token != NULL && idx < 3) {
+            while (*token == ' ') token++;
+
+            char *end = token + strlen(token) - 1;
+            while (end > token && *end == ' ') {
+                *end-- = '\0';
+            }
+
+            strncpy(result.tags[idx], token, sizeof(result.tags[idx]) - 1);
+            result.tags[idx][sizeof(result.tags[idx]) - 1] = '\0';
+
+            idx++;
+            token = strtok(NULL, ",");
+        }
+
         // Processing + Error Handling
 
         // 1. Check if it contains any comma(s)...
