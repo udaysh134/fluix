@@ -68,8 +68,7 @@ SUMMARY
 - Finalized *return* and *exit* handling across all data collection points (name, description, tags).
 - Resolved many buffer-related conflicts and stabilized navigation for the "**Bot Creation**" panel.
 #### [Yazdaan](https://github.com/SenorDan031)
--Completed data registering portion in create_bot(). 
-
+-Completed data registering portion in createBot(). 
 
 ## 🗞️ <font color="#e36c09">Dec 7, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)
