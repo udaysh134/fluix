@@ -67,6 +67,8 @@ SUMMARY
 - Updated `collectedData()` to return a `struct` for structured data flow into `createBot()`, for bot file generation in `bot.c`.
 - Finalized *return* and *exit* handling across all data collection points (name, description, tags).
 - Resolved many buffer-related conflicts and stabilized navigation for the "**Bot Creation**" panel.
+#### [Yazdaan](https://github.com/SenorDan031)
+-Completed data registering portion in create_bot(). 
 
 
 ## 🗞️ <font color="#e36c09">Dec 7, 2025 - Sunday</font>
