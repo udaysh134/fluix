@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 
 #include "../include/colors.h"
 #include "../include/utils.h"
