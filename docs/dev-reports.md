@@ -68,7 +68,7 @@ SUMMARY
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added bot access options **ONLY** for user, under `accessBot()`.
 - Initiated file fetching work under `void optView()` for users to view their bot(s) under `accessBot()`
-  
+- Improved the **TAGS** processing when tags are skipped by the user and more processing refinements in **bot.c**.
 
 ## 🗞️ <font color="#e36c09">Dec 8, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
