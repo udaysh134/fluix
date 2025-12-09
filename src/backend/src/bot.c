@@ -256,7 +256,7 @@ dataSet collectData(char path[], char username[]) {
     char tempDesc[1002];
     char tempTags[40] = "";
 
-    int tag_count;
+    char optTag;
 
     // Starts here
     rptr0:
@@ -412,10 +412,10 @@ dataSet collectData(char path[], char username[]) {
 
     // ------=>> | BOT'S TAGS SECTION | <<=------
     rptrTags:
-    printf("%s %sHow many tags would you want to register in your bot? [0 tags will skip TAG registeration process] : %s",prefix,CMD_COL_YELLOW,CMD_COL_RESET);
-    scanf("%d",&tag_count);
+    printf("%s %sDo you want to add tags to your bot? [ '0' will skip TAG registeration process] ['1' will initiate tags registeration process]: %s",prefix,CMD_COL_YELLOW,CMD_COL_RESET);
+    scanf("%c",&optTag);
 
-    if(tag_count==0){
+    if(optTag=='0'){
         printf("%s %sTAGS skipped for your bot: %s %s\n",prefix,CMD_COL_MAGENTA,name,CMD_COL_RESET);
         
         free(lsThick);
@@ -423,9 +423,9 @@ dataSet collectData(char path[], char username[]) {
         return result;
 
     } 
-    else {
+    else if(optTag=='1'){
 
-        printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
+        printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]--[TAGS LIMIT UPTO 3]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
         fgets(tempTags, sizeof(tempTags), stdin);
 
         tempTags[strcspn(tempTags, "\n")] = '\0';
@@ -481,11 +481,14 @@ dataSet collectData(char path[], char username[]) {
             // 2. After separation check each separated string if it contains any spaces...
             //    - if it does, remove all spaces and merge everything into one string
             // 3. Now treat all those separated strings as finalized, and save them one by one in "tags" array
-        } 
+        }
+
+        free(lsThick);
+        free(lsThin);
+        return result;
     }
-
-    free(lsThick);
-    free(lsThin);
-
-    return result;
+    else{
+        printf("%sEnter the valid option number please!!!! %s\n",CMD_COL_RED,CMD_COL_RESET);
+        goto rptrTags;
+    }
 }
