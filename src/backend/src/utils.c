@@ -78,10 +78,17 @@ void exitThanks(char clearScreen) {
 ----------------------------------------------------------------------------------------------------
 */
 /**
+ * PARAMETERS:
  * 1. "path" - Relative path of the desired directory, like ".\\src\\db".
  * 2. "type" - Select if it is a "file" or a "folder".
  * 3. "mode" - Integer value of "0" or "1" (0 is "Target Mode", 1 is "List Mode").
  * 4. "name" - Required if mode is 0, or leave it blank like (""). Any name is ignored by default.
+ * 
+ * RESULTS:
+ * 1. If "res.code = 0", it means success
+ * 2. If "res.code = 1", it means failure, directory not found
+ * 3. If "res.code = 2", it means failure, unable to open directory
+ * 4. If "res.code = 3", it means failure, mode not defined correctly
  */
 SearchResult searchDir(char path[], char type[], int mode, char name[]) {
     SearchResult result = {0};
@@ -282,4 +289,20 @@ int deleteDir(const char *folder) {
 
     FindClose(hFind);
     return RemoveDirectoryA(folder); // Returns a BOOL, so 0 is failure, 1 is success
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+9. STRING CLEANER FUNCTION
+----------------------------------------------------------------------------------------------------
+*/
+int isStrClean(char *input) {
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (!isalnum(input[i])) {
+            return 0;
+        }
+    }
+    
+    return 1;
 }

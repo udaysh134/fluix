@@ -55,6 +55,16 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 9, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added new section marker "**H3_SectionMarker**" in `sectionMarkers.txt`.
+- Created `isStrClean()` in `utils.c/h` for full string validation.
+- Documented `searchDir()` with separate "**PARAMETERS**" and "**RESULTS**" sections.
+- Reorganized `PSIT_INQ.json` entry under "*USER DEFINED*" in `.gitignore`.
+- Formatted terminal output and related code in `bot.c`.
+- Completed error handling and processing for the "**Bot Name**" data collection stage.
+
+
 ## 🗞️ <font color="#e36c09">Dec 8, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added `collectData()` in `bot.c` to handle initial bot data input (name, description, tags). This data will be used later during actual bot file generation.
@@ -68,7 +78,8 @@ SUMMARY
 - Finalized *return* and *exit* handling across all data collection points (name, description, tags).
 - Resolved many buffer-related conflicts and stabilized navigation for the "**Bot Creation**" panel.
 #### [Yazdaan](https://github.com/SenorDan031)
--Completed data registering portion in `createBot()`. 
+- Completed data registering portion in `createBot()`. 
+
 
 ## 🗞️ <font color="#e36c09">Dec 7, 2025 - Sunday</font>
 #### [Uday](https://github.com/udaysh134)

@@ -214,15 +214,18 @@ dataSet collectData(char path[], char username[]) {
     printf(printOptions);
 
 
-    // Bot's NAME section ---------------------------------------- >>
+
+    // ------=>> | BOT'S NAME SECTION | <<=------
+    rptrName:
+
     printf("%s %sNAME%s of the bot? : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-    scanf("%8s", tempName);
+    scanf("%s", &tempName);
     eatBuffer();
     
     if((tolower(tempName[0]) == 'r' && tolower(tempName[1]) == '\0') || (tolower(tempName[0]) == '0' && tolower(tempName[1]) == '\0')) {
         rptr1:
 
-        printf("%s %sAre you sure you want to abort? (Y/N) : %s", prefix, CMD_COL_RED, CMD_COL_RESET);
+        printf("\n%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
         char confirmation = tolower(getchar());
 
         switch (confirmation) {
@@ -243,17 +246,40 @@ dataSet collectData(char path[], char username[]) {
                 goto rptr1;
         }
     } else {
+        // Error Handling ---------------------------------------- >>
+        if(isStrClean(tempName)) {
+            printf("\n%sError : You can only have alphabets and numbers in your bot name.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrName;
+        }
 
-        strcpy(result.name, tempName);
-        // Processing + Error Handling
+        if (strlen(tempName) < 3) {
+            printf("\n%sError : Name of your bot should be of atleast 3 or more letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrName;
+        }
 
-        // 1. Make sure the size is neither less than 3, nor greater than 8
-        // 2. Make sure it doesn't have any special character
-        // 3. Make sure the name doesn't already exist inside that user's folder
+        if (strlen(tempName) > 8) {
+            printf("\n%sError : Name of your bot cannot be of more than 8 letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrName;
+        }
+
+        SearchResult res;
+        res = searchDir(path, "file", 0, tempName);
+
+        if (res.code == 0) {
+            printf("\n%sError : A bot with the same name already exists, please choose another name.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrName;
+        }
+
+        // Processing ---------------------------------------- >>
+        strcpy(name, tempName);
+        strcpy(result.name, name);
     }
 
 
-    // Bot's DESCRIPTION section ---------------------------------------- >>
+
+    // ------=>> | BOT'S DESCRIPTION SECTION | <<=------
+    rptrDesc:
+
     printf("%s %sDESCRIPTION%s of the bot? %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
     fgets(tempDesc, sizeof(tempDesc), stdin);
 
@@ -262,7 +288,7 @@ dataSet collectData(char path[], char username[]) {
     if((tolower(tempDesc[0]) == 'r' && tolower(tempDesc[1]) == '\0') || (tolower(tempDesc[0]) == '0' && tolower(tempDesc[1]) == '\0')) {
         rptr2:
 
-        printf("%s %sAre you sure you want to abort? (Y/N) : %s", prefix, CMD_COL_RED, CMD_COL_RESET);
+        printf("\n%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
         char confirmation = tolower(getchar());
 
         switch (confirmation) {
@@ -291,7 +317,10 @@ dataSet collectData(char path[], char username[]) {
     }
 
 
-    // Bot's TAGS section ---------------------------------------- >>
+
+    // ------=>> | BOT'S TAGS SECTION | <<=------
+    rptrTags:
+
     printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
     fgets(tempTags, sizeof(tempTags), stdin);
 
@@ -300,7 +329,7 @@ dataSet collectData(char path[], char username[]) {
     if((tolower(tempTags[0]) == 'r' && tolower(tempTags[1]) == '\0') || (tolower(tempTags[0]) == '0' && tolower(tempTags[1]) == '\0')) {
         rptr3:
 
-        printf("%s %sAre you sure you want to abort? (Y/N) : %s", prefix, CMD_COL_RED, CMD_COL_RESET);
+        printf("\n%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
         char confirmation = tolower(getchar());
 
         switch (confirmation) {

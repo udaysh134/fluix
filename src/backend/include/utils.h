@@ -18,5 +18,6 @@ SearchResult searchDir(char path[], char type[], int mode, char name[]);
 void maskInput(char *destination, int maxSize);
 char *parseEnv(const char *file, const char *key);
 int deleteDir(const char *folder);
+int isStrClean(char *input);
 
 #endif

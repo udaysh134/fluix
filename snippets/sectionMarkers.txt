@@ -35,5 +35,12 @@ This ensures that everyone on the team uses the same section markers and keeps o
 		"body": [
 			"// ------=>> | $1 | <<=------"
 		]
+	},
+
+	"H3_SectionMarker": {
+		"prefix": "sec3",
+		"body": [
+			"// $1 ---------------------------------------- >>"
+		]
 	}
 }
