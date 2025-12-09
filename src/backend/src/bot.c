@@ -9,6 +9,8 @@
 #include "../include/colors.h"
 #include "../include/utils.h"
 #include "../include/user.h"
+#include "../include/bot.h"
+#include "../include/data.h"
 
 // Declarations
 typedef struct {
@@ -147,6 +149,63 @@ void createBot(char path[], char username[]) {
 
 // ------=>> | User accesses their bots' panel | <<=------
 void accessBots(char path[], char username[]) {
+    access_block_1: 
+    
+      system("cls");
+      char *prefix = inputPrefix();
+      char *lsThick = lineSep('=', 50);
+      char *lsThin = lineSep('-', 50);
+
+      //char name[10];
+      //char desc[1002] = "";
+      //char tags[3][12] = {0};
+
+      /*char tempName[10];
+      char tempDesc[1002];
+      char tempTags[40] = "";*/
+
+      char user_choice1[6];
+
+      int fileCount = 0;
+      char user_choice2[5];
+      int flag =0;
+
+      SearchResult res;
+
+      res = searchDir(path, "file", 1, "");
+      if (res.code == 0) fileCount = res.count;
+      char printOptions[512];
+       
+      snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s(V) - View bot data\n(E) - Edit bot contents\n(D) - Delete bot data/bot file\n(R) - Return back to main menu\n(0) - Exit program\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_MAGENTA, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
+      printf(printOptions);
+
+      printf("%s %sChoose an option from above to proceed: %s", prefix, CMD_COL_YELLOW, CMD_COL_RESET);
+      fgets(user_choice1, sizeof(user_choice1), stdin);
+      user_choice1[strcspn(user_choice1, "\n")] = '\0';
+
+      switch(tolower(user_choice1[0])){
+
+        case 'v':
+            optView(path, username);
+            break;
+        case 'e':
+            optEdit(path, username);
+            break;
+        case 'd':
+            optDelete(path, username);
+            break;
+        case 'r':
+            userPanel(path, username);
+            break;
+        case '0':
+            exitThanks('y');
+            exit(0);
+            break;
+        default:
+            printf("\n%sThat was a wrong choice! Please provide a valid input from the options above.%s", CMD_COL_RED, CMD_COL_RESET);
+            goto access_block_1;
+      }
+
     /**
      * 1. The text based user panel UI will stay ON in this page, but the 'USER PANEL' heading and the given options will change.
      * 2. 'USER PANEL' heading will change to 'BOT PANEL', and options will be the names of the bots user currently has.
