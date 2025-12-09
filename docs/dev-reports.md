@@ -63,10 +63,13 @@ SUMMARY
 - Reorganized `PSIT_INQ.json` entry under "*USER DEFINED*" in `.gitignore`.
 - Formatted terminal output and related code in `bot.c`.
 - Completed error handling and processing for the "**Bot Name**" data collection stage.
+- Fixed bugs in "**Bot Name**" data collection stage.
+- Completed error handling and processing for the "**Bot Description**" data collection stage.
 #### [Yazdaan](https://github.com/SenorDan031)
 - Added bot access options **ONLY** for user, under `accessBot()`.
 - Initiated file fetching work under `void optView()` for users to view their bot(s) under `accessBot()`
   
+
 ## 🗞️ <font color="#e36c09">Dec 8, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added `collectData()` in `bot.c` to handle initial bot data input (name, description, tags). This data will be used later during actual bot file generation.

@@ -284,7 +284,7 @@ dataSet collectData(char path[], char username[]) {
     if((tolower(tempName[0]) == 'r' && tolower(tempName[1]) == '\0') || (tolower(tempName[0]) == '0' && tolower(tempName[1]) == '\0')) {
         rptr1:
 
-        printf("\n%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
         char confirmation = tolower(getchar());
 
         switch (confirmation) {
@@ -306,18 +306,18 @@ dataSet collectData(char path[], char username[]) {
         }
     } else {
         // Error Handling ---------------------------------------- >>
-        if(isStrClean(tempName)) {
-            printf("\n%sError : You can only have alphabets and numbers in your bot name.%s\n", CMD_COL_RED, CMD_COL_RESET);
+        if(!isStrClean(tempName)) {
+            printf("%sError : You can only have alphabets and numbers in your bot name.%s\n", CMD_COL_RED, CMD_COL_RESET);
             goto rptrName;
         }
 
         if (strlen(tempName) < 3) {
-            printf("\n%sError : Name of your bot should be of atleast 3 or more letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            printf("%sError : Name of your bot should be of atleast 3 or more letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
             goto rptrName;
         }
 
         if (strlen(tempName) > 8) {
-            printf("\n%sError : Name of your bot cannot be of more than 8 letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            printf("%sError : Name of your bot cannot be of more than 8 letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
             goto rptrName;
         }
 
@@ -325,7 +325,7 @@ dataSet collectData(char path[], char username[]) {
         res = searchDir(path, "file", 0, tempName);
 
         if (res.code == 0) {
-            printf("\n%sError : A bot with the same name already exists, please choose another name.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            printf("%sError : A bot with the same name already exists, please choose another name.%s\n", CMD_COL_RED, CMD_COL_RESET);
             goto rptrName;
         }
 
@@ -347,7 +347,7 @@ dataSet collectData(char path[], char username[]) {
     if((tolower(tempDesc[0]) == 'r' && tolower(tempDesc[1]) == '\0') || (tolower(tempDesc[0]) == '0' && tolower(tempDesc[1]) == '\0')) {
         rptr2:
 
-        printf("\n%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
         char confirmation = tolower(getchar());
 
         switch (confirmation) {
@@ -368,11 +368,34 @@ dataSet collectData(char path[], char username[]) {
                 goto rptr2;
         }
     } else {
-        strcpy(result.desc, tempDesc);
-        // Processing + Error Handling
+        // Error Handling ---------------------------------------- >>
+        if (strlen(tempDesc) < 15) {
+            printf("%sError : Description of your bot should be of atleast 15 or more letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrDesc;
+        }
 
-        // 1. Make sure the size is neither less than 15, nor greater than 1000
-        // 2. Make sure it doesn't contain quotes (single & double) and backticks
+        if (strlen(tempDesc) > 1000) {
+            printf("%sError : Description of your bot cannot be of more than 1000 letters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrDesc;
+        }
+
+        // Processing ---------------------------------------- >>
+        int read = 0;
+        int write = 0;
+
+        while (tempDesc[read] != '\0') {
+            if (tempDesc[read] != '"' && tempDesc[read] != '\\') {
+                tempDesc[write] = tempDesc[read];
+                write++;
+            }
+            
+            read++;
+        }
+
+        tempDesc[write] = '\0';
+
+        strcpy(desc, tempDesc);
+        strcpy(result.desc, desc);
     }
 
 
@@ -388,7 +411,7 @@ dataSet collectData(char path[], char username[]) {
     if((tolower(tempTags[0]) == 'r' && tolower(tempTags[1]) == '\0') || (tolower(tempTags[0]) == '0' && tolower(tempTags[1]) == '\0')) {
         rptr3:
 
-        printf("\n%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
+        printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
         char confirmation = tolower(getchar());
 
         switch (confirmation) {
