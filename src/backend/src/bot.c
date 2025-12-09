@@ -37,7 +37,15 @@ void createBot(char path[], char username[]) {
     printf("%sBot creation data collected:%s\n", CMD_COL_GREEN, CMD_COL_RESET);
     printf("Name:        %s\n", res.name);
     printf("Description: %s\n", res.desc);
-    printf("Tags:        %s, %s, %s\n", res.tags[0], res.tags[1], res.tags[2]);
+
+    if(res.tags[0][0]=='\0'){
+    
+          printf("Tags:        %sTAGS WERE SKIPPED %s\n", CMD_COL_RED,CMD_COL_RESET);
+
+    }else{
+
+        printf("Tags:        %s, %s, %s\n", res.tags[0], res.tags[1], res.tags[2]);
+    }
 
     Sleep(1000);
 
@@ -248,6 +256,8 @@ dataSet collectData(char path[], char username[]) {
     char tempDesc[1002];
     char tempTags[40] = "";
 
+    int tag_count;
+
     // Starts here
     rptr0:
     system("cls");
@@ -402,64 +412,77 @@ dataSet collectData(char path[], char username[]) {
 
     // ------=>> | BOT'S TAGS SECTION | <<=------
     rptrTags:
+    printf("%s %sHow many tags would you want to register in your bot? [0 tags will skip TAG registeration process] : %s",prefix,CMD_COL_YELLOW,CMD_COL_RESET);
+    scanf("%d",&tag_count);
 
-    printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
-    fgets(tempTags, sizeof(tempTags), stdin);
+    if(tag_count==0){
+        printf("%s %sTAGS skipped for your bot: %s %s\n",prefix,CMD_COL_MAGENTA,name,CMD_COL_RESET);
+        
+        free(lsThick);
+        free(lsThin);
+        return result;
 
-    tempTags[strcspn(tempTags, "\n")] = '\0';
+    } 
+    else {
 
-    if((tolower(tempTags[0]) == 'r' && tolower(tempTags[1]) == '\0') || (tolower(tempTags[0]) == '0' && tolower(tempTags[1]) == '\0')) {
-        rptr3:
+        printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
+        fgets(tempTags, sizeof(tempTags), stdin);
 
-        printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
-        char confirmation = tolower(getchar());
+        tempTags[strcspn(tempTags, "\n")] = '\0';
 
-        switch (confirmation) {
-            case 'y':
-                if (tolower(tempTags[0]) == 'r') {
-                    userPanel(path, username);
-                } else {
-                    exitThanks('y');
-                    exit(0);
+        if((tolower(tempTags[0]) == 'r' && tolower(tempTags[1]) == '\0') || (tolower(tempTags[0]) == '0' && tolower(tempTags[1]) == '\0')) {
+            rptr3:
+
+            printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
+            char confirmation = tolower(getchar());
+
+            switch (confirmation) {
+                case 'y':
+                    if (tolower(tempTags[0]) == 'r') {
+                        userPanel(path, username);
+                    } else {
+                        exitThanks('y');
+                        exit(0);
+                    }
+                case 'n':
+                    printf("Restarting bot creation...");
+                    Sleep(2000);
+
+                    goto rptr0;
+                default:
+                    printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
+                    goto rptr3;
+            }
+        } else {
+            // Split and save tags
+            char *token = strtok(tempTags, ",");
+            int idx = 0;
+
+            while (token != NULL && idx < 3) {
+                while (*token == ' ') token++;
+
+                char *end = token + strlen(token) - 1;
+                while (end > token && *end == ' ') {
+                    *end-- = '\0';
                 }
-            case 'n':
-                printf("Restarting bot creation...");
-                Sleep(2000);
 
-                goto rptr0;
-            default:
-                printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
-                goto rptr3;
-        }
-    } else {
-        // Split and save tags
-        char *token = strtok(tempTags, ",");
-        int idx = 0;
+                strncpy(result.tags[idx], token, sizeof(result.tags[idx]) - 1);
+                result.tags[idx][sizeof(result.tags[idx]) - 1] = '\0';
 
-        while (token != NULL && idx < 3) {
-            while (*token == ' ') token++;
-
-            char *end = token + strlen(token) - 1;
-            while (end > token && *end == ' ') {
-                *end-- = '\0';
+                idx++;
+                token = strtok(NULL, ",");
             }
 
-            strncpy(result.tags[idx], token, sizeof(result.tags[idx]) - 1);
-            result.tags[idx][sizeof(result.tags[idx]) - 1] = '\0';
+            // Processing + Error Handling
 
-            idx++;
-            token = strtok(NULL, ",");
-        }
-
-        // Processing + Error Handling
-
-        // 1. Check if it contains any comma(s)...
-        //    - if not, make sure the the whole input is not greater than 10
-        //    - if it does, seperate strings with commas and check if they too aren't greater than 10
-        // 2. After separation check each separated string if it contains any spaces...
-        //    - if it does, remove all spaces and merge everything into one string
-        // 3. Now treat all those separated strings as finalized, and save them one by one in "tags" array
-    } 
+            // 1. Check if it contains any comma(s)...
+            //    - if not, make sure the the whole input is not greater than 10
+            //    - if it does, seperate strings with commas and check if they too aren't greater than 10
+            // 2. After separation check each separated string if it contains any spaces...
+            //    - if it does, remove all spaces and merge everything into one string
+            // 3. Now treat all those separated strings as finalized, and save them one by one in "tags" array
+        } 
+    }
 
     free(lsThick);
     free(lsThin);
