@@ -9,7 +9,6 @@
 #include "../include/colors.h"
 #include "../include/utils.h"
 #include "../include/user.h"
-#include "../include/bot.h"
 #include "../include/data.h"
 
 // Declarations
@@ -303,13 +302,15 @@ dataSet collectData(char path[], char username[]) {
                     userPanel(path, username);
                 } else {
                     exitThanks('y');
+
+                    free(lsThick);
+                    free(lsThin);
+
                     exit(0);
                 }
             case 'n':
-                printf("Restarting bot creation...");
-                Sleep(2000);
-
-                goto rptr0;
+                eatBuffer();
+                goto rptrName;
             default:
                 printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
                 goto rptr1;
@@ -342,6 +343,9 @@ dataSet collectData(char path[], char username[]) {
         // Processing ---------------------------------------- >>
         strcpy(name, tempName);
         strcpy(result.name, name);
+
+        free(lsThick);
+        free(lsThin);
     }
 
 
@@ -354,7 +358,7 @@ dataSet collectData(char path[], char username[]) {
 
     tempDesc[strcspn(tempDesc, "\n")] = '\0';
 
-    if((tolower(tempDesc[0]) == 'r' && tolower(tempDesc[1]) == '\0') || (tolower(tempDesc[0]) == '0' && tolower(tempDesc[1]) == '\0')) {
+    if(((tolower(tempDesc[0]) == 'r') && (tempDesc[1] == '\0')) || ((tolower(tempDesc[0]) == '0') && (tempDesc[1] == '\0'))) {
         rptr2:
 
         printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
@@ -366,17 +370,25 @@ dataSet collectData(char path[], char username[]) {
                     userPanel(path, username);
                 } else {
                     exitThanks('y');
+
+                    free(lsThick);
+                    free(lsThin);
+
                     exit(0);
                 }
             case 'n':
-                printf("Restarting bot creation...");
-                Sleep(2000);
-
-                goto rptr0;
+                eatBuffer();
+                goto rptrDesc;
             default:
                 printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
                 goto rptr2;
         }
+    } else if (tempDesc[0] == '\0') {
+        strcpy(desc, "");
+        strcpy(result.desc, desc);
+
+        free(lsThick);
+        free(lsThin);
     } else {
         // Error Handling ---------------------------------------- >>
         if (strlen(tempDesc) < 15) {
@@ -406,89 +418,119 @@ dataSet collectData(char path[], char username[]) {
 
         strcpy(desc, tempDesc);
         strcpy(result.desc, desc);
+
+        free(lsThick);
+        free(lsThin);
     }
 
 
 
     // ------=>> | BOT'S TAGS SECTION | <<=------
     rptrTags:
-    printf("%s %sDo you want to add tags to your bot? [ '0' will skip TAG registeration process] ['1' will initiate tags registeration process]: %s",prefix,CMD_COL_YELLOW,CMD_COL_RESET);
-    scanf("%c",&optTag);
 
-    if(optTag=='0'){
-        printf("%s %sTAGS skipped for your bot: %s %s\n",prefix,CMD_COL_MAGENTA,name,CMD_COL_RESET);
-        
+    printf("%s %sTAGS%s for the bot? Separate by comma(s), no space. %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
+    fgets(tempTags, sizeof(tempTags), stdin);
+
+    tempTags[strcspn(tempTags, "\n")] = '\0';
+
+    if(((tolower(tempTags[0]) == 'r') && (tempTags[1] == '\0')) || ((tolower(tempTags[0]) == '0') && (tempTags[1] == '\0'))) {
+        rptr3:
+
+        printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
+        char confirmation = tolower(getchar());
+
+        switch (confirmation) {
+            case 'y':
+                if (tolower(tempTags[0]) == 'r') {
+                    userPanel(path, username);
+                } else {
+                    exitThanks('y');
+
+                    free(lsThick);
+                    free(lsThin);
+
+                    exit(0);
+                }
+            case 'n':
+                eatBuffer();
+                goto rptrTags;
+            default:
+                printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr3;
+        }    
+    } else if (tempTags[0] == '\0') {
+        strcpy(result.tags[0], "");
+        strcpy(result.tags[1], "");
+        strcpy(result.tags[2], "");
+
         free(lsThick);
         free(lsThin);
-        return result;
+    } else {
+        // Error Handling ---------------------------------------- >>
+        int i = 0, flag = 0;
 
-    } 
-    else if(optTag=='1'){
+        while (tempTags[i] != '\0') {
+            tempTags[i] = tolower((unsigned char)tempTags[i]);
 
-        printf("%s %sTAGS%s for the bot? Should be separated by comma(s) %s[Optional]--[TAGS LIMIT UPTO 3]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
-        fgets(tempTags, sizeof(tempTags), stdin);
-
-        tempTags[strcspn(tempTags, "\n")] = '\0';
-
-        if((tolower(tempTags[0]) == 'r' && tolower(tempTags[1]) == '\0') || (tolower(tempTags[0]) == '0' && tolower(tempTags[1]) == '\0')) {
-            rptr3:
-
-            printf("%s\n%s %sAre you sure you want to abort? (Y/N) : %s", lsThin, prefix, CMD_COL_RED, CMD_COL_RESET);
-            char confirmation = tolower(getchar());
-
-            switch (confirmation) {
-                case 'y':
-                    if (tolower(tempTags[0]) == 'r') {
-                        userPanel(path, username);
-                    } else {
-                        exitThanks('y');
-                        exit(0);
-                    }
-                case 'n':
-                    printf("Restarting bot creation...");
-                    Sleep(2000);
-
-                    goto rptr0;
-                default:
-                    printf("\n%sThat was a wrong choice! Please provide a valid input (Y/N)%s", CMD_COL_RED, CMD_COL_RESET);
-                    goto rptr3;
+            if (tempTags[i] == ',') {
+                flag++;
             }
-        } else {
-            // Split and save tags
-            char *token = strtok(tempTags, ",");
-            int idx = 0;
+            
+            i++;
+        }
 
-            while (token != NULL && idx < 3) {
-                while (*token == ' ') token++;
+        if (flag > 3) {
+            printf("%sError : You cannot have more than 3 tags for your bot.%s\n", CMD_COL_RED, CMD_COL_RESET);
+            goto rptrTags;
+        }
 
-                char *end = token + strlen(token) - 1;
-                while (end > token && *end == ' ') {
-                    *end-- = '\0';
+        // Processing ---------------------------------------- >>
+        char tagsStorage[3][12];
+        int j = 0;
+        char *token = strtok(tempTags, ",");
+
+
+        while (token != NULL) {
+            strcpy(tagsStorage[j], token);
+            token = strtok(NULL, ",");
+            j++;
+        }
+
+        // Error Handling ---------------------------------------- >>
+        for (int m = 0; m < 3; m++) {
+            for (int n = 0; n < 12; n++) {
+                char strChar = tagsStorage[m][n];
+
+                if(ispunct(strChar)) {
+                    printf("%sError : No special characters are allowed with tags.%s\n", CMD_COL_RED, CMD_COL_RESET);
+                    goto rptrTags;
                 }
 
-                strncpy(result.tags[idx], token, sizeof(result.tags[idx]) - 1);
-                result.tags[idx][sizeof(result.tags[idx]) - 1] = '\0';
+                if(strChar == ' ') {
+                    printf("%sError : No spaces are allowed with tags.%s\n", CMD_COL_RED, CMD_COL_RESET);
+                    goto rptrTags;
+                }
 
-                idx++;
-                token = strtok(NULL, ",");
+                if (strlen(tagsStorage[m]) > 10) {
+                    printf("%sError : Your tags cannot contain more than 10 characters.%s\n", CMD_COL_RED, CMD_COL_RESET);
+                    goto rptrTags;
+                }
             }
+        }
 
-            // Processing + Error Handling
+        // Processing ---------------------------------------- >>
+        int k = 0;
 
-            // 1. Check if it contains any comma(s)...
-            //    - if not, make sure the the whole input is not greater than 10
-            //    - if it does, seperate strings with commas and check if they too aren't greater than 10
-            // 2. After separation check each separated string if it contains any spaces...
-            //    - if it does, remove all spaces and merge everything into one string
-            // 3. Now treat all those separated strings as finalized, and save them one by one in "tags" array
+        while (k < 3) {
+            strcpy(tags[k], tagsStorage[k]);
+            strcpy(result.tags[k], tags[k]);
+
+            k++;
         }
 
         free(lsThick);
         free(lsThin);
-        return result;
     }
-    else{
-        printf("%sEnter the valid option number please!!!! %s\n",CMD_COL_RED,CMD_COL_RESET);
-        goto rptrTags;
-    }
+
+    return result;
 }

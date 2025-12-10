@@ -55,6 +55,17 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 10, 2025 - Wednesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Removed `bot.h` header file inclusion line from the top of `bot.c` file.
+- Refactored [Yazdaan](https://github.com/SenorDan031)'s way of bot's data collection for "**Tags**".
+- Fixed more bugs, causing while data collection for bot's creation.
+- Added an *else-if* condition to treat enters pressed by user to skip data collection for "Description" and "Tags".
+- Added `free()` function for `lsThick()` and `lsThin()` at necessary points.
+- Completed "**Tags**" section of bot's data collection with necessary processings and error handlings.
+- Refined and finalized `collectData()` function and it's returning values.
+
+
 ## 🗞️ <font color="#e36c09">Dec 9, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added new section marker "**H3_SectionMarker**" in `sectionMarkers.txt`.
