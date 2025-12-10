@@ -61,9 +61,11 @@ SUMMARY
 - Refactored [Yazdaan](https://github.com/SenorDan031)'s way of bot's data collection for "**Tags**".
 - Fixed more bugs, causing while data collection for bot's creation.
 - Added an *else-if* condition to treat enters pressed by user to skip data collection for "Description" and "Tags".
-- Added `free()` function for `lsThick()` and `lsThin()` at necessary points.
+- Added `free()` function for `lsThick()` and `lsThin()` at necessary points in `bot.c` and `admin.c`.
 - Completed "**Tags**" section of bot's data collection with necessary processings and error handlings.
 - Refined and finalized `collectData()` function and it's returning values.
+- Removed extra section markers from `launch.c` and `admin.c`.
+- Added `goto` statements in `admin.c` and `launch.c` to skip display of error for unknown input and refresh current panel.
 
 
 ## 🗞️ <font color="#e36c09">Dec 9, 2025 - Tuesday</font>

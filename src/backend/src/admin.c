@@ -47,39 +47,44 @@ void isAdmin() {
         pass[strcspn(pass, "\n")] = '\0';
 
         if (strcmp(pass, configPass) == 0) {
+            rptr1:
+
             system("cls");
             printf("%s\n%s\t\t   ADMIN PANEL%s\n%s\n(R) - Return back\n(0) - Exit\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, lsThick, lsThin);
             printf("%s%sWhat now? : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-
-            free(configPass);
-            free(lsThick);
-            free(lsThin);
 
             char selection = getchar();
 
             switch (tolower(selection)) {
                 case 'r':
                     system("cls");
+
+                    free(configPass);
+                    free(lsThick);
+                    free(lsThin);
+
                     return;
                 case '0':
                     exitThanks('y');
+
+                    free(configPass);
+                    free(lsThick);
+                    free(lsThin);
+
                     exit(0);
                 default:
-                    printf("%sYou gave an invalid input! Please choose among these only - R/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
-                    break;
+                    goto rptr1;
             }
         } else if (strcmp(pass, jumpCode_1) == 0) {
             system("cls");
+
+            free(configPass);
+            free(lsThick);
+            free(lsThin);
+            
             return;
         } else {
             printf("%sThat was a wrong try! Press \"0\" to go back.%s\n", CMD_COL_RED, CMD_COL_RESET);
         }
     }
 }
-
-
-/*
-----------------------------------------------------------------------------------------------------
-OTHER FUNCTIONS
-----------------------------------------------------------------------------------------------------
-*/

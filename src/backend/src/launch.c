@@ -20,6 +20,8 @@ void launch() {
     char *lsThin = lineSep('-', 50);
     char initialOptions[] = "(A) - Admin Panel\n(U) - User Panel\n(0) - Exit";
 
+    rptr1:
+
     system("cls");
 
     while (1) {
@@ -40,16 +42,9 @@ void launch() {
                 exitThanks('y');
                 return;
             default:
-                printf("%sYou gave an invalid input! Please choose among these only - A/U/0.%s\n", CMD_COL_RED, CMD_COL_RESET);
+                goto rptr1;
         }
     }
 
     free(lsThin);
 }
-
-
-/*
-----------------------------------------------------------------------------------------------------
-OTHER FUNCTIONS
-----------------------------------------------------------------------------------------------------
-*/
