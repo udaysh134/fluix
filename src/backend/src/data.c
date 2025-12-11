@@ -16,7 +16,18 @@
 MAIN FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
-void optView(char path[], char username[]){
+void targetBot(char bot_name[],char path){
+        
+
+     //this bot file will ask for the bot on which user wnats to work
+     //Functionality requirement: bot_name,path
+     //if bot exists allow other accessibilty
+     //else prompt option to user to create that bot
+
+
+
+}
+void optView(char path[], char username[], char bot_name[]){
      
      printf("%s>> Loading all bot file(s) under the username: %s...%s\n", CMD_COL_GREEN, username, CMD_COL_RESET);
 
@@ -45,6 +56,12 @@ void optView(char path[], char username[]){
 }
 
 
-void optAdd() {};
-void optEdit() {};
-void optDelete() {};
+void optAdd(char path[], char username[], char bot_name[]) {
+
+     /*system("cls");
+     printf(" Enter the name of the bot file to work on")*/
+
+}
+
+void optEdit(char path[], char username[], char bot_name[]) {};
+void optDelete(char path[], char username[], char bot_name[]) {};
