@@ -287,7 +287,7 @@ dataSet collectData(char path[], char username[]) {
     rptrName:
 
     printf("%s %sNAME%s of the bot? : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
-    scanf("%s", &tempName);
+    scanf("%s", tempName);
     eatBuffer();
     
     if((tolower(tempName[0]) == 'r' && tolower(tempName[1]) == '\0') || (tolower(tempName[0]) == '0' && tolower(tempName[1]) == '\0')) {
@@ -341,11 +341,15 @@ dataSet collectData(char path[], char username[]) {
         }
 
         // Processing ---------------------------------------- >>
+        int o = 0;
+
+        while(tempName[o] != '\0') {
+            tempName[o] = (char)tolower((unsigned char)tempName[o]);
+            o++;
+        }
+        
         strcpy(name, tempName);
         strcpy(result.name, name);
-
-        free(lsThick);
-        free(lsThin);
     }
 
 
@@ -386,9 +390,6 @@ dataSet collectData(char path[], char username[]) {
     } else if (tempDesc[0] == '\0') {
         strcpy(desc, "");
         strcpy(result.desc, desc);
-
-        free(lsThick);
-        free(lsThin);
     } else {
         // Error Handling ---------------------------------------- >>
         if (strlen(tempDesc) < 15) {
@@ -418,9 +419,6 @@ dataSet collectData(char path[], char username[]) {
 
         strcpy(desc, tempDesc);
         strcpy(result.desc, desc);
-
-        free(lsThick);
-        free(lsThin);
     }
 
 
@@ -462,9 +460,6 @@ dataSet collectData(char path[], char username[]) {
         strcpy(result.tags[0], "");
         strcpy(result.tags[1], "");
         strcpy(result.tags[2], "");
-
-        free(lsThick);
-        free(lsThin);
     } else {
         // Error Handling ---------------------------------------- >>
         int i = 0, flag = 0;
@@ -527,10 +522,10 @@ dataSet collectData(char path[], char username[]) {
 
             k++;
         }
-
-        free(lsThick);
-        free(lsThin);
     }
+
+    free(lsThick);
+    free(lsThin);
 
     return result;
 }

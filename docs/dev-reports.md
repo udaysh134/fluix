@@ -55,6 +55,12 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 11, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Fixed the makefile recipe bug (`Error -1073741819`) from `bot.c`, occuring sometimes during bot's data collection.
+- Added `while` loop inside "**Name**" section in `bot.c` to save bot name in only small letters.
+
+
 ## 🗞️ <font color="#e36c09">Dec 10, 2025 - Wednesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Removed `bot.h` header file inclusion line from the top of `bot.c` file.
