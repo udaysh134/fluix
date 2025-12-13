@@ -55,6 +55,14 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 13, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Commented out the error giving code from `data.c/h` for now.
+- Added the forgotten `break` statement for "**n**" case in `userPanel()` function in `user.c`.
+- Fixed some minor bugs, causing during bot creation from `bot.c`.
+- Did some refinements for post bot creation confirmation panel.
+
+
 ## 🗞️ <font color="#e36c09">Dec 11, 2025 - Thursday</font>
 #### [Uday](https://github.com/udaysh134)
 - Fixed the makefile recipe bug (`Error -1073741819`) from `bot.c`, occuring sometimes during bot's data collection.

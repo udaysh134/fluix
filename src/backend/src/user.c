@@ -246,6 +246,7 @@ void userPanel(char dir[], char username[]) {
     switch (selection) {
         case 'n':
             createBot(dir, username);
+            break;
         case 'a':
             if (fileCount == 0) {
                 printf("%sYou don't currently have any bot. Create a new bot first!%s\n", CMD_COL_RED, CMD_COL_RESET);

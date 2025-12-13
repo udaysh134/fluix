@@ -39,7 +39,7 @@ void optView(char path[], char username[], char bot_name[]){
 
      system("cls");
 
-     char bot_name[10];
+     // char bot_name[10];
 
      printf("%s>> enter the name of the bot you want to view data from: %s", CMD_COL_YELLOW, CMD_COL_RESET);
      

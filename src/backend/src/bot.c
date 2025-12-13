@@ -31,6 +31,85 @@ void createBot(char path[], char username[]) {
     dataSet res;
     res = collectData(path, username);
 
+    char *prefix = inputPrefix();
+    char *lsThick = lineSep('=', 50);
+    char *lsThin = lineSep('-', 50);
+
+    char resDesc[1000], resTags[50] = "", tempTags[50] = "";
+
+    if (strcmp(res.desc, "") != 0) {
+        strcpy(resDesc, res.desc);
+    } else {
+        strcpy(resDesc, CMD_COL_BLACK "[ SKIPPED ]" CMD_COL_RESET);
+    }
+
+    if (strcmp(res.tags[0], "") != 0) {
+        if (
+            (strcmp(res.tags[0], "") != 0) &&
+            (strcmp(res.tags[1], "") == 0) &&
+            (strcmp(res.tags[2], "") == 0) &&
+            (strcmp(res.tags[3], "") == 0)
+        ) {
+            snprintf(tempTags, sizeof(tempTags), "%s", res.tags[0]);
+            strcpy(resTags, tempTags);
+        } else if (
+            (strcmp(res.tags[0], "") != 0) &&
+            (strcmp(res.tags[1], "") != 0) &&
+            (strcmp(res.tags[2], "") == 0) &&
+            (strcmp(res.tags[3], "") == 0)
+        ) {
+            snprintf(tempTags, sizeof(tempTags), "%s, %s", res.tags[0], res.tags[1]);
+            strcpy(resTags, tempTags);
+        } else if (
+            (strcmp(res.tags[0], "") != 0) &&
+            (strcmp(res.tags[1], "") != 0) &&
+            (strcmp(res.tags[2], "") != 0) &&
+            (strcmp(res.tags[3], "") == 0)
+        ) {
+            snprintf(tempTags, sizeof(tempTags), "%s, %s, %s", res.tags[0], res.tags[1], res.tags[2]);
+            strcpy(resTags, tempTags);
+        } else {
+            snprintf(tempTags, sizeof(tempTags), "%s, %s, %s, %s", res.tags[0], res.tags[1], res.tags[2], res.tags[3]);
+            strcpy(resTags, tempTags);
+        }
+    } else {
+        strcpy(resTags, CMD_COL_BLACK "[ SKIPPED ]" CMD_COL_RESET);
+    }
+
+
+    // Execution starts from here
+    // system("cls");
+
+    char printOptions[1024];
+    snprintf(printOptions, sizeof(printOptions),
+        "%s"
+        "\n%s\t   USER PANEL - %s"
+        "%s%s%s"
+        "\n\t      (Bot Creation)"
+        "\n%s"
+        "\n%sName :%s %s"
+        "\n%sDescription :%s %s"
+        "\n%sTags :%s %s"
+        "\n%s"
+        "\n",
+
+        lsThick,
+        CMD_COL_GREEN, CMD_COL_RESET,
+        CMD_COL_BLACK, username, CMD_COL_RESET,
+        lsThick,
+        CMD_COL_CYAN, CMD_COL_RESET, res.name,
+        CMD_COL_CYAN, CMD_COL_RESET, resDesc,
+        CMD_COL_CYAN, CMD_COL_RESET, resTags,
+        lsThin
+    );
+    printf("%s", printOptions);
+
+    free(lsThick);
+    free(lsThin);
+    getchar();
+
+
+    /*
     char confirmation[10];
 
     printf("%sBot creation data collected:%s\n", CMD_COL_GREEN, CMD_COL_RESET);
@@ -255,8 +334,6 @@ dataSet collectData(char path[], char username[]) {
     char tempDesc[1002];
     char tempTags[40] = "";
 
-    char optTag;
-
     // Starts here
     rptr0:
     system("cls");
@@ -462,7 +539,7 @@ dataSet collectData(char path[], char username[]) {
         strcpy(result.tags[2], "");
     } else {
         // Error Handling ---------------------------------------- >>
-        int i = 0, flag = 0;
+        int i = 0, flag = 1;
 
         while (tempTags[i] != '\0') {
             tempTags[i] = tolower((unsigned char)tempTags[i]);
@@ -501,7 +578,7 @@ dataSet collectData(char path[], char username[]) {
                     goto rptrTags;
                 }
 
-                if(strChar == ' ') {
+                if(strChar == 32) {
                     printf("%sError : No spaces are allowed with tags.%s\n", CMD_COL_RED, CMD_COL_RESET);
                     goto rptrTags;
                 }
