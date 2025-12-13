@@ -31,54 +31,32 @@ void createBot(char path[], char username[]) {
     dataSet res;
     res = collectData(path, username);
 
+    // Processing data before displaying ---------------------------------------- >>
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
 
-    char resDesc[1000], resTags[50] = "", tempTags[50] = "";
+    char resDesc[1000], resTags[50] = "";
 
-    if (strcmp(res.desc, "") != 0) {
-        strcpy(resDesc, res.desc);
-    } else {
-        strcpy(resDesc, CMD_COL_BLACK "[ SKIPPED ]" CMD_COL_RESET);
-    }
+    // For DESCRIPTION
+    (strcmp(res.desc, "") != 0) ? (strcpy(resDesc, res.desc)) : (strcpy(resDesc, CMD_COL_BLACK "[ SKIPPED ]" CMD_COL_RESET));
 
-    if (strcmp(res.tags[0], "") != 0) {
-        if (
-            (strcmp(res.tags[0], "") != 0) &&
-            (strcmp(res.tags[1], "") == 0) &&
-            (strcmp(res.tags[2], "") == 0) &&
-            (strcmp(res.tags[3], "") == 0)
-        ) {
-            snprintf(tempTags, sizeof(tempTags), "%s", res.tags[0]);
-            strcpy(resTags, tempTags);
-        } else if (
-            (strcmp(res.tags[0], "") != 0) &&
-            (strcmp(res.tags[1], "") != 0) &&
-            (strcmp(res.tags[2], "") == 0) &&
-            (strcmp(res.tags[3], "") == 0)
-        ) {
-            snprintf(tempTags, sizeof(tempTags), "%s, %s", res.tags[0], res.tags[1]);
-            strcpy(resTags, tempTags);
-        } else if (
-            (strcmp(res.tags[0], "") != 0) &&
-            (strcmp(res.tags[1], "") != 0) &&
-            (strcmp(res.tags[2], "") != 0) &&
-            (strcmp(res.tags[3], "") == 0)
-        ) {
-            snprintf(tempTags, sizeof(tempTags), "%s, %s, %s", res.tags[0], res.tags[1], res.tags[2]);
-            strcpy(resTags, tempTags);
-        } else {
-            snprintf(tempTags, sizeof(tempTags), "%s, %s, %s, %s", res.tags[0], res.tags[1], res.tags[2], res.tags[3]);
-            strcpy(resTags, tempTags);
+    // For TAGS
+    int found = 0;
+    for (int i = 0; i < 3; i++) {
+        if (strcmp(res.tags[i], "") != 0) {
+            if (found != 0) { strncat(resTags, ", ", sizeof(resTags) - strlen(resTags) - 1); }
+            
+            strncat(resTags, res.tags[i], sizeof(resTags) - strlen(resTags) - 1);
+            found = 1;
         }
-    } else {
-        strcpy(resTags, CMD_COL_BLACK "[ SKIPPED ]" CMD_COL_RESET);
     }
 
+    if (!found) { strcpy(resTags, CMD_COL_BLACK "[ SKIPPED ]" CMD_COL_RESET); }
 
-    // Execution starts from here
-    // system("cls");
+
+    // Execution starts from here ---------------------------------------- >>
+    system("cls");
 
     char printOptions[1024];
     snprintf(printOptions, sizeof(printOptions),
@@ -87,9 +65,9 @@ void createBot(char path[], char username[]) {
         "%s%s%s"
         "\n\t      (Bot Creation)"
         "\n%s"
-        "\n%sName :%s %s"
-        "\n%sDescription :%s %s"
-        "\n%sTags :%s %s"
+        "\n(o) %sName%s : %s"
+        "\n(o) %sDescription%s : %s"
+        "\n(o) %sTags%s : %s"
         "\n%s"
         "\n",
 
@@ -97,17 +75,26 @@ void createBot(char path[], char username[]) {
         CMD_COL_GREEN, CMD_COL_RESET,
         CMD_COL_BLACK, username, CMD_COL_RESET,
         lsThick,
-        CMD_COL_CYAN, CMD_COL_RESET, res.name,
-        CMD_COL_CYAN, CMD_COL_RESET, resDesc,
-        CMD_COL_CYAN, CMD_COL_RESET, resTags,
+        CMD_COL_MAGENTA, CMD_COL_RESET, res.name,
+        CMD_COL_MAGENTA, CMD_COL_RESET, resDesc,
+        CMD_COL_MAGENTA, CMD_COL_RESET, resTags,
         lsThin
     );
     printf("%s", printOptions);
 
-    free(lsThick);
-    free(lsThin);
-    getchar();
+    printf("%s %sWould you like to continue with this (Y/N)?%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+    char confirmation = tolower(getchar());
 
+    switch (confirmation) {
+        case 'y':
+            printf("YES");
+            break;
+        case 'n':
+            printf("NO");
+            break;
+        default:
+            break;
+    }
 
     /*
     char confirmation[10];
@@ -434,7 +421,7 @@ dataSet collectData(char path[], char username[]) {
     // ------=>> | BOT'S DESCRIPTION SECTION | <<=------
     rptrDesc:
 
-    printf("%s %sDESCRIPTION%s of the bot? %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
+    printf("%s %sDESCRIPTION%s? %s[ Optional ]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
     fgets(tempDesc, sizeof(tempDesc), stdin);
 
     tempDesc[strcspn(tempDesc, "\n")] = '\0';
@@ -503,7 +490,7 @@ dataSet collectData(char path[], char username[]) {
     // ------=>> | BOT'S TAGS SECTION | <<=------
     rptrTags:
 
-    printf("%s %sTAGS%s for the bot? Separate by comma(s), no space. %s[Optional]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
+    printf("%s %sTAGS%s? Separate by comma(s), no space. %s[ Optional ]%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET, CMD_COL_BLACK, CMD_COL_RESET);
     fgets(tempTags, sizeof(tempTags), stdin);
 
     tempTags[strcspn(tempTags, "\n")] = '\0';

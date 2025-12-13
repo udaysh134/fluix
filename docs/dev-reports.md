@@ -61,6 +61,8 @@ SUMMARY
 - Added the forgotten `break` statement for "**n**" case in `userPanel()` function in `user.c`.
 - Fixed some minor bugs, causing during bot creation from `bot.c`.
 - Did some refinements for post bot creation confirmation panel.
+- Replaced the redundant `if-else` logic for description and tags display with a much cleaner ternary operators and for loop.
+- Finalized the `createBot()` function's info displaying progress until bot confirmation.
 
 
 ## 🗞️ <font color="#e36c09">Dec 11, 2025 - Thursday</font>
