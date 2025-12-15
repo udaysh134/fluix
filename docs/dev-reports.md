@@ -55,6 +55,17 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 15, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Integrated cJSONlibrary for flexible `.json` file handling.
+- Added global `SCHEMA_VERSION` for dynamic future schema updates.
+- Refactored [Yazdaan](https://github.com/SenorDan031)'s commented code for clearer data extraction.
+- Improved `createBot()`'s `'y'` case for a more adaptable logic to build and persist final JSON using cJSON in `bot.c`.
+- Added "**maxEntries**" key to `dataSchema.json` for future entry's insertion and deletion.
+- Introduced `settings.json` in `src/config/` to centralize program configuration (preparation for v0.2.0 release).
+- Added `<user>.json` under `src/db/<user>/` with a new structure for user-specific data.
+
+
 ## 🗞️ <font color="#e36c09">Dec 13, 2025 - Saturday</font>
 #### [Uday](https://github.com/udaysh134)
 - Commented out the error giving code from `data.c/h` for now.

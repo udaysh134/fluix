@@ -11,6 +11,11 @@
 #include "../include/user.h"
 #include "../include/data.h"
 
+#include "../packages/cJson/cJSON.h"
+
+// Definitions
+#define SCHEMA_VERSION 1.0
+
 // Declarations
 typedef struct {
     char name[10];
@@ -87,7 +92,48 @@ void createBot(char path[], char username[]) {
 
     switch (confirmation) {
         case 'y':
-            printf("YES");
+            printf("Creating your bot...");
+            Sleep(2000);
+            printf("\nPlease wait...");
+            Sleep(3000);
+
+            // Creating final JSON object here
+            cJSON *bot = cJSON_CreateObject();
+                cJSON_AddNumberToObject(bot, "id", 0);
+                cJSON_AddStringToObject(bot, "name", res.name);
+                cJSON_AddStringToObject(bot, "description", res.desc);
+                cJSON_AddItemToObject(bot, "tags", res.tags);
+                cJSON_AddNumberToObject(bot, "entryCount", 0);
+                cJSON_AddNumberToObject(bot, "maxEntries", 0);
+                cJSON_AddStringToObject(bot, "owner", username);
+                cJSON_AddNumberToObject(bot, "createdAt", 1738889015);
+                cJSON_AddNumberToObject(bot, "modifiedAt", 1738889015);
+
+            cJSON *root = cJSON_CreateObject();
+                cJSON_AddNumberToObject(root, "schemaVersion", SCHEMA_VERSION);
+                cJSON_AddItemToObject(root, "bot", bot);
+                cJSON_AddArrayToObject(root, "entries");
+
+            char *txt = cJSON_Print(root);
+            printf("Initial JSON:\n%s\n\n", txt);
+            free(txt);
+
+
+
+            // char filePath[256];
+            // snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, res.name);
+
+            // FILE *createdFile = fopen(filePath, "w");
+            // if (!createdFile) {
+            //     printf("%sCould not create the bot file. Internal Error!%s", CMD_COL_RED, CMD_COL_RESET);
+            //     Sleep(1000);
+            //     printf("Exiting the program!%s", CMD_COL_RESET);
+            //     Sleep(2000);
+
+            //     free(lsThick);
+            //     free(lsThin);
+            //     exit(0);
+            // }
             break;
         case 'n':
             printf("NO");
@@ -97,90 +143,58 @@ void createBot(char path[], char username[]) {
     }
 
     /*
-    char confirmation[10];
-
-    printf("%sBot creation data collected:%s\n", CMD_COL_GREEN, CMD_COL_RESET);
-    printf("Name:        %s\n", res.name);
-    printf("Description: %s\n", res.desc);
-
-    if(res.tags[0][0]=='\0'){
-    
-          printf("Tags:        %sTAGS WERE SKIPPED %s\n", CMD_COL_RED,CMD_COL_RESET);
-
-    }else{
-
-        printf("Tags:        %s, %s, %s\n", res.tags[0], res.tags[1], res.tags[2]);
-    }
-
-    Sleep(1000);
-
-    printf("%s>> Do you want to finalize these credentials? (Yes/No)%s: "CMD_COL_YELLOW, CMD_COL_RESET);
-    scanf("%9s", confirmation);
-    eatBuffer();
-
     if (tolower(confirmation[0]) == 'y' || tolower(confirmation[1]) == 'e' || tolower(confirmation[2]) == 's') {
-        printf("%sFinalizing bot creation...%s\n", CMD_COL_GREEN, CMD_COL_RESET);
-        Sleep(2000);
- 
-        char filePath[260];  
+        char filePath[260];
+        snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, res.name);
 
-    snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, res.name);
+        FILE *fp = fopen(filePath, "w");
+        if (!fp) {
+            printf("%sError: Could not create bot file at \"%s\"%s\n",
+                   CMD_COL_RED, filePath, CMD_COL_RESET);
+            Sleep(2000);
+            return;
+        }
 
-    FILE *fp = fopen(filePath, "w");
-    if (!fp) {
-        printf("%sError: Could not create bot file at \"%s\"%s\n",
-               CMD_COL_RED, filePath, CMD_COL_RESET);
-        Sleep(2000);
-        return;
-    }
+        time_t now = time(NULL);
+        long createdAt  = (long)now;
+        long modifiedAt = (long)now;
 
-    // timestamps (seconds since epoch for now)
-    time_t now = time(NULL);
-    long createdAt  = (long)now;
-    long modifiedAt = (long)now;
+        int botId      = 1;
+        int entryCount = 0;
 
-    int botId      = 1;   
-    int entryCount = 0;   
-
-    //here we will register the final data into the bot file
         fprintf(fp,
-        "{\n"
-        "    \"schemaVersion\": 1.0,\n"
-        "    \"bot\": {\n"
-        "        \"id\": %d,\n"
-        "        \"name\": \"%s\",\n"
-        "        \"description\": \"%s\",\n"
-        "        \"tags\": [\"%s\", \"%s\", \"%s\"],\n"
-        "        \"entryCount\": %d,\n"
-        "        \"owner\": \"%s\",\n"
-        "        \"createdAt\": %ld,\n"
-        "        \"modifiedAt\": %ld\n"
-        "    },\n"
-        "    \"entries\": []\n"
-        "}\n",
-        botId,
-        res.name,
-        res.desc,
-        res.tags[0], res.tags[1], res.tags[2],
-        entryCount,
-        username,
-        createdAt,
-        modifiedAt
-    );
+            "{\n"
+            "    \"schemaVersion\": 1.0,\n"
+            "    \"bot\": {\n"
+            "        \"id\": %d,\n"
+            "        \"name\": \"%s\",\n"
+            "        \"description\": \"%s\",\n"
+            "        \"tags\": [\"%s\", \"%s\", \"%s\"],\n"
+            "        \"entryCount\": %d,\n"
+            "        \"owner\": \"%s\",\n"
+            "        \"createdAt\": %ld,\n"
+            "        \"modifiedAt\": %ld\n"
+            "    },\n"
+            "    \"entries\": []\n"
+            "}\n",
+            botId,
+            res.name,
+            res.desc,
+            res.tags[0], res.tags[1], res.tags[2],
+            entryCount,
+            username,
+            createdAt,
+            modifiedAt
+        );
 
-    fclose(fp);
+        fclose(fp);
 
-    printf("%sBot \"%s\" created successfully at: %s%s\n",
-           CMD_COL_GREEN, res.name, filePath, CMD_COL_RESET);
-    Sleep(2000);
-    printf("Redirecting to User Panel...\n");
-    Sleep(2000);
-    userPanel(path, username);
-
-    } 
-    
-    
-    else {
+        printf("%sBot \"%s\" created successfully at: %s%s\n", CMD_COL_GREEN, res.name, filePath, CMD_COL_RESET);
+        Sleep(2000);
+        printf("Redirecting to User Panel...\n");
+        Sleep(2000);
+        userPanel(path, username);
+    } else {
         printf("%sBot creation aborted. Returning to User Panel...%s\n", CMD_COL_RED, CMD_COL_RESET);
         Sleep(2000);
         userPanel(path, username);
@@ -193,7 +207,6 @@ void createBot(char path[], char username[]) {
      * 4. And then - we'll copy the basic structure we have from 'dataSchema.json' into this newly created bot file
      * 5. Now that we have the file and the structure inside it, we'll start appending some data into data fields of that structure
      */
-
 
     /**
      * 1. These data will be picked right then and there during the creation of the bot, like - name, description, tags

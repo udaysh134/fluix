@@ -1,0 +1,5 @@
+{
+    "prefix": ">> ",
+    "dbDir": ".\\src\\db\\",
+    "bot_schemaVersion": 1.0
+}
