@@ -64,6 +64,8 @@ SUMMARY
 - Added "**maxEntries**" key to `dataSchema.json` for future entry's insertion and deletion.
 - Introduced `settings.json` in `src/config/` to centralize program configuration (preparation for v0.2.0 release).
 - Added `<user>.json` under `src/db/<user>/` with a new structure for user-specific data.
+- Cleaned up code formatting and fixed "tags" array handling with cJSON, which was previously broken.
+- Added `cJSON.c` to the `Makefile`, to prevent compilation crashes.
 
 
 ## 🗞️ <font color="#e36c09">Dec 13, 2025 - Saturday</font>

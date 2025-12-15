@@ -9,6 +9,8 @@ fluix:
 		src/backend/src/bot.c \
 		src/backend/src/data.c \
 		src/backend/src/utils.c \
+		\
+		src/backend/packages/cJSON/cJSON.c \
 		-o Fluix.exe
 
 # Run target

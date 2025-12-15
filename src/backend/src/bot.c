@@ -40,6 +40,7 @@ void createBot(char path[], char username[]) {
     char *prefix = inputPrefix();
     char *lsThick = lineSep('=', 50);
     char *lsThin = lineSep('-', 50);
+    int tagsCount = 3;
 
     char resDesc[1000], resTags[50] = "";
 
@@ -48,7 +49,7 @@ void createBot(char path[], char username[]) {
 
     // For TAGS
     int found = 0;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < tagsCount; i++) {
         if (strcmp(res.tags[i], "") != 0) {
             if (found != 0) { strncat(resTags, ", ", sizeof(resTags) - strlen(resTags) - 1); }
             
@@ -98,11 +99,14 @@ void createBot(char path[], char username[]) {
             Sleep(3000);
 
             // Creating final JSON object here
+            cJSON *tags = cJSON_CreateArray();
+                for (int i = 0; i < tagsCount; i++) { cJSON_AddItemToArray(tags, cJSON_CreateString(res.tags[i])); }
+
             cJSON *bot = cJSON_CreateObject();
                 cJSON_AddNumberToObject(bot, "id", 0);
                 cJSON_AddStringToObject(bot, "name", res.name);
                 cJSON_AddStringToObject(bot, "description", res.desc);
-                cJSON_AddItemToObject(bot, "tags", res.tags);
+                cJSON_AddItemToObject(bot, "tags", tags);
                 cJSON_AddNumberToObject(bot, "entryCount", 0);
                 cJSON_AddNumberToObject(bot, "maxEntries", 0);
                 cJSON_AddStringToObject(bot, "owner", username);
