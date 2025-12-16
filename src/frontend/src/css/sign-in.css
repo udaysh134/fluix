@@ -114,6 +114,13 @@ text-decoration: underline;}
 }
 .card:hover .plus{ transform: translateY(-12px) scale(1.03) }
 
+.nav a{
+  color:rgba(230,238,247,0.86);
+  text-decoration:none;
+}
+.plus a:hover{color:#cfe6ff;
+text-decoration: none}
+
 
 .topbar::after{
   content:"";

@@ -15,7 +15,7 @@ body{
   min-height:100vh;display:flex;flex-direction:column;
 }
 .container{
-  min-height:100vh;
+  min-height:22%;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -56,12 +56,12 @@ body{
 text-decoration: underline;
 }
 
-.editor-page{
+/* .editor-page{
   flex:1;
   padding:28px
-}
+} */
 .hero-card{
-  width:100%;
+  width:90%;
   max-width:1200px;
   margin:0 auto;
   border-radius:22px;
