@@ -55,6 +55,13 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 16, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added `getEpochTime()` utility to fetch current Epoch time in milliseconds, in `utils.c/h`.
+- Added `genRand()` function in `utils.c/h` to generate random alphanumeric strings (uppercase + lowercase) of a given length.
+- Updated `Makefile` to link "**-lbcrypt**" (maps to "**bcrypt.lib**" on MSVC) to support randomness used in `genRand()` function.
+
+
 ## 🗞️ <font color="#e36c09">Dec 15, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Integrated cJSONlibrary for flexible `.json` file handling.

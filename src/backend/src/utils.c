@@ -5,6 +5,8 @@
 #include <windows.h>
 #include <string.h>
 #include <conio.h>
+#include <stdint.h>
+#include <bcrypt.h>
 
 #include "../include/utils.h"
 #include "../include/colors.h"
@@ -305,4 +307,44 @@ int isStrClean(char *input) {
     }
     
     return 1;
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+10. GET EPOCH TIME IN MILLISECONDS
+----------------------------------------------------------------------------------------------------
+*/
+uint64_t getEpochTime() {
+    FILETIME ft;
+    GetSystemTimeAsFileTime(&ft);
+
+    uint64_t t = ((uint64_t)ft.dwHighDateTime << 32) | ft.dwLowDateTime;
+    return (t - 116444736000000000ULL) / 10000;
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+11. GENRATE RANDOM STRING OF ALPHANUMERIC CHARACTERS
+----------------------------------------------------------------------------------------------------
+*/
+void genRand(char *str, size_t length) {
+    uint8_t buf;
+    static const char charset[] = 
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz"
+        "0123456789";
+
+    for (size_t i = 0; i < length; i++) {
+        BCryptGenRandom(
+            NULL,
+            &buf,
+            sizeof(buf),
+            BCRYPT_USE_SYSTEM_PREFERRED_RNG
+        );
+        str[i] = charset[buf % (sizeof(charset) - 1)];
+    }
+
+    str[length] = '\0';
 }

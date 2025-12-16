@@ -88,7 +88,7 @@ void createBot(char path[], char username[]) {
     );
     printf("%s", printOptions);
 
-    printf("%s %sWould you like to continue with this (Y/N)?%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+    printf("%s %sWould you like to continue with this? (Y/N)%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     char confirmation = tolower(getchar());
 
     switch (confirmation) {
