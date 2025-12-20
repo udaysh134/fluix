@@ -55,6 +55,15 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 20, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added `strToHex()` to convert strings into hexadecimal IDs.
+- Implemented helper functions `weakRandom_u32()` and `fnv1a_hash()` in `utils.c/h` to support `genRand()` and `strToHex()` functions.
+- Integrated dynamic user data handling with the `cJSON` library during user creation, in `user.c`.
+- Resolved build and runtime issues caused by leftover `bcrypt` related code in `main.c`.
+- Removed `-lbcrypt` from the Makefile as it is no longer required.
+
+
 ## 🗞️ <font color="#e36c09">Dec 16, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added `getEpochTime()` utility to fetch current Epoch time in milliseconds, in `utils.c/h`.

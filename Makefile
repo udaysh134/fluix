@@ -13,7 +13,6 @@ fluix:
 		\
 		src/backend/packages/cJSON/cJSON.c \
 		\
-		-lbcrypt \
 		-o Fluix.exe
 
 # Run target

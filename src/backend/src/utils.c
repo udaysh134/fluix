@@ -6,13 +6,17 @@
 #include <string.h>
 #include <conio.h>
 #include <stdint.h>
-#include <bcrypt.h>
+#include <time.h>
 
 #include "../include/utils.h"
 #include "../include/colors.h"
 
 // Definitions
 #define ENV_LINE_MAX 256
+
+// Declarations
+static uint32_t weakRandom_u32(void);
+static uint64_t fnv1a_Hash(const char *s);
 
 
 /*
@@ -38,7 +42,7 @@ char *lineSep(char symbol, int length) {
 2. GLOBAL PREFIX FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-char *inputPrefix() {
+char *inputPrefix(void) {
     return CMD_COL_YELLOW ">> " CMD_COL_RESET;
 }
 
@@ -48,7 +52,7 @@ char *inputPrefix() {
 3. BUFFER CONSUMING FUNCTION
 ----------------------------------------------------------------------------------------------------
 */
-void eatBuffer() {
+void eatBuffer(void) {
     int ch;
     while ((ch = getchar()) != '\n' && ch != EOF) {}
 }
@@ -315,7 +319,7 @@ int isStrClean(char *input) {
 10. GET EPOCH TIME IN MILLISECONDS
 ----------------------------------------------------------------------------------------------------
 */
-uint64_t getEpochTime() {
+uint64_t getEpochTime(void) {
     FILETIME ft;
     GetSystemTimeAsFileTime(&ft);
 
@@ -330,21 +334,49 @@ uint64_t getEpochTime() {
 ----------------------------------------------------------------------------------------------------
 */
 void genRand(char *str, size_t length) {
-    uint8_t buf;
-    static const char charset[] = 
+    static const char charset[] =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         "abcdefghijklmnopqrstuvwxyz"
         "0123456789";
 
+    size_t charset_len = sizeof(charset) - 1;
+
     for (size_t i = 0; i < length; i++) {
-        BCryptGenRandom(
-            NULL,
-            &buf,
-            sizeof(buf),
-            BCRYPT_USE_SYSTEM_PREFERRED_RNG
-        );
-        str[i] = charset[buf % (sizeof(charset) - 1)];
+        uint32_t r = weakRandom_u32();
+        str[i] = charset[r % charset_len];
     }
 
     str[length] = '\0';
+}
+
+static uint32_t weakRandom_u32(void) {
+    static int seeded = 0;
+    if (!seeded) {
+        srand((unsigned)time(NULL));
+        seeded = 1;
+    }
+
+    return ((uint32_t)rand() << 16) ^ rand();
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+12. STRING TO HEXADECIMAL
+----------------------------------------------------------------------------------------------------
+*/
+void strToHex(const char *input, char *out) {
+    uint64_t hash = fnv1a_Hash(input);
+    sprintf(out, "%016llX", (unsigned long long)hash);
+}
+
+static uint64_t fnv1a_Hash(const char *s) {
+    uint64_t hash = 14695981039346656037ULL;
+
+    while (*s) {
+        hash ^= (unsigned char)*s++;
+        hash *= 1099511628211ULL;
+    }
+
+    return hash;
 }

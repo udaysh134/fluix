@@ -9,6 +9,7 @@
 #include "../include/colors.h"
 #include "../include/utils.h"
 #include "../include/bot.h"
+#include "../packages/cJSON/cJSON.h"
 
 // Definitions
 #define DB_PATH ".\\src\\db\\"
@@ -180,6 +181,24 @@ void optSignUp(char name[]) {
     snprintf(path, sizeof(path), "%s%s", DB_PATH, finalUsername);
 
     if (CreateDirectory(path, NULL)) {
+        char nameInHex[64];
+        strToHex(name, nameInHex);
+
+        printf("%s - %s", name, nameInHex);
+        getchar();
+        uint64_t creationTime = getEpochTime();
+
+        cJSON *root = cJSON_CreateObject();
+            cJSON_AddStringToObject(root, "userID", "l");
+            cJSON_AddNumberToObject(root, "botCount", 0);
+            cJSON_AddNumberToObject(root, "maxBots", 0);
+            cJSON_AddNumberToObject(root, "createdAt", creationTime);
+            cJSON_AddNumberToObject(root, "modifiedAt", creationTime);
+
+        char *txt = cJSON_Print(root);
+        printf("\n%s\n", txt);
+        free(txt);
+
         printf("%s\nSuccess! A user was created with the name %s\"%s\"%s", lsThin, CMD_COL_GREEN, finalUsername, CMD_COL_RESET);
         Sleep(2000);
         printf("\nTaking you to your User Panel...");
@@ -261,7 +280,7 @@ void userPanel(char dir[], char username[]) {
 
             system("cls");
             printf(printOptions);
-            printf("%s %sAre you sure you want to delete your account? This is irreversible! (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+            printf("%s %sAre you sure you want to delete your account? (Y/N) : %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
 
             char choice = tolower(getchar());
             eatBuffer();
@@ -286,9 +305,9 @@ void userPanel(char dir[], char username[]) {
                     system("cls");
                     printf(printOptions);
                     printf("%s Your account %s\"%s\"%s was successfully deleted from our database.", prefix, CMD_COL_RED, username, CMD_COL_RESET);
-                    Sleep(5000);
-                    printf("\n%s Redirecting you to the main menu...", prefix);
                     Sleep(4000);
+                    printf("\n%s Redirecting you to the main menu...", prefix);
+                    Sleep(3000);
 
                     system("cls");
 
