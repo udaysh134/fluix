@@ -62,6 +62,9 @@ SUMMARY
 - Integrated dynamic user data handling with the `cJSON` library during user creation, in `user.c`.
 - Resolved build and runtime issues caused by leftover `bcrypt` related code in `main.c`.
 - Removed `-lbcrypt` from the Makefile as it is no longer required.
+- Reorganized `src/frontend` structure, moving `.html` to `pages/` and `.css` to `css/`.
+- Fixed broken asset links in frontend files resulting from the directory restructuring.
+- Standardized code indentation to 4 spaces across all frontend files.
 
 
 ## 🗞️ <font color="#e36c09">Dec 16, 2025 - Tuesday</font>
