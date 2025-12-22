@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <ctype.h>
 #include <string.h>
+#include <inttypes.h>
 
 #include "../include/user.h"
 #include "../include/colors.h"
@@ -181,22 +182,43 @@ void optSignUp(char name[]) {
     snprintf(path, sizeof(path), "%s%s", DB_PATH, finalUsername);
 
     if (CreateDirectory(path, NULL)) {
-        char nameInHex[64];
-        strToHex(name, nameInHex);
-
-        printf("%s - %s", name, nameInHex);
-        getchar();
         uint64_t creationTime = getEpochTime();
+        
+        char randStr[10];
+        genRand(randStr, 8);
+
+        char userID[64];
+        snprintf(userID, sizeof(userID), "%s_%" PRIu64 "", randStr, creationTime);
+
+        char userID_inHex[20];
+        strToHex(userID, userID_inHex);
 
         cJSON *root = cJSON_CreateObject();
-            cJSON_AddStringToObject(root, "userID", "l");
+            cJSON_AddStringToObject(root, "userID", userID_inHex);
             cJSON_AddNumberToObject(root, "botCount", 0);
             cJSON_AddNumberToObject(root, "maxBots", 0);
             cJSON_AddNumberToObject(root, "createdAt", creationTime);
             cJSON_AddNumberToObject(root, "modifiedAt", creationTime);
 
         char *txt = cJSON_Print(root);
-        printf("\n%s\n", txt);
+        char filePath[256];
+        snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, userID_inHex);
+
+        FILE *createdFile = fopen(filePath, "w");
+        if (!createdFile) {
+            printf("%sCouldn't create the user file. Internal Error!%s", CMD_COL_RED, CMD_COL_RESET);
+            Sleep(1000);
+            printf("Exiting the program!%s", CMD_COL_RESET);
+            Sleep(2000);
+
+            free(lsThin);
+            free(txt);
+            exit(0);
+        }
+
+        fprintf(createdFile, txt);
+        fclose(createdFile);
+
         free(txt);
 
         printf("%s\nSuccess! A user was created with the name %s\"%s\"%s", lsThin, CMD_COL_GREEN, finalUsername, CMD_COL_RESET);
@@ -229,7 +251,7 @@ void userPanel(char dir[], char username[]) {
 
     SearchResult res;
     res = searchDir(dir, "file", 1, "");
-    if (res.code == 0) fileCount = res.count;
+    if (res.code == 0) fileCount = (res.count) - 1;
 
 
     // Actual User Panel starts from here

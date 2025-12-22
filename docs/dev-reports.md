@@ -55,6 +55,11 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 22, 2025 - Monday</font>
+#### [Uday](https://github.com/udaysh134)
+- Implemented user file creation during user signup, generating unique user IDs in `user.c`.
+
+
 ## 🗞️ <font color="#e36c09">Dec 20, 2025 - Saturday</font>
 #### [Uday](https://github.com/udaysh134)
 - Added `strToHex()` to convert strings into hexadecimal IDs.
