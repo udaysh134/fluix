@@ -58,6 +58,7 @@ SUMMARY
 ## 🗞️ <font color="#e36c09">Dec 22, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Implemented user file creation during user signup, generating unique user IDs in `user.c`.
+- Added `readJSON()` utility in `utils.c/h` to read and return contents of any `JSON` file for easier parsing.
 
 
 ## 🗞️ <font color="#e36c09">Dec 20, 2025 - Saturday</font>

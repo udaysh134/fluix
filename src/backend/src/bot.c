@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
+#include <inttypes.h>
 
 #include "../include/colors.h"
 #include "../include/utils.h"
@@ -99,6 +100,8 @@ void createBot(char path[], char username[]) {
             Sleep(3000);
 
             // Creating final JSON object here
+            uint64_t creationTime = getEpochTime();
+
             cJSON *tags = cJSON_CreateArray();
                 for (int i = 0; i < tagsCount; i++) { cJSON_AddItemToArray(tags, cJSON_CreateString(res.tags[i])); }
 
@@ -110,8 +113,8 @@ void createBot(char path[], char username[]) {
                 cJSON_AddNumberToObject(bot, "entryCount", 0);
                 cJSON_AddNumberToObject(bot, "maxEntries", 0);
                 cJSON_AddStringToObject(bot, "owner", username);
-                cJSON_AddNumberToObject(bot, "createdAt", 1738889015);
-                cJSON_AddNumberToObject(bot, "modifiedAt", 1738889015);
+                cJSON_AddNumberToObject(bot, "createdAt", creationTime);
+                cJSON_AddNumberToObject(bot, "modifiedAt", creationTime);
 
             cJSON *root = cJSON_CreateObject();
                 cJSON_AddNumberToObject(root, "schemaVersion", SCHEMA_VERSION);

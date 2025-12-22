@@ -25,5 +25,6 @@ int isStrClean(char *input);
 uint64_t getEpochTime(void);
 void genRand(char *str, size_t length);
 void strToHex(const char *input, char *out);
+char *readJSON(const char *filename);
 
 #endif

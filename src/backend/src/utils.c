@@ -380,3 +380,39 @@ static uint64_t fnv1a_Hash(const char *s) {
 
     return hash;
 }
+
+
+/*
+----------------------------------------------------------------------------------------------------
+13. JSON FILE CONTENT READER
+----------------------------------------------------------------------------------------------------
+*/
+char *readJSON(const char *filename) {
+    FILE *fp = fopen(filename, "rb");
+    if (!fp) return NULL;
+
+    if (fseek(fp, 0, SEEK_END) != 0) {
+        fclose(fp);
+        return NULL;
+    }
+
+    long size = ftell(fp);
+    if (size < 0) {
+        fclose(fp);
+        return NULL;
+    }
+
+    rewind(fp);
+
+    char *buffer = malloc((size_t)size + 1);
+    if (!buffer) {
+        fclose(fp);
+        return NULL;
+    }
+
+    size_t read = fread(buffer, 1, (size_t)size, fp);
+    buffer[read] = '\0';
+
+    fclose(fp);
+    return buffer;
+}
