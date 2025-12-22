@@ -9,7 +9,7 @@
 
 </div>
 
-**Fluix** is a no-code AI chatbot builder that enables anyone - students, teachers, or businesses to create and deploy intelligent, customized chatbots effortlessly. With an intuitive and minimal interface, users can simply add questions and answers, organize them into categories, and let Fluix handle everything behind the scenes - no coding, no manual JSON editing, or backend configuration required.
+**Fluix** is an open-core, no-code AI chatbot builder that enables anyone - students, teachers, or businesses to create and deploy intelligent, customized chatbots effortlessly. With an intuitive and minimal interface, users can simply add questions and answers, organize them into categories, and let Fluix handle everything behind the scenes - no coding, no manual JSON editing, or backend configuration required.
 
 Once your bot is ready, deploy it instantly using an embed snippet - just like adding a YouTube video, and get a fully responsive, intelligent chatbot tailored for your school, organization, or business.
 
