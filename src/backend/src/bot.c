@@ -92,6 +92,7 @@ void createBot(char path[], char username[]) {
     printf("%s %sWould you like to continue with this? (Y/N)%s : ", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     char confirmation = tolower(getchar());
 
+
     switch (confirmation) {
         case 'y':
             printf("Creating your bot...");
@@ -99,14 +100,45 @@ void createBot(char path[], char username[]) {
             printf("\nPlease wait...");
             Sleep(3000);
 
+            // Read "user_config.json" and extract value of "maxBots" to use it as bot ID
+            char configPath[100];
+            snprintf(configPath, sizeof(configPath), "%s\\user_config.json", path);
+
+            char *userConfig = readJSON(configPath);
+            if (!userConfig) {
+                printf("%sInternal Error! Failed to read the user file.%s", CMD_COL_RED, CMD_COL_RESET);
+                Sleep(1000);
+                printf("Exiting the program!%s", CMD_COL_RESET);
+                Sleep(2000);
+
+                free(lsThin);
+                exit(0);
+            }
+
+            cJSON *userConfigRoot = cJSON_Parse(userConfig);
+            free(userConfig);
+
+            if (!userConfigRoot) {
+                printf("%sInternal Error! Invalid JSON!%s", CMD_COL_RED, CMD_COL_RESET);
+                Sleep(1000);
+                printf("Exiting the program!%s", CMD_COL_RESET);
+                Sleep(2000);
+
+                free(lsThin);
+                exit(0);
+            }
+
+            cJSON *maxBots = cJSON_GetObjectItem(userConfigRoot, "maxBots");
+
             // Creating final JSON object here
+            int maxBotsValue = maxBots->valueint;
             uint64_t creationTime = getEpochTime();
 
             cJSON *tags = cJSON_CreateArray();
                 for (int i = 0; i < tagsCount; i++) { cJSON_AddItemToArray(tags, cJSON_CreateString(res.tags[i])); }
 
             cJSON *bot = cJSON_CreateObject();
-                cJSON_AddNumberToObject(bot, "id", 0);
+                cJSON_AddNumberToObject(bot, "id", (maxBotsValue + 1));
                 cJSON_AddStringToObject(bot, "name", res.name);
                 cJSON_AddStringToObject(bot, "description", res.desc);
                 cJSON_AddItemToObject(bot, "tags", tags);
@@ -122,89 +154,45 @@ void createBot(char path[], char username[]) {
                 cJSON_AddArrayToObject(root, "entries");
 
             char *txt = cJSON_Print(root);
-            printf("Initial JSON:\n%s\n\n", txt);
+            char botFilePath[100];
+            snprintf(botFilePath, sizeof(botFilePath), "%s\\%s.json", path, res.name);
+
+            FILE *createdBotFile = fopen(botFilePath, "w");
+            if (!createdBotFile) {
+                printf("%sCouldn't create the bot file. Internal Error!%s", CMD_COL_RED, CMD_COL_RESET);
+                Sleep(1000);
+                printf("Exiting the program!%s", CMD_COL_RESET);
+                Sleep(2000);
+
+                free(lsThin);
+                free(txt);
+                exit(0);
+            }
+
+            fprintf(createdBotFile, txt);
+            fclose(createdBotFile);
             free(txt);
 
+            // Updating "user_config" with incremented value for "maxBots"
+            maxBots->valueint = maxBotsValue + 1;
+            cJSON_SetIntValue(maxBots, maxBotsValue + 1);
 
+            char *updatedUserJSON = cJSON_Print(userConfigRoot);
 
-            // char filePath[256];
-            // snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, res.name);
+            FILE *fp = fopen(configPath, "wb");
+            if (fp) {
+                fwrite(updatedUserJSON, 1, strlen(updatedUserJSON), fp);
+                fclose(fp);
+            }
 
-            // FILE *createdFile = fopen(filePath, "w");
-            // if (!createdFile) {
-            //     printf("%sCould not create the bot file. Internal Error!%s", CMD_COL_RED, CMD_COL_RESET);
-            //     Sleep(1000);
-            //     printf("Exiting the program!%s", CMD_COL_RESET);
-            //     Sleep(2000);
-
-            //     free(lsThick);
-            //     free(lsThin);
-            //     exit(0);
-            // }
+            free(updatedUserJSON);
+            cJSON_Delete(root);
             break;
         case 'n':
             printf("NO");
             break;
         default:
             break;
-    }
-
-    /*
-    if (tolower(confirmation[0]) == 'y' || tolower(confirmation[1]) == 'e' || tolower(confirmation[2]) == 's') {
-        char filePath[260];
-        snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, res.name);
-
-        FILE *fp = fopen(filePath, "w");
-        if (!fp) {
-            printf("%sError: Could not create bot file at \"%s\"%s\n",
-                   CMD_COL_RED, filePath, CMD_COL_RESET);
-            Sleep(2000);
-            return;
-        }
-
-        time_t now = time(NULL);
-        long createdAt  = (long)now;
-        long modifiedAt = (long)now;
-
-        int botId      = 1;
-        int entryCount = 0;
-
-        fprintf(fp,
-            "{\n"
-            "    \"schemaVersion\": 1.0,\n"
-            "    \"bot\": {\n"
-            "        \"id\": %d,\n"
-            "        \"name\": \"%s\",\n"
-            "        \"description\": \"%s\",\n"
-            "        \"tags\": [\"%s\", \"%s\", \"%s\"],\n"
-            "        \"entryCount\": %d,\n"
-            "        \"owner\": \"%s\",\n"
-            "        \"createdAt\": %ld,\n"
-            "        \"modifiedAt\": %ld\n"
-            "    },\n"
-            "    \"entries\": []\n"
-            "}\n",
-            botId,
-            res.name,
-            res.desc,
-            res.tags[0], res.tags[1], res.tags[2],
-            entryCount,
-            username,
-            createdAt,
-            modifiedAt
-        );
-
-        fclose(fp);
-
-        printf("%sBot \"%s\" created successfully at: %s%s\n", CMD_COL_GREEN, res.name, filePath, CMD_COL_RESET);
-        Sleep(2000);
-        printf("Redirecting to User Panel...\n");
-        Sleep(2000);
-        userPanel(path, username);
-    } else {
-        printf("%sBot creation aborted. Returning to User Panel...%s\n", CMD_COL_RED, CMD_COL_RESET);
-        Sleep(2000);
-        userPanel(path, username);
     }
 
     /**

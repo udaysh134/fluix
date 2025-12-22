@@ -14,6 +14,7 @@
 
 // Definitions
 #define DB_PATH ".\\src\\db\\"
+#define USER_FILE_NAME "user_config"
 
 // Declarations
 void optSignIn(char name[]);
@@ -195,6 +196,7 @@ void optSignUp(char name[]) {
 
         cJSON *root = cJSON_CreateObject();
             cJSON_AddStringToObject(root, "userID", userID_inHex);
+            cJSON_AddStringToObject(root, "userName", finalUsername);
             cJSON_AddNumberToObject(root, "botCount", 0);
             cJSON_AddNumberToObject(root, "maxBots", 0);
             cJSON_AddNumberToObject(root, "createdAt", creationTime);
@@ -202,7 +204,7 @@ void optSignUp(char name[]) {
 
         char *txt = cJSON_Print(root);
         char filePath[256];
-        snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, userID_inHex);
+        snprintf(filePath, sizeof(filePath), "%s\\%s.json", path, USER_FILE_NAME);
 
         FILE *createdFile = fopen(filePath, "w");
         if (!createdFile) {

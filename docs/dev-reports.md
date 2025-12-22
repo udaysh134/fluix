@@ -59,6 +59,9 @@ SUMMARY
 #### [Uday](https://github.com/udaysh134)
 - Implemented user file creation during user signup, generating unique user IDs in `user.c`.
 - Added `readJSON()` utility in `utils.c/h` to read and return contents of any `JSON` file for easier parsing.
+- Standardized user configuration file naming to `user_config.json` instead of `<user_id>.json` for easier lookup and parsing.
+- Implemented bot ID generation using the `maxBots` value from `user_config.json`.
+- Added logic to increment and persist `maxBots` after each bot creation to ensure unique future bot IDs.
 
 
 ## 🗞️ <font color="#e36c09">Dec 20, 2025 - Saturday</font>

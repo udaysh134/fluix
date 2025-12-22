@@ -1,0 +1,15 @@
+{
+	"schemaVersion":	1,
+	"bot":	{
+		"id":	2,
+		"name":	"testbot2",
+		"description":	"This is another test for bot creation logic, just for reference.",
+		"tags":	["second", "testbot2", ""],
+		"entryCount":	0,
+		"maxEntries":	0,
+		"owner":	"uday",
+		"createdAt":	1766424785162,
+		"modifiedAt":	1766424785162
+	},
+	"entries":	[]
+}
