@@ -1,106 +1,97 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="stylesheet" href="../css/bot-editor.css" />
-        <title>Fluix — Bot Editor</title>
-    </head>
-    <body>
-  
-                <div class="container">
-        <header class="topbar">
-            <div class="left">
-                    <span class="brand-name">Fluix</span>
-                </div>
 
-                <nav class="nav">
-                    <a href="sign-in.html " target="_blank">Home</a>
-                    <a href="#">Features</a>
-                    <a href="#">Pricing</a>
-                    <a href="#">About</a>
-                    <a href="bot-selector.html" target="_blank">My Project</a>
-                </nav>
-                    <div class="user"></div>
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fluix — Bot Editor</title>
+    <!-- Link Global Style -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Link Page Specific Style -->
+    <link rel="stylesheet" href="../css/bot-editor.css" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Shared Navbar Structure -->
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon">F</div>
+                <span>Fluix</span>
             </div>
-        </header>
-          <div class="hero-card">
-                <div class="grid">
-                    <!-- Left column: search + Q/A cards -->
-                    <section class="left-col">
-                        <form class="search" role="search" onsubmit="return false;">
-              
-                            <input id="q" placeholder="Search a query" />
-                        </form>
+            <div class="nav-links">
+                <a href="../index.html">HOME</a>
+                <a href="#">FEATURES</a>
+                <a href="#">PRICING</a>
+                <a href="#">ABOUT</a>
+            </div>
+            <div class="nav-actions">
+                <a href="sign-in.html" class="login-link">LOGIN</a>
+                <a href="sign-in.html" class="btn btn-primary">SIGN UP</a>
+            </div>
+        </nav>
 
-                        <div class="qna-list">
-                            <article class="qna-card">
-                                <div class="qna-grid">
-                                    <div class="label">Q:</div>
-                                    <br>
-                                    <div class="label">A:</div>
-                                </div>
-                            </article>
+        <div class="hero-card">
+            <div class="grid">
+                <!-- Left column: search + Q/A cards -->
+                <section class="left-col">
+                    <form class="search" role="search" onsubmit="return false;">
+                        <input id="q" placeholder="Search a query" />
+                    </form>
 
-                            <article class="qna-card">
-                                <div class="qna-grid">
-                                    <div class="label">Q:</div>
-                                  <br>
-                                    <div class="label">A:</div>
-                                </div>
-                            </article>
+                    <div class="qna-list">
+                        <article class="qna-card">
+                            <div class="qna-grid">
+                                <div class="label">Q:</div>
+                                <div>How do I create a bot?</div>
+                                <div class="label">A:</div>
+                                <div>Click the + button on dashboard.</div>
+                            </div>
+                        </article>
 
-                            <article class="qna-card">
-                                <div class="qna-grid">
-                                    <div class="label">Q:</div>
-                                      <br>
-                                    <div class="label">A:</div>
-                                    </div>
-                            </article>
+                        <article class="qna-card">
+                            <div class="qna-grid">
+                                <div class="label">Q:</div>
+                                <div>Can I export data?</div>
+                                <div class="label">A:</div>
+                                <div>Yes, use the export tool.</div>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Floating Plus Button (FAB) -->
+                    <div class="floating-fab">
+                        <a href="query-editor.html" class="fab-btn">+</a>
+                    </div>
+                </section>
+
+                <!-- Center vertical toolbar -->
+                <aside class="tool-col">
+                    <button class="tool-btn" title="Filters">F</button>
+                    <button class="tool-btn" title="Sort">S</button>
+                    <!-- Add Q/A moved to FAB -->
+                    <button class="tool-btn" title="Preview">P</button>
+                    <button class="tool-btn" title="Voice">V</button>
+                </aside>
+
+                <!-- Right column: bot card and CTA -->
+                <aside class="right-col">
+                    <div class="bot-panel">
+                        <div class="bot-head">
+                            <h2 class="bot-title">Bot Name</h2>
                         </div>
-                    </section>
 
-                    <!-- Center vertical toolbar -->
-                    <aside class="tool-col">
-                        <button class="tool-btn" title="Filters">
-              
-                        <button class="tool-btn" title="Sort">
-              
-                        </button>
-                        <button class="tool-btn" title= " Add Q/A">
-              
-                        </button>
-                        <button class="tool-btn" title="Preview">
-              
-                        </button>
-                        <button class="tool-btn" title="Voice">
-              
-                        </button>
-                    </aside>
-
-                    <!-- Right column: bot card and CTA -->
-                    <aside class="right-col">
-                        <div class="bot-panel">
-                            <div class="bot-head">
-                                <h2 class="bot-title">Bot Name</h2>
-                            </div>
-
-                            <div class="bot-body">
-                                <p class="empty">No conversation selected </p>
-                            </div>
-
-                            <div class="bot-actions">
-                                <button class="ask-btn">Ask anything </button>
-                            </div>
+                        <div class="bot-body">
+                            <p class="empty">No conversation selected</p>
                         </div>
-                    </aside>
-                </div>
 
-        
+                        <div class="bot-actions">
+                            <button class="ask-btn">Ask anything...</button>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
+    </div>
+</body>
 
-    
-    </body>
 </html>
