@@ -55,6 +55,15 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 23, 2025 - Tuesday</font>
+#### [Uday](https://github.com/udaysh134)
+- Updated `index.html` and `style.css` to build a clean, modern static landing page for Fluix.
+- Propagated the new Dark Theme design system to `sign-in.html`, `bot-selector.html`, `bot-editor.html`, and `query-editor.html`.
+- Refactored `bot-editor` with a responsive 3-column layout and a new Floating Action Button (FAB).
+- Corrected navigation links across all pages for a seamless user flow.
+- Revamped whole frontend to reflect new landing page design style.
+
+
 ## 🗞️ <font color="#e36c09">Dec 22, 2025 - Monday</font>
 #### [Uday](https://github.com/udaysh134)
 - Implemented user file creation during user signup, generating unique user IDs in `user.c`.

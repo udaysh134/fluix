@@ -1,30 +1,106 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Fluix</title>
+    <title>Fluix - Automate Your Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>FLUIX</h1>
-    <p>Build Once, Chat Forever</p>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon">F</div>
+                <span>Fluix</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">HOME</a>
+                <a href="#">FEATURES</a>
+                <a href="#">PRICING</a>
+                <a href="#">ABOUT</a>
+            </div>
+            <div class="nav-actions">
+                <a href="pages/sign-in.html" class="login-link">LOGIN</a>
+                <a href="pages/sign-in.html" class="btn btn-primary">SIGN UP</a>
+            </div>
+        </nav>
 
-    <form class="signin-form" action="/login" method="post">
-        <h2>Sign In</h2>
+        <section class="hero">
+            <h1>Automate Your Intelligence with Fluix</h1>
+            <p>Build, train, and deploy custom AI bots in minutes, No coding required.</p>
+            <div class="hero-actions">
+                <a href="pages/sign-in.html" class="btn btn-primary">Get Started for Free</a>
+                <a href="pages/sign-in.html" class="btn btn-outline">View Demo</a>
+            </div>
+            <div class="hero-image">
+                <img src="../../../assets/designs/MCKP_6 - Fluix_Flowchart.png" alt="Fluix Dashboard Flowchart"
+                    style="width: 100%; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid var(--border-color);">
+            </div>
+        </section>
 
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+        <section class="how-it-works">
+            <h3 class="section-title">How it Works</h3>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">⚙️</div>
+                    <div class="step-number">1. SELECT</div>
+                    <div class="step-title">Select</div>
+                    <div class="step-desc">Select in template</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">⎘</div>
+                    <div class="step-number">2. TRAIN</div>
+                    <div class="step-title">Train</div>
+                    <div class="step-desc">Seamless Interface</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">💬</div>
+                    <div class="step-number">3. DEPLOY</div>
+                    <div class="step-title">Deploy</div>
+                    <div class="step-desc">Custom Tagging</div>
+                </div>
+            </div>
+        </section>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit"><a href="pages/sign-in.html" target="_blank">Sign In</a></button>
-    </form>
+        <section class="features-section">
+            <h3 class="section-title">Feature Highlights</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="plan-name">Free (Open Core)</div>
+                    <ul class="feature-list">
+                        <li>Smart Querying</li>
+                        <li>Basic options</li>
+                        <li>Axis positions & bars</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="plan-name">Pro</div>
+                    <ul class="feature-list">
+                        <li>Seamless Interface</li>
+                        <li>Runpay</li>
+                        <li>Automated AI bots</li>
+                    </ul>
+                    <a href="pages/sign-in.html" class="btn btn-primary"
+                        style="text-align: center; margin-top: auto;">Choose Plan</a>
+                </div>
+                <div class="feature-card">
+                    <div class="plan-name">Enterprise</div>
+                    <ul class="feature-list">
+                        <li>Custom Tag</li>
+                        <li>Priority access</li>
+                        <li>Close integration</li>
+                    </ul>
+                    <a href="pages/sign-in.html" class="btn btn-primary"
+                        style="text-align: center; margin-top: auto;">Choose Plan</a>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 
 </html>

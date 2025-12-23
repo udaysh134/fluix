@@ -4,35 +4,40 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Create your first bot — Fluix (Desktop)</title>
+    <title>Create your first bot — Fluix</title>
+    <!-- Link Global Style First -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Link Page Specific Style -->
     <link rel="stylesheet" href="../css/sign-in.css" />
 </head>
 
 <body>
     <div class="container">
-        <header class="topbar">
-            <div class="left">
-
-                <div class="brand-name">Fluix</div>
+        <!-- Shared Navbar Structure -->
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon">F</div>
+                <span>Fluix</span>
             </div>
-
-            <nav class="nav">
-                <a href="#">Home</a>
-                <a href="#">Features</a>
-                <a href="#">Pricing</a>
-                <a href="#">About</a>
-                <a href="bot-selector.html" target="_blank">My Project</a>
-            </nav>
-
-            <div class="user"></div>
-        </header>
+            <div class="nav-links">
+                <a href="../index.html">HOME</a>
+                <a href="#">FEATURES</a>
+                <a href="#">PRICING</a>
+                <a href="#">ABOUT</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="login-link">LOGIN</a>
+                <a href="#" class="btn btn-primary">SIGN UP</a>
+            </div>
+        </nav>
 
         <section class="hero">
             <div class="hero-inner">
                 <h1 class="title">CREATE YOUR<br>BOT</h1>
 
                 <div class="card" role="button" tabindex="0" aria-label="Create new bot">
-                    <div class="plus"><a href="query-editor.html">+</a></div>
+                    <!-- Updated link to preserve functionality -->
+                    <div class="plus"><a href="bot-selector.html">+</a></div>
                 </div>
             </div>
         </section>
