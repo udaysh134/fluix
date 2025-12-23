@@ -81,3 +81,4 @@ dkms.conf
 
 # debug information files
 *.dwo
+src/db/senordan031/user_config.json
