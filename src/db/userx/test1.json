@@ -1,0 +1,80 @@
+{
+	"schemaVersion":	1,
+	"bot":	{
+		"id":	1,
+		"name":	"test1",
+		"description":	"This is a test bot, case 1. We'll be testing this bot for viewing, adding, editing or deleting test entries for data processing with json files.",
+		"tags":	["testbot", "case1", ""],
+		"entryCount":	0,
+		"maxEntries":	0,
+		"owner":	"userx",
+		"createdAt":	1766689375598,
+		"modifiedAt":	1766689375598
+	},
+	"entries": [{
+		  "id": 1,
+		  "question": "What is cloud computing?",
+		  "answer": "Cloud computing is the delivery of computing services like storage, servers, databases, and software over the internet instead of using local machines.",
+		  "tags": ["cloud", "cloud computing", "technology", "basics"]
+		}, {
+		  "id": 2,
+		  "question": "What does cybersecurity focus on?",
+		  "answer": "Cybersecurity focuses on protecting systems, networks, and data from digital attacks, unauthorized access, and damage.",
+		  "tags": ["cybersecurity", "security", "data protection"]
+		}, {
+		  "id": 3,
+		  "question": "What is an API?",
+		  "answer": "An API is a bridge that allows two different software applications to communicate and share data with each other.",
+		  "tags": ["api", "software", "development", "backend"]
+		}, {
+		  "id": 4,
+		  "question": "Why is data backup important?",
+		  "answer": "Data backup is important because it prevents permanent data loss in case of system failure, cyber attacks, or accidental deletion.",
+		  "tags": ["data backup", "storage", "security", "recovery"]
+		}, {
+		  "id": 5,
+		  "question": "What is version control?",
+		  "answer": "Version control is a system that helps track changes in files over time and allows developers to collaborate efficiently.",
+		  "tags": ["version control", "git", "coding", "collaboration"]
+		}, {
+		  "id": 6,
+		  "question": "What does open-source mean?",
+		  "answer": "Open-source software is software whose source code is publicly available and can be modified or improved by anyone.",
+		  "tags": ["open source", "software", "community"]
+		}, {
+		  "id": 7,
+		  "question": "What is a database used for?",
+		  "answer": "A database is used to store, organize, and manage large amounts of data efficiently for quick access and updates.",
+		  "tags": ["database", "data", "storage", "backend"]
+		}, {
+		  "id": 8,
+		  "question": "Why are strong passwords necessary?",
+		  "answer": "Strong passwords reduce the risk of accounts being hacked by making them harder to guess or break.",
+		  "tags": ["passwords", "security", "online safety"]
+		}, {
+		  "id": 9,
+		  "question": "What is two-factor authentication?",
+		  "answer": "Two-factor authentication adds an extra layer of security by requiring a second form of verification along with a password.",
+		  "tags": ["2fa", "authentication", "security"]
+		}, {
+		  "id": 10,
+		  "question": "What is the role of a backend system?",
+		  "answer": "The backend system handles data processing, storage, authentication, and business logic behind an application.",
+		  "tags": ["backend", "server", "development"]
+		}, {
+		  "id": 11,
+		  "question": "What is a user interface?",
+		  "answer": "A user interface is the part of an application that users interact with, including buttons, forms, and layouts.",
+		  "tags": ["ui", "design", "user experience"]
+		}, {
+		  "id": 12,
+		  "question": "Why is testing important in software development?",
+		  "answer": "Testing helps identify bugs early, improves software quality, and ensures the application works as expected.",
+		  "tags": ["testing", "software", "quality"]
+		}, {
+		  "id": 13,
+		  "question": "What does scalability mean in applications?",
+		  "answer": "Scalability refers to an application's ability to handle increasing users or data without performance issues.",
+		  "tags": ["scalability", "performance", "systems"]
+		}]
+}

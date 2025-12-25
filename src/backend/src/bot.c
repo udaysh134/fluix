@@ -260,20 +260,46 @@ void accessBots(char path[], char username[]) {
     }
 
     // List Bots
-    printf("%s\n%s\t   USER PANEL - %s%s%s\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_MAGENTA, username, CMD_COL_RESET, lsThick);
-    
+    char listMenu[2048] = "";
+    char botListStr[1024] = "";
+
     if (botCount == 0) {
-        printf("%sNo bots found. Go create one!%s\n", CMD_COL_YELLOW, CMD_COL_RESET);
+        snprintf(botListStr, sizeof(botListStr), "%sNo bots found. Go create one!%s", CMD_COL_YELLOW, CMD_COL_RESET);
     } else {
-        printf("Available Bots:\n");
         for (int i = 0; i < botCount; i++) {
-            printf("%d. %s\n", i + 1, botNames[i]);
+            char line[100];
+            snprintf(line, sizeof(line), "(%d) %s\n", i + 1, botNames[i]);
+            strcat(botListStr, line);
         }
+        
+        botListStr[strlen(botListStr) - 1] = '\0';
     }
-    printf("%s\n(R) - Return back\n(0) - Exit\n%s\n", lsThin, lsThin);
+
+    snprintf(listMenu, sizeof(listMenu),
+        "%s"
+        "\n%s\t   USER PANEL - %s"
+        "%s%s%s"
+        "\n\t      (Access Bots)"
+        "\n%s"
+        "\n%s"
+        "\n%s"
+        "\n(R) - Return back"
+        "\n(0) - Exit"
+        "\n%s"
+        "\n",
+        lsThick,
+        CMD_COL_GREEN, CMD_COL_RESET,
+        CMD_COL_BLACK, username, CMD_COL_RESET,
+        lsThick,
+        botListStr,
+        lsThin,
+        lsThin
+    );
+    printf("%s", listMenu);
+
 
     // Selection
-    printf("%s %sSelect a bot (number) or option: %s", prefix, CMD_COL_YELLOW, CMD_COL_RESET);
+    printf("%s %sSelect a bot (number) or option: %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     
     char inputBuffer[100];
     fgets(inputBuffer, sizeof(inputBuffer), stdin);
@@ -303,16 +329,30 @@ void accessBots(char path[], char username[]) {
     // Bot Operation Menu
     bot_menu:
     system("cls");
-    printf("%s\n%s\t   BOT PANEL - %s%s%s%s\n%s\n", 
-        lsThick, CMD_COL_GREEN, CMD_COL_MAGENTA, selectedBot, CMD_COL_RESET, CMD_COL_GREEN, lsThick);
-    
-    printf("(V) - View entries\n");
-    printf("(A) - Add entry\n");
-    printf("(E) - Edit entry\n");
-    printf("(D) - Delete entry\n");
-    printf("(R) - Return to Bot List\n");
-    printf("(0) - Exit\n");
-    printf("%s\n", lsThin);
+
+    char botMenu[1024];
+    snprintf(botMenu, sizeof(botMenu),
+        "%s"
+        "\n%s\t   USER PANEL - %s"
+        "%s%s%s"
+        "\n\t      (%s)"
+        "\n%s"
+        "\n(V) - View entries"
+        "\n(A) - Add entry"
+        "\n(E) - Edit entry"
+        "\n(D) - Delete entry"
+        "\n(R) - Return to Bot List"
+        "\n(0) - Exit"
+        "\n%s"
+        "\n",
+        lsThick,
+        CMD_COL_GREEN, CMD_COL_RESET,
+        CMD_COL_BLACK, username, CMD_COL_RESET,
+        selectedBot,
+        lsThick,
+        lsThin
+    );
+    printf("%s", botMenu);
 
     printf("%s %sChoose an action: %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
     

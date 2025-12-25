@@ -1,0 +1,15 @@
+{
+	"schemaVersion":	1,
+	"bot":	{
+		"id":	2,
+		"name":	"test2",
+		"description":	"This is another test bot which mostly will be left either empty or with less data so that we have something to compare with the test case 1 we created earlier.",
+		"tags":	["", "", ""],
+		"entryCount":	0,
+		"maxEntries":	0,
+		"owner":	"userx",
+		"createdAt":	1766689521838,
+		"modifiedAt":	1766689521838
+	},
+	"entries":	[]
+}
