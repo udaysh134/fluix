@@ -55,6 +55,14 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 25, 2025 - Thursday</font>
+#### [Uday](https://github.com/udaysh134)
+- Refactored `accessBots()` in `bot.c` to dynamically list available bots, replacing manual name entry.
+- Introduced a dedicated **Bot Panel** with navigation options: `View`, `Add`, `Edit`, `Delete`, `Return`, and `Exit`.
+- Implemented `optEdit()` in `data.c` to enable modification of Question, Answer, or Tags for existing bot entries.
+- Added a consistent `(0) Exit` option across the Bot Access menu for seamless application termination.
+
+
 ## 🗞️ <font color="#e36c09">Dec 23, 2025 - Tuesday</font>
 #### [Uday](https://github.com/udaysh134)
 - Updated `index.html` and `style.css` to build a clean, modern static landing page for Fluix.

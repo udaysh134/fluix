@@ -159,7 +159,126 @@ void optAdd(char path[], char username[], char bot_name[]) {
     system("pause");
 }
 
-void optEdit(char path[], char username[], char bot_name[]) {};
+void optEdit(char path[], char username[], char bot_name[]) {
+    system("cls");
+
+    char botFilePath[256];
+    snprintf(botFilePath, sizeof(botFilePath), "%s\\%s.json", path, bot_name);
+
+    char *jsonText = readJSON(botFilePath);
+    if (!jsonText) {
+        printf("%sFailed to read bot file.%s\n", CMD_COL_RED, CMD_COL_RESET);
+        Sleep(2000);
+        return;
+    }
+
+    cJSON *root = cJSON_Parse(jsonText);
+    free(jsonText);
+
+    if (!root) {
+        printf("%sInvalid JSON.%s\n", CMD_COL_RED, CMD_COL_RESET);
+        Sleep(2000);
+        return;
+    }
+
+    cJSON *entries = cJSON_GetObjectItem(root, "entries");
+    if (!cJSON_IsArray(entries)) {
+        printf("%sNo entries found or invalid structure.%s\n", CMD_COL_YELLOW, CMD_COL_RESET);
+        cJSON_Delete(root);
+        Sleep(2000);
+        return;
+    }
+
+    int id;
+    printf("Enter ID to edit: ");
+    scanf("%d", &id);
+    eatBuffer();
+
+    int found = 0;
+    int size = cJSON_GetArraySize(entries);
+    cJSON *targetEntry = NULL;
+
+    for (int i = 0; i < size; i++) {
+        cJSON *entry = cJSON_GetArrayItem(entries, i);
+        if (cJSON_GetObjectItem(entry, "id")->valueint == id) {
+            targetEntry = entry;
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("%sEntry with ID %d not found.%s\n", CMD_COL_RED, id, CMD_COL_RESET);
+        cJSON_Delete(root);
+        system("pause");
+        return;
+    }
+
+    // Edit Menu
+    printf("\nWhat to edit?\n");
+    printf("1. Question\n");
+    printf("2. Answer\n");
+    printf("3. Tags\n");
+    printf("0. Cancel\n");
+    printf("Select option: ");
+    
+    char choice = getchar();
+    eatBuffer();
+
+    if (choice == '0') {
+        cJSON_Delete(root);
+        return;
+    }
+
+    char buffer[1024];
+
+    switch (choice) {
+        case '1':
+            printf("Enter new Question:\n> ");
+            fgets(buffer, sizeof(buffer), stdin);
+            buffer[strcspn(buffer, "\n")] = '\0';
+            cJSON_ReplaceItemInObject(targetEntry, "question", cJSON_CreateString(buffer));
+            break;
+        case '2':
+            printf("Enter new Answer:\n> ");
+            fgets(buffer, sizeof(buffer), stdin);
+            buffer[strcspn(buffer, "\n")] = '\0';
+            cJSON_ReplaceItemInObject(targetEntry, "answer", cJSON_CreateString(buffer));
+            break;
+        case '3': {
+            cJSON *newTags = cJSON_CreateArray();
+            printf("Enter new tags (empty line to finish):\n");
+            char tagBuf[128];
+            while (1) {
+                printf("> ");
+                fgets(tagBuf, sizeof(tagBuf), stdin);
+                tagBuf[strcspn(tagBuf, "\n")] = '\0';
+                if (strlen(tagBuf) == 0) break;
+                cJSON_AddItemToArray(newTags, cJSON_CreateString(tagBuf));
+            }
+            cJSON_ReplaceItemInObject(targetEntry, "tags", newTags);
+            break;
+        }
+        default:
+            printf("%sInvalid choice!%s\n", CMD_COL_RED, CMD_COL_RESET);
+            cJSON_Delete(root);
+            Sleep(2000);
+            return;
+    }
+
+    char *updatedJSON = cJSON_Print(root);
+    FILE *fp = fopen(botFilePath, "w");
+    if (fp) {
+        fwrite(updatedJSON, 1, strlen(updatedJSON), fp);
+        fclose(fp);
+    }
+
+    free(updatedJSON);
+    cJSON_Delete(root);
+
+    printf("%sEntry updated successfully!%s\n", CMD_COL_GREEN, CMD_COL_RESET);
+    Sleep(2000);
+}
 
 void optDelete(char path[], char username[], char bot_name[]) {
     system("cls");

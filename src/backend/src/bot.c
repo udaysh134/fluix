@@ -232,100 +232,121 @@ void createBot(char path[], char username[]) {
 void accessBots(char path[], char username[]) {
     access_block_1: 
     
-      system("cls");
-      char *prefix = inputPrefix();
-      char *lsThick = lineSep('=', 50);
-      char *lsThin = lineSep('-', 50);
+    system("cls");
+    char *prefix = inputPrefix();
+    char *lsThick = lineSep('=', 50);
+    char *lsThin = lineSep('-', 50);
 
-      //char name[10];
-      //char desc[1002] = "";
-      //char tags[3][12] = {0};
+    SearchResult res;
+    res = searchDir(path, "file", 1, "");
+    
+    // Filter and collect valid bots
+    char botNames[50][MAX_PATH];
+    int botCount = 0;
 
-      /*char tempName[10];
-      char tempDesc[1002];
-      char tempTags[40] = "";*/
+    if (res.code == 0) {
+        for (int i = 0; i < res.count; i++) {
+            if (strcmp(res.names[i], "user_config.json") != 0) {
+                // Strip .json extension for display
+                char *dot = strrchr(res.names[i], '.');
+                if (dot && strcmp(dot, ".json") == 0) {
+                    size_t len = dot - res.names[i];
+                    strncpy(botNames[botCount], res.names[i], len);
+                    botNames[botCount][len] = '\0';
+                    botCount++;
+                }
+            }
+        }
+    }
 
-      char user_choice1[6];
-      char bot_name[9];
+    // List Bots
+    printf("%s\n%s\t   USER PANEL - %s%s%s\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_MAGENTA, username, CMD_COL_RESET, lsThick);
+    
+    if (botCount == 0) {
+        printf("%sNo bots found. Go create one!%s\n", CMD_COL_YELLOW, CMD_COL_RESET);
+    } else {
+        printf("Available Bots:\n");
+        for (int i = 0; i < botCount; i++) {
+            printf("%d. %s\n", i + 1, botNames[i]);
+        }
+    }
+    printf("%s\n(R) - Return back\n(0) - Exit\n%s\n", lsThin, lsThin);
 
-      int fileCount = 0;
-      char user_choice2[5];
-      int flag =0;
+    // Selection
+    printf("%s %sSelect a bot (number) or option: %s", prefix, CMD_COL_YELLOW, CMD_COL_RESET);
+    
+    char inputBuffer[100];
+    fgets(inputBuffer, sizeof(inputBuffer), stdin);
+    inputBuffer[strcspn(inputBuffer, "\n")] = '\0';
 
-      SearchResult res;
-
-      res = searchDir(path, "file", 1, "");
-      if (res.code == 0) fileCount = res.count;
-      char printOptions[512];
-       
-      snprintf(printOptions, sizeof(printOptions), "%s\n%s\t   USER PANEL - %s%s%s%s\n%s\n(V) - View bot data\n(A) - Add bot contents\n(D) - Delete bot data/bot file\n(R) - Return back to main menu\n(0) - Exit program\n%s\n", lsThick, CMD_COL_GREEN, CMD_COL_RESET, CMD_COL_MAGENTA, username, CMD_COL_RESET, lsThick, CMD_COL_BLACK, fileCount, CMD_COL_RESET, lsThin);
-      printf(printOptions);
-
-      printf("%s %sChoose an option from above to proceed: %s", prefix, CMD_COL_YELLOW, CMD_COL_RESET);
-      fgets(user_choice1, sizeof(user_choice1), stdin);
-      user_choice1[strcspn(user_choice1, "\n")] = '\0';
-
-      switch (tolower(user_choice1[0])) {
-
-    case 'v':
-        printf("%s %sEnter bot name (max 8 chars): %s",
-               prefix, CMD_COL_CYAN, CMD_COL_RESET);
-        scanf("%8s", bot_name);
-        eatBuffer();
-
-        optView(path, username, bot_name);
-        break;
-
-    case 'a':
-        printf("%s %sEnter bot name (max 8 chars): %s",
-               prefix, CMD_COL_CYAN, CMD_COL_RESET);
-        scanf("%8s", bot_name);
-        eatBuffer();
-
-        optAdd(path, username, bot_name);
-        break;
-
-    case 'd':
-        printf("%s %sEnter bot name (max 8 chars): %s",
-               prefix, CMD_COL_CYAN, CMD_COL_RESET);
-        scanf("%8s", bot_name);
-        eatBuffer();
-
-        optDelete(path, username, bot_name);
-        break;
-
-    case 'r':
+    if (tolower(inputBuffer[0]) == 'r' && inputBuffer[1] == '\0') {
+        free(lsThick);
+        free(lsThin);
         userPanel(path, username);
-        break;
-
-    case '0':
+        return;
+    } else if (inputBuffer[0] == '0' && inputBuffer[1] == '\0') {
         exitThanks('y');
         exit(0);
+    }
 
-    default:
-        printf("\n%sInvalid choice!%s", CMD_COL_RED, CMD_COL_RESET);
+    int selection = atoi(inputBuffer);
+    if (selection < 1 || selection > botCount) {
+        printf("%sInvalid selection!%s\n", CMD_COL_RED, CMD_COL_RESET);
+        Sleep(1000);
+        free(lsThick);
+        free(lsThin);
         goto access_block_1;
-}
+    }
 
+    char *selectedBot = botNames[selection - 1];
 
-    /**
-     * 1. The text based user panel UI will stay ON in this page, but the 'USER PANEL' heading and the given options will change.
-     * 2. 'USER PANEL' heading will change to 'BOT PANEL', and options will be the names of the bots user currently has.
-     * 3. These options should be dynamic (for obvious reasons), meaning it should change according to the number of bots, user has.
-     * 4. There must also be two more options '(R) - Return back' and '(0) - Exit'
-     */
+    // Bot Operation Menu
+    bot_menu:
+    system("cls");
+    printf("%s\n%s\t   BOT PANEL - %s%s%s%s\n%s\n", 
+        lsThick, CMD_COL_GREEN, CMD_COL_MAGENTA, selectedBot, CMD_COL_RESET, CMD_COL_GREEN, lsThick);
+    
+    printf("(V) - View entries\n");
+    printf("(A) - Add entry\n");
+    printf("(E) - Edit entry\n");
+    printf("(D) - Delete entry\n");
+    printf("(R) - Return to Bot List\n");
+    printf("(0) - Exit\n");
+    printf("%s\n", lsThin);
 
+    printf("%s %sChoose an action: %s", prefix, CMD_COL_CYAN, CMD_COL_RESET);
+    
+    char action = tolower(getchar());
+    eatBuffer();
 
-    /**
-     * 1. When the user chooses a specific bot of their's, the program should detect which bot to select and based on that...
-     * 2. The next page will be the four key options for doing operations on the bot, which are 'view', 'add', 'edit', & 'delete'.
-     * 3. Now any chosen option will redirect the code flow to 'data.c' where these functions are actually defined.
-     */
+    switch (action) {
+        case 'v':
+            optView(path, username, selectedBot);
+            goto bot_menu;
+        case 'a':
+            optAdd(path, username, selectedBot);
+            goto bot_menu;
+        case 'e':
+            optEdit(path, username, selectedBot);
+            goto bot_menu;
+        case 'd':
+            optDelete(path, username, selectedBot);
+            goto bot_menu;
+        case 'r':
+            free(lsThick);
+            free(lsThin);
+            goto access_block_1;
+        case '0':
+            exitThanks('y');
+            exit(0);
+        default:
+            printf("%sInvalid option!%s\n", CMD_COL_RED, CMD_COL_RESET);
+            Sleep(1000);
+            goto bot_menu;
+    }
 
-
-    /**
-     * The work is completed here, we're done with the bot panel and the code is redirected to 'data.c'.
-     */
+    free(lsThick);
+    free(lsThin);
 }
 
 
