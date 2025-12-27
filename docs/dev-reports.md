@@ -55,6 +55,12 @@ SUMMARY
 - Skip days you didn’t work — no empty placeholders.
 - Never edit or move this "Guidelines", "Example" or "Summary" section.
 -->
+## 🗞️ <font color="#e36c09">Dec 27, 2025 - Saturday</font>
+#### [Uday](https://github.com/udaysh134)
+- Added `Fluix_Logo (Trial-1).jpg` in `assets/designs/` for future reference for Fluix's logo.
+- Added `Backend_Process_Line.psd` in `assets/flowcharts/` to provide the source of flowcharts, from the same directory.
+
+
 ## 🗞️ <font color="#e36c09">Dec 26, 2025 - Friday</font>
 #### [Uday](https://github.com/udaysh134)
 - Refactored `accessBots()` in `bot.c` to dynamically list available bots, replacing manual name entry.
