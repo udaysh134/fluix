@@ -3,8 +3,8 @@
 # **Fluix**
 ### AI made simple, fast, and accessible for everyone.
 
-![Maintained](https://img.shields.io/badge/Maintained-Yes-green)
-![Documentation Status](https://img.shields.io/badge/Documentation-Active-blue)
+![Maintained](https://img.shields.io/badge/Progress-Paused-brown)
+![Documentation Status](https://img.shields.io/badge/Docs-Maintained-blue)
 ![Version](https://img.shields.io/badge/Version-0.1.0-orange)
 
 </div>
